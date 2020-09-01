@@ -1,0 +1,11 @@
+std_msgs/Header header
+int16 time
+int16 isvalidlane
+int16 curlane
+S_LANEINFO laneinfo 
+float32 speedlim
+S_STATIONLOCATION stationlocation
+S_STOPLINE stopline
+bool istunnel
+int16 nextlaneCH
+int16 traffic

@@ -1,0 +1,44 @@
+libQt5Core.so.5 => /opt/Qt5.12.4/5.12.4/gcc_64/lib/libQt5Core.so.5
+libQt5Gui.so.5 => /opt/Qt5.12.4/5.12.4/gcc_64/lib/libQt5Gui.so.5
+libQt5Network.so.5 => /opt/Qt5.12.4/5.12.4/gcc_64/lib/libQt5Network.so.5
+libQt5OpenGL.so.5 => /opt/Qt5.12.4/5.12.4/gcc_64/lib/libQt5OpenGL.so.5
+libQt5Qml.so.5 => /opt/Qt5.12.4/5.12.4/gcc_64/lib/libQt5Qml.so.5
+libQt5Quick.so.5 => /opt/Qt5.12.4/5.12.4/gcc_64/lib/libQt5Quick.so.5
+libQt5QuickWidgets.so.5 => /opt/Qt5.12.4/5.12.4/gcc_64/lib/libQt5QuickWidgets.so.5
+libQt5Widgets.so.5 => /opt/Qt5.12.4/5.12.4/gcc_64/lib/libQt5Widgets.so.5
+libicudata.so.56 => /opt/Qt5.12.4/5.12.4/gcc_64/lib/libicudata.so.56
+libicui18n.so.56 => /opt/Qt5.12.4/5.12.4/gcc_64/lib/libicui18n.so.56
+libicuuc.so.56 => /opt/Qt5.12.4/5.12.4/gcc_64/lib/libicuuc.so.56
+	
+
+	libpcre.so.3 => /lib/x86_64-linux-gnu/libpcre.so.3
+	libz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 
+	libGL.so.1 => /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1 
+	libstdc++.so.6 => /usr/lib/x86_64-linux-gnu/libstdc++.so.6 
+	libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 
+	libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6
+	libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1
+	librt.so.1 => /lib/x86_64-linux-gnu/librt.so.1
+	libexpat.so.1 => /lib/x86_64-linux-gnu/libexpat.so.1
+	libxcb-dri3.so.0 => /usr/lib/x86_64-linux-gnu/libxcb-dri3.so.0
+	libxcb-present.so.0 => /usr/lib/x86_64-linux-gnu/libxcb-present.so.0
+	libxcb-sync.so.1 => /usr/lib/x86_64-linux-gnu/libxcb-sync.so.1
+	libxshmfence.so.1 => /usr/lib/x86_64-linux-gnu/libxshmfence.so.1
+	libglapi.so.0 => /usr/lib/x86_64-linux-gnu/libglapi.so.0
+	libXext.so.6 => /usr/lib/x86_64-linux-gnu/libXext.so.6
+	libXdamage.so.1 => /usr/lib/x86_64-linux-gnu/libXdamage.so.1
+	libXfixes.so.3 => /usr/lib/x86_64-linux-gnu/libXfixes.so.3
+	libX11-xcb.so.1 => /usr/lib/x86_64-linux-gnu/libX11-xcb.so.1
+	libX11.so.6 => /usr/lib/x86_64-linux-gnu/libX11.so.6
+	libxcb-glx.so.0 => /usr/lib/x86_64-linux-gnu/libxcb-glx.so.0
+	libxcb-dri2.so.0 => /usr/lib/x86_64-linux-gnu/libxcb-dri2.so.0
+	libxcb.so.1 => /usr/lib/x86_64-linux-gnu/libxcb.so.1
+	libXxf86vm.so.1 => /usr/lib/x86_64-linux-gnu/libXxf86vm.so.1
+	libdrm.so.2 => /usr/lib/x86_64-linux-gnu/libdrm.so.2
+	libgthread-2.0.so.0 => /usr/lib/x86_64-linux-gnu/libgthread-2.0.so.0
+	libglib-2.0.so.0 => /lib/x86_64-linux-gnu/libglib-2.0.so.0
+	libXau.so.6 => /usr/lib/x86_64-linux-gnu/libXau.so.6
+	libXdmcp.so.6 => /usr/lib/x86_64-linux-gnu/libXdmcp.so.6
+
+

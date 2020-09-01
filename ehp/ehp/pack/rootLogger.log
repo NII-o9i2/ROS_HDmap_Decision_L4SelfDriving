@@ -1,0 +1,377 @@
+2019-11-25 11:26:22:590.157|ERROR|140339914053568|/home/dqf/svn/me01/src/source/Common/communication/CanProcess/CommonCan.cpp:69|emg_CanInit failed!|
+2019-11-25 14:30:31:898.934|ERROR|140247986366400|/home/dqf/svn/me01/src/source/Common/communication/CanProcess/CommonCan.cpp:69|emg_CanInit failed!|
+2019-11-25 14:31:39:941.437|ERROR|140243431270336|/home/dqf/svn/me01/src/source/Common/communication/CanProcess/CommonCan.cpp:69|emg_CanInit failed!|
+2019-11-25 15:58:41:296.610|ERROR|140037836085184|/home/dqf/svn/me01/src/source/Common/communication/CanProcess/CommonCan.cpp:69|emg_CanInit failed!|
+2019-11-25 01:24:25:574.475|ERROR|139882138572736|/home/dqf/svn/me01/src/source/Common/communication/CanProcess/CommonCan.cpp:69|emg_CanInit failed!|
+2019-11-25 01:24:59:238.549|ERROR|139704845453248|/home/dqf/svn/me01/src/source/Common/communication/CanProcess/CommonCan.cpp:69|emg_CanInit failed!|
+2019-11-25 01:28:44:639.744|ERROR|140605771519936|/home/dqf/svn/me01/src/source/Common/communication/CanProcess/CommonCan.cpp:69|emg_CanInit failed!|
+2019-11-25 01:30:00:610.416|ERROR|139836084025280|/home/dqf/svn/me01/src/source/Common/communication/CanProcess/CommonCan.cpp:69|emg_CanInit failed!|
+2019-11-25 01:35:50:986.428|ERROR|140107805718464|/home/dqf/svn/me01/src/source/Common/communication/CanProcess/CommonCan.cpp:69|emg_CanInit failed!|
+2019-11-25 01:39:31:593.146|WARN|140107453552384|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 01:39:31:593.743|WARN|140107453552384|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 01:39:36:070.817|WARN|140107453552384|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 01:39:36:070.881|WARN|140107453552384|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 02:05:14:336.304|ERROR|140547136194496|/home/dqf/svn/me01/src/source/Common/communication/CanProcess/CommonCan.cpp:69|emg_CanInit failed!|
+2019-11-25 19:17:49:679.176|ERROR|140118347626432|/home/dqf/svn/me01/src/source/Common/communication/CanProcess/CommonCan.cpp:69|emg_CanInit failed!|
+2019-11-25 19:18:04:816.997|WARN|140117995865856|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 19:18:04:820.296|WARN|140117995865856|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 19:18:34:895.404|WARN|140117995865856|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 19:18:34:913.183|WARN|140117995865856|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 19:18:34:913.276|WARN|140117995865856|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 19:18:34:913.296|WARN|140117995865856|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 19:18:34:913.306|WARN|140117995865856|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 19:18:34:913.342|WARN|140117995865856|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 19:18:34:913.357|WARN|140117995865856|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 19:18:34:913.366|WARN|140117995865856|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 19:19:41:055.707|WARN|140117995865856|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 19:19:41:057.822|WARN|140117995865856|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 19:20:00:402.565|WARN|140117995865856|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 19:20:00:402.846|WARN|140117995865856|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 19:20:00:403.022|WARN|140117995865856|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 19:20:00:403.135|WARN|140117995865856|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 19:20:00:403.214|WARN|140117995865856|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 19:20:00:403.283|WARN|140117995865856|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 19:20:00:403.351|WARN|140117995865856|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 19:20:00:403.419|WARN|140117995865856|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 19:20:13:266.829|WARN|140117995865856|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 19:20:13:267.064|WARN|140117995865856|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 19:20:13:267.180|WARN|140117995865856|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 19:20:13:267.261|WARN|140117995865856|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 19:20:13:267.320|WARN|140117995865856|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 19:20:13:267.348|WARN|140117995865856|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 19:23:13:519.933|ERROR|140084543842240|/home/dqf/svn/me01/src/source/Common/communication/CanProcess/CommonCan.cpp:69|emg_CanInit failed!|
+2019-11-25 19:24:02:655.056|ERROR|140505134938048|/home/dqf/svn/me01/src/source/Common/communication/CanProcess/CommonCan.cpp:69|emg_CanInit failed!|
+2019-11-25 21:27:51:372.359|ERROR|139633710950336|/home/dqf/svn/me01/src/source/Common/communication/CanProcess/CommonCan.cpp:69|emg_CanInit failed!|
+2019-11-25 21:29:26:404.514|ERROR|139633426491136|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:659|getPtindex()==-1|
+2019-11-25 21:31:21:165.814|WARN|139633426491136|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 21:31:21:166.043|WARN|139633426491136|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 21:31:21:166.181|WARN|139633426491136|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 21:31:21:166.290|WARN|139633426491136|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 21:31:21:166.371|WARN|139633426491136|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:31:01:849.535|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1390|NDSLandMarkSign passed|
+2019-11-25 23:31:01:873.074|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1390|NDSLandMarkSign passed|
+2019-11-25 23:31:01:873.224|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1390|NDSLandMarkSign passed|
+2019-11-25 23:31:01:873.435|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1390|NDSLandMarkSign passed|
+2019-11-25 23:31:05:413.675|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1390|NDSLandMarkSign passed|
+2019-11-25 23:31:05:414.030|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1390|NDSLandMarkSign passed|
+2019-11-25 23:31:05:414.180|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1390|NDSLandMarkSign passed|
+2019-11-25 23:31:05:414.305|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1390|NDSLandMarkSign passed|
+2019-11-25 23:31:28:641.637|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:31:28:641.857|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:31:28:642.007|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:31:28:642.109|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:31:28:642.191|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:31:28:642.265|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:31:28:642.338|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:31:28:642.466|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:31:28:642.549|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:31:28:642.622|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:31:28:642.696|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:31:28:642.768|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:31:28:642.841|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:31:28:642.961|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:31:28:643.043|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:31:28:643.117|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:31:28:643.190|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:31:28:643.263|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:31:28:643.335|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:31:28:643.426|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:31:28:643.514|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:31:28:643.586|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:31:28:643.659|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:31:28:643.732|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:31:28:643.805|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:31:28:643.889|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:31:28:644.015|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:31:28:644.089|WARN|140529182439168|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:49:04:122.547|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1390|NDSLandMarkSign passed|
+2019-11-25 23:49:04:126.943|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1390|NDSLandMarkSign passed|
+2019-11-25 23:49:04:127.074|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1390|NDSLandMarkSign passed|
+2019-11-25 23:49:04:127.215|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1390|NDSLandMarkSign passed|
+2019-11-25 23:49:27:460.990|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:49:27:461.207|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:49:27:461.320|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:49:27:461.407|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:49:27:461.501|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:49:27:461.567|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:49:27:462.446|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:49:27:462.719|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:49:27:462.774|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:49:27:462.823|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:49:27:462.871|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:49:27:462.919|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:49:27:462.968|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:49:27:463.016|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:49:27:463.065|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:49:27:463.113|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:49:27:463.164|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:49:27:463.206|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:49:27:463.504|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:49:27:463.901|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:49:27:467.305|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:49:27:467.604|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:49:27:467.775|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:49:27:467.917|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:49:27:468.052|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:49:27:468.188|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:49:27:468.332|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-25 23:49:27:468.575|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:01:31:227.404|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1390|NDSLandMarkSign passed|
+2019-11-26 00:01:31:228.673|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1390|NDSLandMarkSign passed|
+2019-11-26 00:01:31:228.791|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1390|NDSLandMarkSign passed|
+2019-11-26 00:01:31:228.869|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1390|NDSLandMarkSign passed|
+2019-11-26 00:01:54:101.838|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:01:54:102.031|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:01:54:102.236|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:01:54:102.330|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:01:54:102.402|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:01:54:102.488|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:01:54:102.594|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:01:54:102.668|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:01:54:102.736|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:01:54:102.803|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:01:54:102.869|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:01:54:102.935|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:01:54:103.002|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:01:54:103.100|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:01:54:103.170|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:01:54:103.239|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:01:54:103.319|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:01:54:103.386|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:01:54:103.452|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:01:54:103.518|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:01:54:103.642|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:01:54:103.712|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:01:54:103.778|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:01:54:103.844|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:01:54:103.909|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:01:54:103.974|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:01:54:104.063|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:01:54:104.153|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:17:03:629.537|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:17:03:632.291|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:17:03:632.479|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:17:03:632.559|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:17:03:632.650|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:17:03:632.709|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:17:03:632.755|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:17:03:632.800|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:17:03:632.841|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:17:03:632.874|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:17:03:632.904|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:17:03:632.932|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:17:03:632.961|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:17:03:632.990|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:17:03:633.018|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:17:03:633.063|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:17:03:633.124|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:17:03:633.163|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:17:03:633.193|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:17:03:633.221|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:17:03:633.250|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:17:03:633.278|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:17:03:633.306|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:17:03:633.334|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:17:03:633.363|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:17:03:633.391|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:17:03:633.419|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:17:03:633.448|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:55:26:195.820|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:55:26:204.415|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:55:26:204.613|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:55:26:204.726|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:55:26:204.814|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:55:26:205.521|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:55:26:205.648|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:55:26:205.775|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:55:26:205.937|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:55:26:206.044|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:55:26:206.124|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:55:26:206.200|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:55:26:206.278|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:55:26:206.394|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:55:26:216.500|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:55:26:216.553|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:55:26:216.582|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:55:26:216.610|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:55:26:216.638|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:55:26:216.665|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:55:26:216.692|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:55:26:216.720|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:55:26:216.748|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:55:26:216.806|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:55:26:216.843|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:55:26:216.872|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:55:26:216.900|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 00:55:26:216.927|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:05:23:142.606|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:05:23:147.520|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:05:23:148.201|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:05:23:152.158|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:05:23:152.384|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:05:23:152.457|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:05:23:152.505|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:05:23:152.554|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:05:23:152.605|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:05:23:153.097|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:05:23:153.176|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:05:23:153.236|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:05:23:153.434|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:05:23:153.870|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:05:23:153.944|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:05:23:153.999|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:05:23:154.047|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:05:23:154.302|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:05:23:154.437|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:05:23:154.543|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:05:23:154.671|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:05:23:154.987|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:05:23:155.095|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:05:23:155.313|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:05:23:155.456|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:05:23:155.584|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:05:23:155.712|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:05:23:156.879|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:16:53:634.611|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1390|NDSLandMarkSign passed|
+2019-11-26 01:16:53:636.684|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1390|NDSLandMarkSign passed|
+2019-11-26 01:16:53:636.798|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1390|NDSLandMarkSign passed|
+2019-11-26 01:16:53:636.878|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1390|NDSLandMarkSign passed|
+2019-11-26 01:17:16:709.701|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:17:16:709.959|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:17:16:710.072|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:17:16:710.166|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:17:16:710.244|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:17:16:710.385|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:17:16:710.502|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:17:16:710.584|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:17:16:710.654|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:17:16:710.733|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:17:16:710.800|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:17:16:710.993|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:17:16:711.072|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:17:16:711.140|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:17:16:711.207|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:17:16:711.274|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:17:16:711.341|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:17:16:711.460|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:17:16:711.530|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:17:16:711.597|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:17:16:711.664|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:17:16:711.731|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:17:16:711.798|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:17:16:711.883|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:17:16:711.967|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:17:16:712.035|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:17:16:712.101|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 01:17:16:712.168|WARN|139636500330240|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:22:57:617.336|ERROR|140337866803136|/home/dqf/svn/me01/src/source/Common/communication/CanProcess/CommonCan.cpp:115|emg_CanInit failed!|
+2019-11-26 19:23:28:812.649|WARN|140337511130880|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:23:28:820.886|WARN|140337511130880|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:23:28:821.125|WARN|140337511130880|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:23:28:821.273|WARN|140337511130880|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:23:28:821.442|WARN|140337511130880|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:23:28:821.976|WARN|140337511130880|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:23:28:822.098|WARN|140337511130880|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:23:28:825.811|WARN|140337511130880|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:23:57:298.355|WARN|140337511130880|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:23:57:305.843|WARN|140337511130880|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:23:57:306.247|WARN|140337511130880|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:23:57:306.406|WARN|140337511130880|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:23:57:306.570|WARN|140337511130880|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:23:57:306.723|WARN|140337511130880|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:23:57:306.817|WARN|140337511130880|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:23:57:306.913|WARN|140337511130880|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:29:59:809.137|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1390|NDSLandMarkSign passed|
+2019-11-26 19:29:59:818.849|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1390|NDSLandMarkSign passed|
+2019-11-26 19:29:59:819.301|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1390|NDSLandMarkSign passed|
+2019-11-26 19:29:59:819.400|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1390|NDSLandMarkSign passed|
+2019-11-26 19:30:24:641.100|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:30:24:641.191|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:30:24:641.230|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:30:24:641.254|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:30:24:641.278|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:30:24:641.301|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:30:24:641.324|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:30:24:641.347|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:30:24:641.369|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:30:24:641.392|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:30:24:641.415|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:30:24:641.437|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:30:24:641.481|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:30:24:641.524|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:30:24:641.556|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:30:24:641.596|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:30:24:641.619|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:30:24:641.642|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:30:24:641.664|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:30:24:641.687|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:30:24:641.724|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:30:24:641.832|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:30:24:641.864|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:30:24:641.887|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:30:24:641.910|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:30:24:641.933|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:30:24:641.955|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:30:24:641.978|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:41:07:876.414|ERROR|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:659|getPtindex()==-1|
+2019-11-26 19:41:29:238.220|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:41:29:238.313|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:41:29:238.356|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:41:29:238.393|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:41:29:238.426|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:41:29:238.462|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:41:29:238.495|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:41:29:238.529|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:41:29:238.565|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:41:29:238.604|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:41:29:238.640|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:41:29:238.674|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:41:29:238.706|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:41:29:238.775|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:41:29:238.814|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:41:29:238.847|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:41:29:238.880|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:41:29:238.915|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:41:29:238.950|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:41:29:238.985|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:41:29:239.018|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:41:29:239.051|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:41:29:239.084|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:41:29:239.118|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:41:29:239.151|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:41:29:239.187|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:41:29:239.222|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-26 19:41:29:239.285|WARN|139878796867328|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-28 01:17:27:817.595|ERROR|139976479918016|/home/dqf/svn/me01/src/source/Common/communication/CanProcess/CommonCan.cpp:115|emg_CanInit failed!|
+2019-11-28 01:22:04:631.593|WARN|140084812687104|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-28 01:22:04:636.147|WARN|140084812687104|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-28 01:22:04:636.380|WARN|140084812687104|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-28 01:22:04:636.556|WARN|140084812687104|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-28 01:22:04:636.701|WARN|140084812687104|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-28 01:22:04:637.068|WARN|140084812687104|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-28 01:22:04:637.233|WARN|140084812687104|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-28 01:22:04:637.358|WARN|140084812687104|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-28 01:22:04:637.477|WARN|140084812687104|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-28 01:22:04:637.596|WARN|140084812687104|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-28 01:22:04:637.730|WARN|140084812687104|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-28 01:22:04:637.962|WARN|140084812687104|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-28 01:22:04:638.120|WARN|140084812687104|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-28 01:22:04:638.261|WARN|140084812687104|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-28 01:22:04:638.394|WARN|140084812687104|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-28 01:22:04:638.522|WARN|140084812687104|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-28 01:22:04:639.626|WARN|140084812687104|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-28 01:22:04:639.801|WARN|140084812687104|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-28 01:22:04:640.079|WARN|140084812687104|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-28 01:22:04:640.209|WARN|140084812687104|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-28 01:22:04:640.401|WARN|140084812687104|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-28 01:22:04:640.528|WARN|140084812687104|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-28 01:22:04:640.648|WARN|140084812687104|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-28 01:22:04:640.767|WARN|140084812687104|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-28 01:22:04:640.985|WARN|140084812687104|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-28 01:22:04:641.123|WARN|140084812687104|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-28 01:22:04:641.248|WARN|140084812687104|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-28 01:22:04:641.383|WARN|140084812687104|/home/dqf/svn/me01/src/source/HorizonProvider/HPHorizonProvider.cpp:1410|NDSLandMarkSign can't pass|
+2019-11-28 21:57:57:292.727|ERROR|140627703261120|/home/dqf/svn/me01/src/source/Common/communication/CanProcess/CommonCan.cpp:115|emg_CanInit failed!|
+2019-12-06 11:03:17:273.447|ERROR|140666370656192|/home/dqf/svn/ehp/src/source/Common/communication/CanProcess/CommonCan.cpp:115|emg_CanInit failed!|
+2019-12-10 14:14:41:227.633|ERROR|140320122374080|/home/dqf/svn/ehp/src/source/Common/communication/CanProcess/CommonCan.cpp:115|emg_CanInit failed!|
+2019-12-10 14:26:58:715.102|ERROR|139975394281408|/home/dqf/svn/ehp/src/source/Common/communication/CanProcess/CommonCan.cpp:115|emg_CanInit failed!|
