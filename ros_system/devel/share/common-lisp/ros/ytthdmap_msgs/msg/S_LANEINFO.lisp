@@ -111,15 +111,11 @@
   (roslisp-msg-protocol:serialize (cl:slot-value msg 'centerline) ostream)
   (roslisp-msg-protocol:serialize (cl:slot-value msg 'leftboundry) ostream)
   (roslisp-msg-protocol:serialize (cl:slot-value msg 'rightboundry) ostream)
-  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'width))))
+  (cl:let ((bits (roslisp-utils:encode-single-float-bits (cl:slot-value msg 'width))))
     (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream))
   (cl:write-byte (cl:ldb (cl:byte 8 0) (cl:if (cl:slot-value msg 'IsPartofRouting) 1 0)) ostream)
   (cl:let* ((signed (cl:slot-value msg 'type)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 65536) signed)))
     (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
@@ -133,15 +129,11 @@
     (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
     )
-  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'length))))
+  (cl:let ((bits (roslisp-utils:encode-single-float-bits (cl:slot-value msg 'length))))
     (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream))
 )
 (cl:defmethod roslisp-msg-protocol:deserialize ((msg <S_LANEINFO>) istream)
   "Deserializes a message object of type '<S_LANEINFO>"
@@ -153,11 +145,7 @@
       (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
-    (cl:setf (cl:slot-value msg 'width) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:setf (cl:slot-value msg 'width) (roslisp-utils:decode-single-float-bits bits)))
     (cl:setf (cl:slot-value msg 'IsPartofRouting) (cl:not (cl:zerop (cl:read-byte istream))))
     (cl:let ((unsigned 0))
       (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
@@ -176,11 +164,7 @@
       (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
-    (cl:setf (cl:slot-value msg 'length) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:setf (cl:slot-value msg 'length) (roslisp-utils:decode-single-float-bits bits)))
   msg
 )
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<S_LANEINFO>)))
@@ -191,27 +175,27 @@
   "ytthdmap_msgs/S_LANEINFO")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<S_LANEINFO>)))
   "Returns md5sum for a message object of type '<S_LANEINFO>"
-  "229d86e3f7c3e9edaf166d31399cc77c")
+  "3bc5c9298690fd903b2c404d72e82a3f")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'S_LANEINFO)))
   "Returns md5sum for a message object of type 'S_LANEINFO"
-  "229d86e3f7c3e9edaf166d31399cc77c")
+  "3bc5c9298690fd903b2c404d72e82a3f")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<S_LANEINFO>)))
   "Returns full string definition for message of type '<S_LANEINFO>"
-  (cl:format cl:nil "S_LINE centerline~%S_LINE leftboundry~%S_LINE rightboundry~%float64 width~%bool IsPartofRouting~%int16 type~%int16 direction~%int16 id~%float64 length~%================================================================================~%MSG: ytthdmap_msgs/S_LINE~%int16 type~%int16 linetype~%S_POINT[100] point~%int16 pointnum~%================================================================================~%MSG: ytthdmap_msgs/S_POINT~%float64 x~%float64 y~%float64 z~%~%"))
+  (cl:format cl:nil "S_LINE centerline~%S_LINE leftboundry~%S_LINE rightboundry~%float32 width~%bool IsPartofRouting~%int16 type~%int16 direction~%int16 id~%float32 length~%~%================================================================================~%MSG: ytthdmap_msgs/S_LINE~%int16 type~%int16 linetype~%S_POINT[100] point~%int16 pointnum~%~%================================================================================~%MSG: ytthdmap_msgs/S_POINT~%float32 x~%float32 y~%float32 z~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'S_LANEINFO)))
   "Returns full string definition for message of type 'S_LANEINFO"
-  (cl:format cl:nil "S_LINE centerline~%S_LINE leftboundry~%S_LINE rightboundry~%float64 width~%bool IsPartofRouting~%int16 type~%int16 direction~%int16 id~%float64 length~%================================================================================~%MSG: ytthdmap_msgs/S_LINE~%int16 type~%int16 linetype~%S_POINT[100] point~%int16 pointnum~%================================================================================~%MSG: ytthdmap_msgs/S_POINT~%float64 x~%float64 y~%float64 z~%~%"))
+  (cl:format cl:nil "S_LINE centerline~%S_LINE leftboundry~%S_LINE rightboundry~%float32 width~%bool IsPartofRouting~%int16 type~%int16 direction~%int16 id~%float32 length~%~%================================================================================~%MSG: ytthdmap_msgs/S_LINE~%int16 type~%int16 linetype~%S_POINT[100] point~%int16 pointnum~%~%================================================================================~%MSG: ytthdmap_msgs/S_POINT~%float32 x~%float32 y~%float32 z~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <S_LANEINFO>))
   (cl:+ 0
      (roslisp-msg-protocol:serialization-length (cl:slot-value msg 'centerline))
      (roslisp-msg-protocol:serialization-length (cl:slot-value msg 'leftboundry))
      (roslisp-msg-protocol:serialization-length (cl:slot-value msg 'rightboundry))
-     8
+     4
      1
      2
      2
      2
-     8
+     4
 ))
 (cl:defmethod roslisp-msg-protocol:ros-message-to-list ((msg <S_LANEINFO>))
   "Converts a ROS message object to a list"

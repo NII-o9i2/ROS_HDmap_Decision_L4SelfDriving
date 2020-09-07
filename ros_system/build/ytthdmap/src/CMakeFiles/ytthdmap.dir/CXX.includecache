@@ -6,6 +6,24 @@
 
 #IncludeRegexTransform: 
 
+/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/devel/include/locationsim_msgs/LOCATIONSIM.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+std_msgs/Header.h
+-
+
 /home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/devel/include/ytthdmap_msgs/HdmapYtt.h
 string
 -
@@ -24,8 +42,6 @@ ros/message_operations.h
 std_msgs/Header.h
 -
 ytthdmap_msgs/S_LANEINFO.h
--
-ytthdmap_msgs/S_STATIONLOCATION.h
 -
 ytthdmap_msgs/S_STOPLINE.h
 -
@@ -86,22 +102,6 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/devel/include/ytthdmap_msgs/S_STATIONLOCATION.h
-string
--
-vector
--
-map
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
-
 /home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/devel/include/ytthdmap_msgs/S_STOPLINE.h
 string
 -
@@ -121,10 +121,16 @@ ytthdmap_msgs/S_POINT.h
 -
 
 /home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/src/hdmapYtt.cc
+hdmapYtt.h
+/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/src/hdmapYtt.h
+
+/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/src/hdmapYtt.h
 ros/ros.h
 -
 ytthdmap_msgs/HdmapYtt.h
 /home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/src/ytthdmap_msgs/HdmapYtt.h
+locationsim_msgs/LOCATIONSIM.h
+/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/src/locationsim_msgs/LOCATIONSIM.h
 map_server.h
 /home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/src/map_server.h
 

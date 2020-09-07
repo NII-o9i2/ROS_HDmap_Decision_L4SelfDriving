@@ -1,11 +1,10 @@
 std_msgs/Header header
 int16 time
-int16 isvalidlane
+int16 isValidlane
+int16 positionstate
 int16 curlane
-S_LANEINFO laneinfo 
+S_LANEINFO[5] laneinfo 
 float32 speedlim
-S_STATIONLOCATION stationlocation
 S_STOPLINE stopline
 bool istunnel
 int16 nextlaneCH
-int16 traffic

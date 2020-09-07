@@ -17,9 +17,14 @@
     :initarg :time
     :type cl:fixnum
     :initform 0)
-   (isvalidlane
-    :reader isvalidlane
-    :initarg :isvalidlane
+   (isValidlane
+    :reader isValidlane
+    :initarg :isValidlane
+    :type cl:fixnum
+    :initform 0)
+   (positionstate
+    :reader positionstate
+    :initarg :positionstate
     :type cl:fixnum
     :initform 0)
    (curlane
@@ -30,18 +35,13 @@
    (laneinfo
     :reader laneinfo
     :initarg :laneinfo
-    :type ytthdmap_msgs-msg:S_LANEINFO
-    :initform (cl:make-instance 'ytthdmap_msgs-msg:S_LANEINFO))
+    :type (cl:vector ytthdmap_msgs-msg:S_LANEINFO)
+   :initform (cl:make-array 5 :element-type 'ytthdmap_msgs-msg:S_LANEINFO :initial-element (cl:make-instance 'ytthdmap_msgs-msg:S_LANEINFO)))
    (speedlim
     :reader speedlim
     :initarg :speedlim
     :type cl:float
     :initform 0.0)
-   (stationlocation
-    :reader stationlocation
-    :initarg :stationlocation
-    :type ytthdmap_msgs-msg:S_STATIONLOCATION
-    :initform (cl:make-instance 'ytthdmap_msgs-msg:S_STATIONLOCATION))
    (stopline
     :reader stopline
     :initarg :stopline
@@ -55,11 +55,6 @@
    (nextlaneCH
     :reader nextlaneCH
     :initarg :nextlaneCH
-    :type cl:fixnum
-    :initform 0)
-   (traffic
-    :reader traffic
-    :initarg :traffic
     :type cl:fixnum
     :initform 0))
 )
@@ -82,10 +77,15 @@
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader ytthdmap_msgs-msg:time-val is deprecated.  Use ytthdmap_msgs-msg:time instead.")
   (time m))
 
-(cl:ensure-generic-function 'isvalidlane-val :lambda-list '(m))
-(cl:defmethod isvalidlane-val ((m <HdmapYtt>))
-  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader ytthdmap_msgs-msg:isvalidlane-val is deprecated.  Use ytthdmap_msgs-msg:isvalidlane instead.")
-  (isvalidlane m))
+(cl:ensure-generic-function 'isValidlane-val :lambda-list '(m))
+(cl:defmethod isValidlane-val ((m <HdmapYtt>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader ytthdmap_msgs-msg:isValidlane-val is deprecated.  Use ytthdmap_msgs-msg:isValidlane instead.")
+  (isValidlane m))
+
+(cl:ensure-generic-function 'positionstate-val :lambda-list '(m))
+(cl:defmethod positionstate-val ((m <HdmapYtt>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader ytthdmap_msgs-msg:positionstate-val is deprecated.  Use ytthdmap_msgs-msg:positionstate instead.")
+  (positionstate m))
 
 (cl:ensure-generic-function 'curlane-val :lambda-list '(m))
 (cl:defmethod curlane-val ((m <HdmapYtt>))
@@ -102,11 +102,6 @@
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader ytthdmap_msgs-msg:speedlim-val is deprecated.  Use ytthdmap_msgs-msg:speedlim instead.")
   (speedlim m))
 
-(cl:ensure-generic-function 'stationlocation-val :lambda-list '(m))
-(cl:defmethod stationlocation-val ((m <HdmapYtt>))
-  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader ytthdmap_msgs-msg:stationlocation-val is deprecated.  Use ytthdmap_msgs-msg:stationlocation instead.")
-  (stationlocation m))
-
 (cl:ensure-generic-function 'stopline-val :lambda-list '(m))
 (cl:defmethod stopline-val ((m <HdmapYtt>))
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader ytthdmap_msgs-msg:stopline-val is deprecated.  Use ytthdmap_msgs-msg:stopline instead.")
@@ -121,11 +116,6 @@
 (cl:defmethod nextlaneCH-val ((m <HdmapYtt>))
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader ytthdmap_msgs-msg:nextlaneCH-val is deprecated.  Use ytthdmap_msgs-msg:nextlaneCH instead.")
   (nextlaneCH m))
-
-(cl:ensure-generic-function 'traffic-val :lambda-list '(m))
-(cl:defmethod traffic-val ((m <HdmapYtt>))
-  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader ytthdmap_msgs-msg:traffic-val is deprecated.  Use ytthdmap_msgs-msg:traffic instead.")
-  (traffic m))
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <HdmapYtt>) ostream)
   "Serializes a message object of type '<HdmapYtt>"
   (roslisp-msg-protocol:serialize (cl:slot-value msg 'header) ostream)
@@ -133,7 +123,11 @@
     (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
     )
-  (cl:let* ((signed (cl:slot-value msg 'isvalidlane)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 65536) signed)))
+  (cl:let* ((signed (cl:slot-value msg 'isValidlane)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 65536) signed)))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
+    )
+  (cl:let* ((signed (cl:slot-value msg 'positionstate)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 65536) signed)))
     (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
     )
@@ -141,20 +135,16 @@
     (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
     )
-  (roslisp-msg-protocol:serialize (cl:slot-value msg 'laneinfo) ostream)
+  (cl:map cl:nil #'(cl:lambda (ele) (roslisp-msg-protocol:serialize ele ostream))
+   (cl:slot-value msg 'laneinfo))
   (cl:let ((bits (roslisp-utils:encode-single-float-bits (cl:slot-value msg 'speedlim))))
     (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream))
-  (roslisp-msg-protocol:serialize (cl:slot-value msg 'stationlocation) ostream)
   (roslisp-msg-protocol:serialize (cl:slot-value msg 'stopline) ostream)
   (cl:write-byte (cl:ldb (cl:byte 8 0) (cl:if (cl:slot-value msg 'istunnel) 1 0)) ostream)
   (cl:let* ((signed (cl:slot-value msg 'nextlaneCH)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 65536) signed)))
-    (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
-    )
-  (cl:let* ((signed (cl:slot-value msg 'traffic)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 65536) signed)))
     (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
     )
@@ -169,29 +159,32 @@
     (cl:let ((unsigned 0))
       (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:slot-value msg 'isvalidlane) (cl:if (cl:< unsigned 32768) unsigned (cl:- unsigned 65536))))
+      (cl:setf (cl:slot-value msg 'isValidlane) (cl:if (cl:< unsigned 32768) unsigned (cl:- unsigned 65536))))
+    (cl:let ((unsigned 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:slot-value msg 'positionstate) (cl:if (cl:< unsigned 32768) unsigned (cl:- unsigned 65536))))
     (cl:let ((unsigned 0))
       (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
       (cl:setf (cl:slot-value msg 'curlane) (cl:if (cl:< unsigned 32768) unsigned (cl:- unsigned 65536))))
-  (roslisp-msg-protocol:deserialize (cl:slot-value msg 'laneinfo) istream)
+  (cl:setf (cl:slot-value msg 'laneinfo) (cl:make-array 5))
+  (cl:let ((vals (cl:slot-value msg 'laneinfo)))
+    (cl:dotimes (i 5)
+    (cl:setf (cl:aref vals i) (cl:make-instance 'ytthdmap_msgs-msg:S_LANEINFO))
+  (roslisp-msg-protocol:deserialize (cl:aref vals i) istream)))
     (cl:let ((bits 0))
       (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
     (cl:setf (cl:slot-value msg 'speedlim) (roslisp-utils:decode-single-float-bits bits)))
-  (roslisp-msg-protocol:deserialize (cl:slot-value msg 'stationlocation) istream)
   (roslisp-msg-protocol:deserialize (cl:slot-value msg 'stopline) istream)
     (cl:setf (cl:slot-value msg 'istunnel) (cl:not (cl:zerop (cl:read-byte istream))))
     (cl:let ((unsigned 0))
       (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
       (cl:setf (cl:slot-value msg 'nextlaneCH) (cl:if (cl:< unsigned 32768) unsigned (cl:- unsigned 65536))))
-    (cl:let ((unsigned 0))
-      (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:slot-value msg 'traffic) (cl:if (cl:< unsigned 32768) unsigned (cl:- unsigned 65536))))
   msg
 )
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<HdmapYtt>)))
@@ -202,28 +195,27 @@
   "ytthdmap_msgs/HdmapYtt")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<HdmapYtt>)))
   "Returns md5sum for a message object of type '<HdmapYtt>"
-  "06136882eb0000675a95c6a59756dfc6")
+  "965fc75ddac5682aff9e25ac32f36524")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'HdmapYtt)))
   "Returns md5sum for a message object of type 'HdmapYtt"
-  "06136882eb0000675a95c6a59756dfc6")
+  "965fc75ddac5682aff9e25ac32f36524")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<HdmapYtt>)))
   "Returns full string definition for message of type '<HdmapYtt>"
-  (cl:format cl:nil "std_msgs/Header header~%int16 time~%int16 isvalidlane~%int16 curlane~%S_LANEINFO laneinfo ~%float32 speedlim~%S_STATIONLOCATION stationlocation~%S_STOPLINE stopline~%bool istunnel~%int16 nextlaneCH~%int16 traffic~%================================================================================~%MSG: std_msgs/Header~%# Standard metadata for higher-level stamped data types.~%# This is generally used to communicate timestamped data ~%# in a particular coordinate frame.~%# ~%# sequence ID: consecutively increasing ID ~%uint32 seq~%#Two-integer timestamp that is expressed as:~%# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')~%# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')~%# time-handling sugar is provided by the client library~%time stamp~%#Frame this data is associated with~%# 0: no frame~%# 1: global frame~%string frame_id~%~%================================================================================~%MSG: ytthdmap_msgs/S_LANEINFO~%S_LINE centerline~%S_LINE leftboundry~%S_LINE rightboundry~%float64 width~%bool IsPartofRouting~%int16 type~%int16 direction~%int16 id~%float64 length~%================================================================================~%MSG: ytthdmap_msgs/S_LINE~%int16 type~%int16 linetype~%S_POINT[100] point~%int16 pointnum~%================================================================================~%MSG: ytthdmap_msgs/S_POINT~%float64 x~%float64 y~%float64 z~%================================================================================~%MSG: ytthdmap_msgs/S_STATIONLOCATION~%float64 x~%float64 y~%float64 z~%================================================================================~%MSG: ytthdmap_msgs/S_STOPLINE~%int16 offset~%int16 latOffset~%int16 type~%int16 validnum~%S_POINT[100] point~%~%"))
+  (cl:format cl:nil "std_msgs/Header header~%int16 time~%int16 isValidlane~%int16 positionstate~%int16 curlane~%S_LANEINFO[5] laneinfo ~%float32 speedlim~%S_STOPLINE stopline~%bool istunnel~%int16 nextlaneCH~%~%================================================================================~%MSG: std_msgs/Header~%# Standard metadata for higher-level stamped data types.~%# This is generally used to communicate timestamped data ~%# in a particular coordinate frame.~%# ~%# sequence ID: consecutively increasing ID ~%uint32 seq~%#Two-integer timestamp that is expressed as:~%# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')~%# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')~%# time-handling sugar is provided by the client library~%time stamp~%#Frame this data is associated with~%# 0: no frame~%# 1: global frame~%string frame_id~%~%================================================================================~%MSG: ytthdmap_msgs/S_LANEINFO~%S_LINE centerline~%S_LINE leftboundry~%S_LINE rightboundry~%float32 width~%bool IsPartofRouting~%int16 type~%int16 direction~%int16 id~%float32 length~%~%================================================================================~%MSG: ytthdmap_msgs/S_LINE~%int16 type~%int16 linetype~%S_POINT[100] point~%int16 pointnum~%~%================================================================================~%MSG: ytthdmap_msgs/S_POINT~%float32 x~%float32 y~%float32 z~%~%================================================================================~%MSG: ytthdmap_msgs/S_STOPLINE~%int16 offset~%int16 latOffset~%int16 type~%int16 validnum~%S_POINT[100] point~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'HdmapYtt)))
   "Returns full string definition for message of type 'HdmapYtt"
-  (cl:format cl:nil "std_msgs/Header header~%int16 time~%int16 isvalidlane~%int16 curlane~%S_LANEINFO laneinfo ~%float32 speedlim~%S_STATIONLOCATION stationlocation~%S_STOPLINE stopline~%bool istunnel~%int16 nextlaneCH~%int16 traffic~%================================================================================~%MSG: std_msgs/Header~%# Standard metadata for higher-level stamped data types.~%# This is generally used to communicate timestamped data ~%# in a particular coordinate frame.~%# ~%# sequence ID: consecutively increasing ID ~%uint32 seq~%#Two-integer timestamp that is expressed as:~%# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')~%# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')~%# time-handling sugar is provided by the client library~%time stamp~%#Frame this data is associated with~%# 0: no frame~%# 1: global frame~%string frame_id~%~%================================================================================~%MSG: ytthdmap_msgs/S_LANEINFO~%S_LINE centerline~%S_LINE leftboundry~%S_LINE rightboundry~%float64 width~%bool IsPartofRouting~%int16 type~%int16 direction~%int16 id~%float64 length~%================================================================================~%MSG: ytthdmap_msgs/S_LINE~%int16 type~%int16 linetype~%S_POINT[100] point~%int16 pointnum~%================================================================================~%MSG: ytthdmap_msgs/S_POINT~%float64 x~%float64 y~%float64 z~%================================================================================~%MSG: ytthdmap_msgs/S_STATIONLOCATION~%float64 x~%float64 y~%float64 z~%================================================================================~%MSG: ytthdmap_msgs/S_STOPLINE~%int16 offset~%int16 latOffset~%int16 type~%int16 validnum~%S_POINT[100] point~%~%"))
+  (cl:format cl:nil "std_msgs/Header header~%int16 time~%int16 isValidlane~%int16 positionstate~%int16 curlane~%S_LANEINFO[5] laneinfo ~%float32 speedlim~%S_STOPLINE stopline~%bool istunnel~%int16 nextlaneCH~%~%================================================================================~%MSG: std_msgs/Header~%# Standard metadata for higher-level stamped data types.~%# This is generally used to communicate timestamped data ~%# in a particular coordinate frame.~%# ~%# sequence ID: consecutively increasing ID ~%uint32 seq~%#Two-integer timestamp that is expressed as:~%# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')~%# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')~%# time-handling sugar is provided by the client library~%time stamp~%#Frame this data is associated with~%# 0: no frame~%# 1: global frame~%string frame_id~%~%================================================================================~%MSG: ytthdmap_msgs/S_LANEINFO~%S_LINE centerline~%S_LINE leftboundry~%S_LINE rightboundry~%float32 width~%bool IsPartofRouting~%int16 type~%int16 direction~%int16 id~%float32 length~%~%================================================================================~%MSG: ytthdmap_msgs/S_LINE~%int16 type~%int16 linetype~%S_POINT[100] point~%int16 pointnum~%~%================================================================================~%MSG: ytthdmap_msgs/S_POINT~%float32 x~%float32 y~%float32 z~%~%================================================================================~%MSG: ytthdmap_msgs/S_STOPLINE~%int16 offset~%int16 latOffset~%int16 type~%int16 validnum~%S_POINT[100] point~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <HdmapYtt>))
   (cl:+ 0
      (roslisp-msg-protocol:serialization-length (cl:slot-value msg 'header))
      2
      2
      2
-     (roslisp-msg-protocol:serialization-length (cl:slot-value msg 'laneinfo))
+     2
+     0 (cl:reduce #'cl:+ (cl:slot-value msg 'laneinfo) :key #'(cl:lambda (ele) (cl:declare (cl:ignorable ele)) (cl:+ (roslisp-msg-protocol:serialization-length ele))))
      4
-     (roslisp-msg-protocol:serialization-length (cl:slot-value msg 'stationlocation))
      (roslisp-msg-protocol:serialization-length (cl:slot-value msg 'stopline))
      1
-     2
      2
 ))
 (cl:defmethod roslisp-msg-protocol:ros-message-to-list ((msg <HdmapYtt>))
@@ -231,13 +223,12 @@
   (cl:list 'HdmapYtt
     (cl:cons ':header (header msg))
     (cl:cons ':time (time msg))
-    (cl:cons ':isvalidlane (isvalidlane msg))
+    (cl:cons ':isValidlane (isValidlane msg))
+    (cl:cons ':positionstate (positionstate msg))
     (cl:cons ':curlane (curlane msg))
     (cl:cons ':laneinfo (laneinfo msg))
     (cl:cons ':speedlim (speedlim msg))
-    (cl:cons ':stationlocation (stationlocation msg))
     (cl:cons ':stopline (stopline msg))
     (cl:cons ':istunnel (istunnel msg))
     (cl:cons ':nextlaneCH (nextlaneCH msg))
-    (cl:cons ':traffic (traffic msg))
 ))

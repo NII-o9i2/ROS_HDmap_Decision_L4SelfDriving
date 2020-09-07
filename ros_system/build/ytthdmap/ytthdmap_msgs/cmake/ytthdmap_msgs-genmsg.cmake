@@ -39,7 +39,7 @@ add_custom_target(_ytthdmap_msgs_generate_messages_check_deps_${_filename}
 
 get_filename_component(_filename "/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/.//HdmapYtt.msg" NAME_WE)
 add_custom_target(_ytthdmap_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "ytthdmap_msgs" "/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/.//HdmapYtt.msg" "ytthdmap_msgs/S_STOPLINE:std_msgs/Header:ytthdmap_msgs/S_LANEINFO:ytthdmap_msgs/S_STATIONLOCATION:ytthdmap_msgs/S_LINE:ytthdmap_msgs/S_POINT"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "ytthdmap_msgs" "/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/.//HdmapYtt.msg" "ytthdmap_msgs/S_LANEINFO:ytthdmap_msgs/S_LINE:ytthdmap_msgs/S_POINT:ytthdmap_msgs/S_STOPLINE:std_msgs/Header"
 )
 
 get_filename_component(_filename "/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/.//S_STOPLINE.msg" NAME_WE)
@@ -80,7 +80,7 @@ _generate_msg_cpp(ytthdmap_msgs
 _generate_msg_cpp(ytthdmap_msgs
   "/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/.//HdmapYtt.msg"
   "${MSG_I_FLAGS}"
-  "/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_STOPLINE.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_LANEINFO.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_STATIONLOCATION.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_LINE.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_POINT.msg"
+  "/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_LANEINFO.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_LINE.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_POINT.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_STOPLINE.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/ytthdmap_msgs
 )
 _generate_msg_cpp(ytthdmap_msgs
@@ -153,7 +153,7 @@ _generate_msg_eus(ytthdmap_msgs
 _generate_msg_eus(ytthdmap_msgs
   "/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/.//HdmapYtt.msg"
   "${MSG_I_FLAGS}"
-  "/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_STOPLINE.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_LANEINFO.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_STATIONLOCATION.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_LINE.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_POINT.msg"
+  "/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_LANEINFO.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_LINE.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_POINT.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_STOPLINE.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/ytthdmap_msgs
 )
 _generate_msg_eus(ytthdmap_msgs
@@ -226,7 +226,7 @@ _generate_msg_lisp(ytthdmap_msgs
 _generate_msg_lisp(ytthdmap_msgs
   "/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/.//HdmapYtt.msg"
   "${MSG_I_FLAGS}"
-  "/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_STOPLINE.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_LANEINFO.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_STATIONLOCATION.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_LINE.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_POINT.msg"
+  "/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_LANEINFO.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_LINE.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_POINT.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_STOPLINE.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/ytthdmap_msgs
 )
 _generate_msg_lisp(ytthdmap_msgs
@@ -299,7 +299,7 @@ _generate_msg_nodejs(ytthdmap_msgs
 _generate_msg_nodejs(ytthdmap_msgs
   "/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/.//HdmapYtt.msg"
   "${MSG_I_FLAGS}"
-  "/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_STOPLINE.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_LANEINFO.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_STATIONLOCATION.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_LINE.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_POINT.msg"
+  "/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_LANEINFO.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_LINE.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_POINT.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_STOPLINE.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/ytthdmap_msgs
 )
 _generate_msg_nodejs(ytthdmap_msgs
@@ -372,7 +372,7 @@ _generate_msg_py(ytthdmap_msgs
 _generate_msg_py(ytthdmap_msgs
   "/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/.//HdmapYtt.msg"
   "${MSG_I_FLAGS}"
-  "/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_STOPLINE.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_LANEINFO.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_STATIONLOCATION.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_LINE.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_POINT.msg"
+  "/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_LANEINFO.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_LINE.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_POINT.msg;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./S_STOPLINE.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/ytthdmap_msgs
 )
 _generate_msg_py(ytthdmap_msgs

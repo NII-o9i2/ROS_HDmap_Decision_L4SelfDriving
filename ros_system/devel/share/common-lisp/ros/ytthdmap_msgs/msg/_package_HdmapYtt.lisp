@@ -5,20 +5,18 @@
           TIME
           ISVALIDLANE-VAL
           ISVALIDLANE
+          POSITIONSTATE-VAL
+          POSITIONSTATE
           CURLANE-VAL
           CURLANE
           LANEINFO-VAL
           LANEINFO
           SPEEDLIM-VAL
           SPEEDLIM
-          STATIONLOCATION-VAL
-          STATIONLOCATION
           STOPLINE-VAL
           STOPLINE
           ISTUNNEL-VAL
           ISTUNNEL
           NEXTLANECH-VAL
           NEXTLANECH
-          TRAFFIC-VAL
-          TRAFFIC
 ))

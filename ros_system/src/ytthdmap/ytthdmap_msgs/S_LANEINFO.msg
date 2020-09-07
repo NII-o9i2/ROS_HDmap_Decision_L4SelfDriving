@@ -1,9 +1,9 @@
 S_LINE centerline
 S_LINE leftboundry
 S_LINE rightboundry
-float64 width
+float32 width
 bool IsPartofRouting
 int16 type
 int16 direction
 int16 id
-float64 length
+float32 length

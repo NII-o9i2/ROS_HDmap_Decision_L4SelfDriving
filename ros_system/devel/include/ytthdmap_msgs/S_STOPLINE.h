@@ -93,7 +93,7 @@ namespace message_traits
 
 
 // BOOLTRAITS {'IsFixedSize': True, 'IsMessage': True, 'HasHeader': False}
-// {'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg'], 'ytthdmap_msgs': ['/home/xiaotongfeng/ros_test/src/ytthdmap/ytthdmap_msgs/./']}
+// {'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg'], 'ytthdmap_msgs': ['/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./']}
 
 // !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
 
@@ -136,12 +136,12 @@ struct MD5Sum< ::ytthdmap_msgs::S_STOPLINE_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "1177159ac36be20cf69b091839735d00";
+    return "05414b44a3589a776a4ff3be4a793437";
   }
 
   static const char* value(const ::ytthdmap_msgs::S_STOPLINE_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x1177159ac36be20cULL;
-  static const uint64_t static_value2 = 0xf69b091839735d00ULL;
+  static const uint64_t static_value1 = 0x05414b44a3589a77ULL;
+  static const uint64_t static_value2 = 0x6a4ff3be4a793437ULL;
 };
 
 template<class ContainerAllocator>
@@ -165,11 +165,12 @@ int16 latOffset\n\
 int16 type\n\
 int16 validnum\n\
 S_POINT[100] point\n\
+\n\
 ================================================================================\n\
 MSG: ytthdmap_msgs/S_POINT\n\
-float64 x\n\
-float64 y\n\
-float64 z\n\
+float32 x\n\
+float32 y\n\
+float32 z\n\
 ";
   }
 

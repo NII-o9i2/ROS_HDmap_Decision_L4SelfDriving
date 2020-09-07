@@ -270,7 +270,7 @@ if __name__ == '__main__':
 
         if not args.local:
             # environment at generation time
-            CMAKE_PREFIX_PATH = '/opt/ros/kinetic'.split(';')
+            CMAKE_PREFIX_PATH = '/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/devel;/opt/ros/kinetic'.split(';')
         else:
             # don't consider any other prefix path than this one
             CMAKE_PREFIX_PATH = []

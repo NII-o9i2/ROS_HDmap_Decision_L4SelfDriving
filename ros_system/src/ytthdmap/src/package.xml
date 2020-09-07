@@ -11,10 +11,11 @@
 
   <build_depend>roscpp</build_depend>
   <build_depend>ytthdmap_msgs</build_depend>
-  
+  <build_depend>locationsim_msgs</build_depend>
 
   <run_depend>roscpp</run_depend>
   <run_depend>ytthdmap_msgs</run_depend>
+  <run_depend>locationsim_msgs</run_depend>
   
 
   

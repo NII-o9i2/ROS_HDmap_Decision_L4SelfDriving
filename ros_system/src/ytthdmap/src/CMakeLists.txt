@@ -8,7 +8,8 @@ add_compile_options(-std=c++11)
 ## packages and libraries dependenced on
 set(${PROJECT_NAME}_PKG_DEPS
 	roscpp
-	ytthdmap_msgs
+	ytthdmap_msgs	
+	locationsim_msgs
 )
 
 ## ADD dependency

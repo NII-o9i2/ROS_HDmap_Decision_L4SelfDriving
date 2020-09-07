@@ -102,16 +102,16 @@
   "ytthdmap_msgs/S_LINE")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<S_LINE>)))
   "Returns md5sum for a message object of type '<S_LINE>"
-  "d3328978b048138c7828f4b617f1ca2a")
+  "49366bc67b2f179a0d236b700e094625")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'S_LINE)))
   "Returns md5sum for a message object of type 'S_LINE"
-  "d3328978b048138c7828f4b617f1ca2a")
+  "49366bc67b2f179a0d236b700e094625")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<S_LINE>)))
   "Returns full string definition for message of type '<S_LINE>"
-  (cl:format cl:nil "int16 type~%int16 linetype~%S_POINT[100] point~%int16 pointnum~%================================================================================~%MSG: ytthdmap_msgs/S_POINT~%float64 x~%float64 y~%float64 z~%~%"))
+  (cl:format cl:nil "int16 type~%int16 linetype~%S_POINT[100] point~%int16 pointnum~%~%================================================================================~%MSG: ytthdmap_msgs/S_POINT~%float32 x~%float32 y~%float32 z~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'S_LINE)))
   "Returns full string definition for message of type 'S_LINE"
-  (cl:format cl:nil "int16 type~%int16 linetype~%S_POINT[100] point~%int16 pointnum~%================================================================================~%MSG: ytthdmap_msgs/S_POINT~%float64 x~%float64 y~%float64 z~%~%"))
+  (cl:format cl:nil "int16 type~%int16 linetype~%S_POINT[100] point~%int16 pointnum~%~%================================================================================~%MSG: ytthdmap_msgs/S_POINT~%float32 x~%float32 y~%float32 z~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <S_LINE>))
   (cl:+ 0
      2

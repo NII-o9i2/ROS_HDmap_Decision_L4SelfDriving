@@ -90,22 +90,24 @@
    self)
   )
 
-(setf (get ytthdmap_msgs::S_LINE :md5sum-) "d3328978b048138c7828f4b617f1ca2a")
+(setf (get ytthdmap_msgs::S_LINE :md5sum-) "49366bc67b2f179a0d236b700e094625")
 (setf (get ytthdmap_msgs::S_LINE :datatype-) "ytthdmap_msgs/S_LINE")
 (setf (get ytthdmap_msgs::S_LINE :definition-)
       "int16 type
 int16 linetype
 S_POINT[100] point
 int16 pointnum
+
 ================================================================================
 MSG: ytthdmap_msgs/S_POINT
-float64 x
-float64 y
-float64 z
+float32 x
+float32 y
+float32 z
+
 ")
 
 
 
-(provide :ytthdmap_msgs/S_LINE "d3328978b048138c7828f4b617f1ca2a")
+(provide :ytthdmap_msgs/S_LINE "49366bc67b2f179a0d236b700e094625")
 
 

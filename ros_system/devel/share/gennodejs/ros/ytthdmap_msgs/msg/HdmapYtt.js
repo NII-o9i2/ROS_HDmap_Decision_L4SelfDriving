@@ -12,7 +12,6 @@ const _arrayDeserializer = _deserializer.Array;
 const _finder = _ros_msg_utils.Find;
 const _getByteLength = _ros_msg_utils.getByteLength;
 let S_LANEINFO = require('./S_LANEINFO.js');
-let S_STATIONLOCATION = require('./S_STATIONLOCATION.js');
 let S_STOPLINE = require('./S_STOPLINE.js');
 let std_msgs = _finder('std_msgs');
 
@@ -24,15 +23,14 @@ class HdmapYtt {
       // initObj === null is a special case for deserialization where we don't initialize fields
       this.header = null;
       this.time = null;
-      this.isvalidlane = null;
+      this.isValidlane = null;
+      this.positionstate = null;
       this.curlane = null;
       this.laneinfo = null;
       this.speedlim = null;
-      this.stationlocation = null;
       this.stopline = null;
       this.istunnel = null;
       this.nextlaneCH = null;
-      this.traffic = null;
     }
     else {
       if (initObj.hasOwnProperty('header')) {
@@ -47,11 +45,17 @@ class HdmapYtt {
       else {
         this.time = 0;
       }
-      if (initObj.hasOwnProperty('isvalidlane')) {
-        this.isvalidlane = initObj.isvalidlane
+      if (initObj.hasOwnProperty('isValidlane')) {
+        this.isValidlane = initObj.isValidlane
       }
       else {
-        this.isvalidlane = 0;
+        this.isValidlane = 0;
+      }
+      if (initObj.hasOwnProperty('positionstate')) {
+        this.positionstate = initObj.positionstate
+      }
+      else {
+        this.positionstate = 0;
       }
       if (initObj.hasOwnProperty('curlane')) {
         this.curlane = initObj.curlane
@@ -63,19 +67,13 @@ class HdmapYtt {
         this.laneinfo = initObj.laneinfo
       }
       else {
-        this.laneinfo = new S_LANEINFO();
+        this.laneinfo = new Array(5).fill(new S_LANEINFO());
       }
       if (initObj.hasOwnProperty('speedlim')) {
         this.speedlim = initObj.speedlim
       }
       else {
         this.speedlim = 0.0;
-      }
-      if (initObj.hasOwnProperty('stationlocation')) {
-        this.stationlocation = initObj.stationlocation
-      }
-      else {
-        this.stationlocation = new S_STATIONLOCATION();
       }
       if (initObj.hasOwnProperty('stopline')) {
         this.stopline = initObj.stopline
@@ -95,12 +93,6 @@ class HdmapYtt {
       else {
         this.nextlaneCH = 0;
       }
-      if (initObj.hasOwnProperty('traffic')) {
-        this.traffic = initObj.traffic
-      }
-      else {
-        this.traffic = 0;
-      }
     }
   }
 
@@ -110,24 +102,28 @@ class HdmapYtt {
     bufferOffset = std_msgs.msg.Header.serialize(obj.header, buffer, bufferOffset);
     // Serialize message field [time]
     bufferOffset = _serializer.int16(obj.time, buffer, bufferOffset);
-    // Serialize message field [isvalidlane]
-    bufferOffset = _serializer.int16(obj.isvalidlane, buffer, bufferOffset);
+    // Serialize message field [isValidlane]
+    bufferOffset = _serializer.int16(obj.isValidlane, buffer, bufferOffset);
+    // Serialize message field [positionstate]
+    bufferOffset = _serializer.int16(obj.positionstate, buffer, bufferOffset);
     // Serialize message field [curlane]
     bufferOffset = _serializer.int16(obj.curlane, buffer, bufferOffset);
+    // Check that the constant length array field [laneinfo] has the right length
+    if (obj.laneinfo.length !== 5) {
+      throw new Error('Unable to serialize array field laneinfo - length must be 5')
+    }
     // Serialize message field [laneinfo]
-    bufferOffset = S_LANEINFO.serialize(obj.laneinfo, buffer, bufferOffset);
+    obj.laneinfo.forEach((val) => {
+      bufferOffset = S_LANEINFO.serialize(val, buffer, bufferOffset);
+    });
     // Serialize message field [speedlim]
     bufferOffset = _serializer.float32(obj.speedlim, buffer, bufferOffset);
-    // Serialize message field [stationlocation]
-    bufferOffset = S_STATIONLOCATION.serialize(obj.stationlocation, buffer, bufferOffset);
     // Serialize message field [stopline]
     bufferOffset = S_STOPLINE.serialize(obj.stopline, buffer, bufferOffset);
     // Serialize message field [istunnel]
     bufferOffset = _serializer.bool(obj.istunnel, buffer, bufferOffset);
     // Serialize message field [nextlaneCH]
     bufferOffset = _serializer.int16(obj.nextlaneCH, buffer, bufferOffset);
-    // Serialize message field [traffic]
-    bufferOffset = _serializer.int16(obj.traffic, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -139,31 +135,33 @@ class HdmapYtt {
     data.header = std_msgs.msg.Header.deserialize(buffer, bufferOffset);
     // Deserialize message field [time]
     data.time = _deserializer.int16(buffer, bufferOffset);
-    // Deserialize message field [isvalidlane]
-    data.isvalidlane = _deserializer.int16(buffer, bufferOffset);
+    // Deserialize message field [isValidlane]
+    data.isValidlane = _deserializer.int16(buffer, bufferOffset);
+    // Deserialize message field [positionstate]
+    data.positionstate = _deserializer.int16(buffer, bufferOffset);
     // Deserialize message field [curlane]
     data.curlane = _deserializer.int16(buffer, bufferOffset);
     // Deserialize message field [laneinfo]
-    data.laneinfo = S_LANEINFO.deserialize(buffer, bufferOffset);
+    len = 5;
+    data.laneinfo = new Array(len);
+    for (let i = 0; i < len; ++i) {
+      data.laneinfo[i] = S_LANEINFO.deserialize(buffer, bufferOffset)
+    }
     // Deserialize message field [speedlim]
     data.speedlim = _deserializer.float32(buffer, bufferOffset);
-    // Deserialize message field [stationlocation]
-    data.stationlocation = S_STATIONLOCATION.deserialize(buffer, bufferOffset);
     // Deserialize message field [stopline]
     data.stopline = S_STOPLINE.deserialize(buffer, bufferOffset);
     // Deserialize message field [istunnel]
     data.istunnel = _deserializer.bool(buffer, bufferOffset);
     // Deserialize message field [nextlaneCH]
     data.nextlaneCH = _deserializer.int16(buffer, bufferOffset);
-    // Deserialize message field [traffic]
-    data.traffic = _deserializer.int16(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
     let length = 0;
     length += std_msgs.msg.Header.getMessageSize(object.header);
-    return length + 184;
+    return length + 380;
   }
 
   static datatype() {
@@ -173,7 +171,7 @@ class HdmapYtt {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '06136882eb0000675a95c6a59756dfc6';
+    return '965fc75ddac5682aff9e25ac32f36524';
   }
 
   static messageDefinition() {
@@ -181,15 +179,15 @@ class HdmapYtt {
     return `
     std_msgs/Header header
     int16 time
-    int16 isvalidlane
+    int16 isValidlane
+    int16 positionstate
     int16 curlane
-    S_LANEINFO laneinfo 
+    S_LANEINFO[5] laneinfo 
     float32 speedlim
-    S_STATIONLOCATION stationlocation
     S_STOPLINE stopline
     bool istunnel
     int16 nextlaneCH
-    int16 traffic
+    
     ================================================================================
     MSG: std_msgs/Header
     # Standard metadata for higher-level stamped data types.
@@ -213,28 +211,26 @@ class HdmapYtt {
     S_LINE centerline
     S_LINE leftboundry
     S_LINE rightboundry
-    float64 width
+    float32 width
     bool IsPartofRouting
     int16 type
     int16 direction
     int16 id
-    float64 length
+    float32 length
+    
     ================================================================================
     MSG: ytthdmap_msgs/S_LINE
     int16 type
     int16 linetype
     S_POINT[100] point
     int16 pointnum
+    
     ================================================================================
     MSG: ytthdmap_msgs/S_POINT
-    float64 x
-    float64 y
-    float64 z
-    ================================================================================
-    MSG: ytthdmap_msgs/S_STATIONLOCATION
-    float64 x
-    float64 y
-    float64 z
+    float32 x
+    float32 y
+    float32 z
+    
     ================================================================================
     MSG: ytthdmap_msgs/S_STOPLINE
     int16 offset
@@ -242,6 +238,7 @@ class HdmapYtt {
     int16 type
     int16 validnum
     S_POINT[100] point
+    
     `;
   }
 
@@ -265,11 +262,18 @@ class HdmapYtt {
       resolved.time = 0
     }
 
-    if (msg.isvalidlane !== undefined) {
-      resolved.isvalidlane = msg.isvalidlane;
+    if (msg.isValidlane !== undefined) {
+      resolved.isValidlane = msg.isValidlane;
     }
     else {
-      resolved.isvalidlane = 0
+      resolved.isValidlane = 0
+    }
+
+    if (msg.positionstate !== undefined) {
+      resolved.positionstate = msg.positionstate;
+    }
+    else {
+      resolved.positionstate = 0
     }
 
     if (msg.curlane !== undefined) {
@@ -280,10 +284,18 @@ class HdmapYtt {
     }
 
     if (msg.laneinfo !== undefined) {
-      resolved.laneinfo = S_LANEINFO.Resolve(msg.laneinfo)
+      resolved.laneinfo = new Array(5)
+      for (let i = 0; i < resolved.laneinfo.length; ++i) {
+        if (msg.laneinfo.length > i) {
+          resolved.laneinfo[i] = S_LANEINFO.Resolve(msg.laneinfo[i]);
+        }
+        else {
+          resolved.laneinfo[i] = new S_LANEINFO();
+        }
+      }
     }
     else {
-      resolved.laneinfo = new S_LANEINFO()
+      resolved.laneinfo = new Array(5).fill(new S_LANEINFO())
     }
 
     if (msg.speedlim !== undefined) {
@@ -291,13 +303,6 @@ class HdmapYtt {
     }
     else {
       resolved.speedlim = 0.0
-    }
-
-    if (msg.stationlocation !== undefined) {
-      resolved.stationlocation = S_STATIONLOCATION.Resolve(msg.stationlocation)
-    }
-    else {
-      resolved.stationlocation = new S_STATIONLOCATION()
     }
 
     if (msg.stopline !== undefined) {
@@ -319,13 +324,6 @@ class HdmapYtt {
     }
     else {
       resolved.nextlaneCH = 0
-    }
-
-    if (msg.traffic !== undefined) {
-      resolved.traffic = msg.traffic;
-    }
-    else {
-      resolved.traffic = 0
     }
 
     return resolved;

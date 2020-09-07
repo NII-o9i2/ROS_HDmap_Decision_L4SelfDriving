@@ -19,8 +19,7 @@ INCLUDEPATH += ./include \
         ./include/API \
 
 SOURCES += \
-        main.cpp \
-        user/datasRecord.cpp \
+        main.cpp
 
 HEADERS += \
         include/CMGeoCoord.h \

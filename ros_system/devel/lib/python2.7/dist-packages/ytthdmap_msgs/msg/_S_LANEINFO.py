@@ -8,31 +8,34 @@ import struct
 import ytthdmap_msgs.msg
 
 class S_LANEINFO(genpy.Message):
-  _md5sum = "229d86e3f7c3e9edaf166d31399cc77c"
+  _md5sum = "3bc5c9298690fd903b2c404d72e82a3f"
   _type = "ytthdmap_msgs/S_LANEINFO"
   _has_header = False #flag to mark the presence of a Header object
   _full_text = """S_LINE centerline
 S_LINE leftboundry
 S_LINE rightboundry
-float64 width
+float32 width
 bool IsPartofRouting
 int16 type
 int16 direction
 int16 id
-float64 length
+float32 length
+
 ================================================================================
 MSG: ytthdmap_msgs/S_LINE
 int16 type
 int16 linetype
 S_POINT[100] point
 int16 pointnum
+
 ================================================================================
 MSG: ytthdmap_msgs/S_POINT
-float64 x
-float64 y
-float64 z"""
+float32 x
+float32 y
+float32 z
+"""
   __slots__ = ['centerline','leftboundry','rightboundry','width','IsPartofRouting','type','direction','id','length']
-  _slot_types = ['ytthdmap_msgs/S_LINE','ytthdmap_msgs/S_LINE','ytthdmap_msgs/S_LINE','float64','bool','int16','int16','int16','float64']
+  _slot_types = ['ytthdmap_msgs/S_LINE','ytthdmap_msgs/S_LINE','ytthdmap_msgs/S_LINE','float32','bool','int16','int16','int16','float32']
 
   def __init__(self, *args, **kwds):
     """
@@ -96,19 +99,19 @@ float64 z"""
       buff.write(_get_struct_2h().pack(_x.centerline.type, _x.centerline.linetype))
       for val1 in self.centerline.point:
         _x = val1
-        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+        buff.write(_get_struct_3f().pack(_x.x, _x.y, _x.z))
       _x = self
       buff.write(_get_struct_3h().pack(_x.centerline.pointnum, _x.leftboundry.type, _x.leftboundry.linetype))
       for val1 in self.leftboundry.point:
         _x = val1
-        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+        buff.write(_get_struct_3f().pack(_x.x, _x.y, _x.z))
       _x = self
       buff.write(_get_struct_3h().pack(_x.leftboundry.pointnum, _x.rightboundry.type, _x.rightboundry.linetype))
       for val1 in self.rightboundry.point:
         _x = val1
-        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+        buff.write(_get_struct_3f().pack(_x.x, _x.y, _x.z))
       _x = self
-      buff.write(_get_struct_hdB3hd().pack(_x.rightboundry.pointnum, _x.width, _x.IsPartofRouting, _x.type, _x.direction, _x.id, _x.length))
+      buff.write(_get_struct_hfB3hf().pack(_x.rightboundry.pointnum, _x.width, _x.IsPartofRouting, _x.type, _x.direction, _x.id, _x.length))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -134,8 +137,8 @@ float64 z"""
         val1 = ytthdmap_msgs.msg.S_POINT()
         _x = val1
         start = end
-        end += 24
-        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+        end += 12
+        (_x.x, _x.y, _x.z,) = _get_struct_3f().unpack(str[start:end])
         self.centerline.point.append(val1)
       _x = self
       start = end
@@ -146,8 +149,8 @@ float64 z"""
         val1 = ytthdmap_msgs.msg.S_POINT()
         _x = val1
         start = end
-        end += 24
-        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+        end += 12
+        (_x.x, _x.y, _x.z,) = _get_struct_3f().unpack(str[start:end])
         self.leftboundry.point.append(val1)
       _x = self
       start = end
@@ -158,13 +161,13 @@ float64 z"""
         val1 = ytthdmap_msgs.msg.S_POINT()
         _x = val1
         start = end
-        end += 24
-        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+        end += 12
+        (_x.x, _x.y, _x.z,) = _get_struct_3f().unpack(str[start:end])
         self.rightboundry.point.append(val1)
       _x = self
       start = end
-      end += 25
-      (_x.rightboundry.pointnum, _x.width, _x.IsPartofRouting, _x.type, _x.direction, _x.id, _x.length,) = _get_struct_hdB3hd().unpack(str[start:end])
+      end += 17
+      (_x.rightboundry.pointnum, _x.width, _x.IsPartofRouting, _x.type, _x.direction, _x.id, _x.length,) = _get_struct_hfB3hf().unpack(str[start:end])
       self.IsPartofRouting = bool(self.IsPartofRouting)
       return self
     except struct.error as e:
@@ -182,19 +185,19 @@ float64 z"""
       buff.write(_get_struct_2h().pack(_x.centerline.type, _x.centerline.linetype))
       for val1 in self.centerline.point:
         _x = val1
-        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+        buff.write(_get_struct_3f().pack(_x.x, _x.y, _x.z))
       _x = self
       buff.write(_get_struct_3h().pack(_x.centerline.pointnum, _x.leftboundry.type, _x.leftboundry.linetype))
       for val1 in self.leftboundry.point:
         _x = val1
-        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+        buff.write(_get_struct_3f().pack(_x.x, _x.y, _x.z))
       _x = self
       buff.write(_get_struct_3h().pack(_x.leftboundry.pointnum, _x.rightboundry.type, _x.rightboundry.linetype))
       for val1 in self.rightboundry.point:
         _x = val1
-        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+        buff.write(_get_struct_3f().pack(_x.x, _x.y, _x.z))
       _x = self
-      buff.write(_get_struct_hdB3hd().pack(_x.rightboundry.pointnum, _x.width, _x.IsPartofRouting, _x.type, _x.direction, _x.id, _x.length))
+      buff.write(_get_struct_hfB3hf().pack(_x.rightboundry.pointnum, _x.width, _x.IsPartofRouting, _x.type, _x.direction, _x.id, _x.length))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -221,8 +224,8 @@ float64 z"""
         val1 = ytthdmap_msgs.msg.S_POINT()
         _x = val1
         start = end
-        end += 24
-        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+        end += 12
+        (_x.x, _x.y, _x.z,) = _get_struct_3f().unpack(str[start:end])
         self.centerline.point.append(val1)
       _x = self
       start = end
@@ -233,8 +236,8 @@ float64 z"""
         val1 = ytthdmap_msgs.msg.S_POINT()
         _x = val1
         start = end
-        end += 24
-        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+        end += 12
+        (_x.x, _x.y, _x.z,) = _get_struct_3f().unpack(str[start:end])
         self.leftboundry.point.append(val1)
       _x = self
       start = end
@@ -245,13 +248,13 @@ float64 z"""
         val1 = ytthdmap_msgs.msg.S_POINT()
         _x = val1
         start = end
-        end += 24
-        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+        end += 12
+        (_x.x, _x.y, _x.z,) = _get_struct_3f().unpack(str[start:end])
         self.rightboundry.point.append(val1)
       _x = self
       start = end
-      end += 25
-      (_x.rightboundry.pointnum, _x.width, _x.IsPartofRouting, _x.type, _x.direction, _x.id, _x.length,) = _get_struct_hdB3hd().unpack(str[start:end])
+      end += 17
+      (_x.rightboundry.pointnum, _x.width, _x.IsPartofRouting, _x.type, _x.direction, _x.id, _x.length,) = _get_struct_hfB3hf().unpack(str[start:end])
       self.IsPartofRouting = bool(self.IsPartofRouting)
       return self
     except struct.error as e:
@@ -261,12 +264,6 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_hdB3hd = None
-def _get_struct_hdB3hd():
-    global _struct_hdB3hd
-    if _struct_hdB3hd is None:
-        _struct_hdB3hd = struct.Struct("<hdB3hd")
-    return _struct_hdB3hd
 _struct_3h = None
 def _get_struct_3h():
     global _struct_3h
@@ -279,9 +276,15 @@ def _get_struct_2h():
     if _struct_2h is None:
         _struct_2h = struct.Struct("<2h")
     return _struct_2h
-_struct_3d = None
-def _get_struct_3d():
-    global _struct_3d
-    if _struct_3d is None:
-        _struct_3d = struct.Struct("<3d")
-    return _struct_3d
+_struct_3f = None
+def _get_struct_3f():
+    global _struct_3f
+    if _struct_3f is None:
+        _struct_3f = struct.Struct("<3f")
+    return _struct_3f
+_struct_hfB3hf = None
+def _get_struct_hfB3hf():
+    global _struct_hfB3hf
+    if _struct_hfB3hf is None:
+        _struct_hfB3hf = struct.Struct("<hfB3hf")
+    return _struct_hfB3hf

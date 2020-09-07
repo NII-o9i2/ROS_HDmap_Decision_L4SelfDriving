@@ -1,0 +1,4 @@
+[rosrun] Couldn't find executable named plotjuggler below /opt/ros/kinetic/share/plotjuggler
+[rosrun] Found the following, but they're either not files,
+[rosrun] or not executable:
+[rosrun]   /opt/ros/kinetic/share/plotjuggler

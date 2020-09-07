@@ -102,7 +102,7 @@ class S_STOPLINE {
   }
 
   static getMessageSize(object) {
-    return 32;
+    return 20;
   }
 
   static datatype() {
@@ -112,7 +112,7 @@ class S_STOPLINE {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '1177159ac36be20cf69b091839735d00';
+    return '05414b44a3589a776a4ff3be4a793437';
   }
 
   static messageDefinition() {
@@ -123,11 +123,13 @@ class S_STOPLINE {
     int16 type
     int16 validnum
     S_POINT[100] point
+    
     ================================================================================
     MSG: ytthdmap_msgs/S_POINT
-    float64 x
-    float64 y
-    float64 z
+    float32 x
+    float32 y
+    float32 z
+    
     `;
   }
 

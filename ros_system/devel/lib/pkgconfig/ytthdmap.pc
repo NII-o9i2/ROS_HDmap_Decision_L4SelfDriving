@@ -5,4 +5,4 @@ Description: Description of ytthdmap
 Version: 0.0.1
 Cflags: 
 Libs: -L${prefix}/lib 
-Requires: roscpp ytthdmap_msgs
+Requires: roscpp ytthdmap_msgs locationsim_msgs

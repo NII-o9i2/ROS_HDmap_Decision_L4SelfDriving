@@ -88,8 +88,8 @@
     (send _leftboundry :serialization-length)
     ;; ytthdmap_msgs/S_LINE _rightboundry
     (send _rightboundry :serialization-length)
-    ;; float64 _width
-    8
+    ;; float32 _width
+    4
     ;; bool _IsPartofRouting
     1
     ;; int16 _type
@@ -98,8 +98,8 @@
     2
     ;; int16 _id
     2
-    ;; float64 _length
-    8
+    ;; float32 _length
+    4
     ))
   (:serialize
    (&optional strm)
@@ -111,8 +111,8 @@
        (send _leftboundry :serialize s)
      ;; ytthdmap_msgs/S_LINE _rightboundry
        (send _rightboundry :serialize s)
-     ;; float64 _width
-       (sys::poke _width (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+     ;; float32 _width
+       (sys::poke _width (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
      ;; bool _IsPartofRouting
        (if _IsPartofRouting (write-byte -1 s) (write-byte 0 s))
      ;; int16 _type
@@ -121,8 +121,8 @@
        (write-word _direction s)
      ;; int16 _id
        (write-word _id s)
-     ;; float64 _length
-       (sys::poke _length (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+     ;; float32 _length
+       (sys::poke _length (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
@@ -133,8 +133,8 @@
      (send _leftboundry :deserialize buf ptr-) (incf ptr- (send _leftboundry :serialization-length))
    ;; ytthdmap_msgs/S_LINE _rightboundry
      (send _rightboundry :deserialize buf ptr-) (incf ptr- (send _rightboundry :serialization-length))
-   ;; float64 _width
-     (setq _width (sys::peek buf ptr- :double)) (incf ptr- 8)
+   ;; float32 _width
+     (setq _width (sys::peek buf ptr- :float)) (incf ptr- 4)
    ;; bool _IsPartofRouting
      (setq _IsPartofRouting (not (= 0 (sys::peek buf ptr- :char)))) (incf ptr- 1)
    ;; int16 _type
@@ -143,39 +143,42 @@
      (setq _direction (sys::peek buf ptr- :short)) (incf ptr- 2)
    ;; int16 _id
      (setq _id (sys::peek buf ptr- :short)) (incf ptr- 2)
-   ;; float64 _length
-     (setq _length (sys::peek buf ptr- :double)) (incf ptr- 8)
+   ;; float32 _length
+     (setq _length (sys::peek buf ptr- :float)) (incf ptr- 4)
    ;;
    self)
   )
 
-(setf (get ytthdmap_msgs::S_LANEINFO :md5sum-) "229d86e3f7c3e9edaf166d31399cc77c")
+(setf (get ytthdmap_msgs::S_LANEINFO :md5sum-) "3bc5c9298690fd903b2c404d72e82a3f")
 (setf (get ytthdmap_msgs::S_LANEINFO :datatype-) "ytthdmap_msgs/S_LANEINFO")
 (setf (get ytthdmap_msgs::S_LANEINFO :definition-)
       "S_LINE centerline
 S_LINE leftboundry
 S_LINE rightboundry
-float64 width
+float32 width
 bool IsPartofRouting
 int16 type
 int16 direction
 int16 id
-float64 length
+float32 length
+
 ================================================================================
 MSG: ytthdmap_msgs/S_LINE
 int16 type
 int16 linetype
 S_POINT[100] point
 int16 pointnum
+
 ================================================================================
 MSG: ytthdmap_msgs/S_POINT
-float64 x
-float64 y
-float64 z
+float32 x
+float32 y
+float32 z
+
 ")
 
 
 
-(provide :ytthdmap_msgs/S_LANEINFO "229d86e3f7c3e9edaf166d31399cc77c")
+(provide :ytthdmap_msgs/S_LANEINFO "3bc5c9298690fd903b2c404d72e82a3f")
 
 

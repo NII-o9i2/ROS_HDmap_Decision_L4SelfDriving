@@ -101,7 +101,7 @@
    self)
   )
 
-(setf (get ytthdmap_msgs::S_STOPLINE :md5sum-) "1177159ac36be20cf69b091839735d00")
+(setf (get ytthdmap_msgs::S_STOPLINE :md5sum-) "05414b44a3589a776a4ff3be4a793437")
 (setf (get ytthdmap_msgs::S_STOPLINE :datatype-) "ytthdmap_msgs/S_STOPLINE")
 (setf (get ytthdmap_msgs::S_STOPLINE :definition-)
       "int16 offset
@@ -109,15 +109,17 @@ int16 latOffset
 int16 type
 int16 validnum
 S_POINT[100] point
+
 ================================================================================
 MSG: ytthdmap_msgs/S_POINT
-float64 x
-float64 y
-float64 z
+float32 x
+float32 y
+float32 z
+
 ")
 
 
 
-(provide :ytthdmap_msgs/S_STOPLINE "1177159ac36be20cf69b091839735d00")
+(provide :ytthdmap_msgs/S_STOPLINE "05414b44a3589a776a4ff3be4a793437")
 
 

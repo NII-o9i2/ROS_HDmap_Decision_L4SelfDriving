@@ -17,7 +17,6 @@
 
 #include <std_msgs/Header.h>
 #include <ytthdmap_msgs/S_LANEINFO.h>
-#include <ytthdmap_msgs/S_STATIONLOCATION.h>
 #include <ytthdmap_msgs/S_STOPLINE.h>
 
 namespace ytthdmap_msgs
@@ -30,30 +29,29 @@ struct HdmapYtt_
   HdmapYtt_()
     : header()
     , time(0)
-    , isvalidlane(0)
+    , isValidlane(0)
+    , positionstate(0)
     , curlane(0)
     , laneinfo()
     , speedlim(0.0)
-    , stationlocation()
     , stopline()
     , istunnel(false)
-    , nextlaneCH(0)
-    , traffic(0)  {
+    , nextlaneCH(0)  {
     }
   HdmapYtt_(const ContainerAllocator& _alloc)
     : header(_alloc)
     , time(0)
-    , isvalidlane(0)
+    , isValidlane(0)
+    , positionstate(0)
     , curlane(0)
-    , laneinfo(_alloc)
+    , laneinfo()
     , speedlim(0.0)
-    , stationlocation(_alloc)
     , stopline(_alloc)
     , istunnel(false)
-    , nextlaneCH(0)
-    , traffic(0)  {
+    , nextlaneCH(0)  {
   (void)_alloc;
-    }
+      laneinfo.assign( ::ytthdmap_msgs::S_LANEINFO_<ContainerAllocator> (_alloc));
+  }
 
 
 
@@ -63,20 +61,20 @@ struct HdmapYtt_
    typedef int16_t _time_type;
   _time_type time;
 
-   typedef int16_t _isvalidlane_type;
-  _isvalidlane_type isvalidlane;
+   typedef int16_t _isValidlane_type;
+  _isValidlane_type isValidlane;
+
+   typedef int16_t _positionstate_type;
+  _positionstate_type positionstate;
 
    typedef int16_t _curlane_type;
   _curlane_type curlane;
 
-   typedef  ::ytthdmap_msgs::S_LANEINFO_<ContainerAllocator>  _laneinfo_type;
+   typedef boost::array< ::ytthdmap_msgs::S_LANEINFO_<ContainerAllocator> , 5>  _laneinfo_type;
   _laneinfo_type laneinfo;
 
    typedef float _speedlim_type;
   _speedlim_type speedlim;
-
-   typedef  ::ytthdmap_msgs::S_STATIONLOCATION_<ContainerAllocator>  _stationlocation_type;
-  _stationlocation_type stationlocation;
 
    typedef  ::ytthdmap_msgs::S_STOPLINE_<ContainerAllocator>  _stopline_type;
   _stopline_type stopline;
@@ -86,9 +84,6 @@ struct HdmapYtt_
 
    typedef int16_t _nextlaneCH_type;
   _nextlaneCH_type nextlaneCH;
-
-   typedef int16_t _traffic_type;
-  _traffic_type traffic;
 
 
 
@@ -125,7 +120,7 @@ namespace message_traits
 
 
 // BOOLTRAITS {'IsFixedSize': False, 'IsMessage': True, 'HasHeader': True}
-// {'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg'], 'ytthdmap_msgs': ['/home/xiaotongfeng/ros_test/src/ytthdmap/ytthdmap_msgs/./']}
+// {'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg'], 'ytthdmap_msgs': ['/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./']}
 
 // !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
 
@@ -168,12 +163,12 @@ struct MD5Sum< ::ytthdmap_msgs::HdmapYtt_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "06136882eb0000675a95c6a59756dfc6";
+    return "965fc75ddac5682aff9e25ac32f36524";
   }
 
   static const char* value(const ::ytthdmap_msgs::HdmapYtt_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x06136882eb000067ULL;
-  static const uint64_t static_value2 = 0x5a95c6a59756dfc6ULL;
+  static const uint64_t static_value1 = 0x965fc75ddac5682aULL;
+  static const uint64_t static_value2 = 0xff9e25ac32f36524ULL;
 };
 
 template<class ContainerAllocator>
@@ -194,15 +189,15 @@ struct Definition< ::ytthdmap_msgs::HdmapYtt_<ContainerAllocator> >
   {
     return "std_msgs/Header header\n\
 int16 time\n\
-int16 isvalidlane\n\
+int16 isValidlane\n\
+int16 positionstate\n\
 int16 curlane\n\
-S_LANEINFO laneinfo \n\
+S_LANEINFO[5] laneinfo \n\
 float32 speedlim\n\
-S_STATIONLOCATION stationlocation\n\
 S_STOPLINE stopline\n\
 bool istunnel\n\
 int16 nextlaneCH\n\
-int16 traffic\n\
+\n\
 ================================================================================\n\
 MSG: std_msgs/Header\n\
 # Standard metadata for higher-level stamped data types.\n\
@@ -226,28 +221,26 @@ MSG: ytthdmap_msgs/S_LANEINFO\n\
 S_LINE centerline\n\
 S_LINE leftboundry\n\
 S_LINE rightboundry\n\
-float64 width\n\
+float32 width\n\
 bool IsPartofRouting\n\
 int16 type\n\
 int16 direction\n\
 int16 id\n\
-float64 length\n\
+float32 length\n\
+\n\
 ================================================================================\n\
 MSG: ytthdmap_msgs/S_LINE\n\
 int16 type\n\
 int16 linetype\n\
 S_POINT[100] point\n\
 int16 pointnum\n\
+\n\
 ================================================================================\n\
 MSG: ytthdmap_msgs/S_POINT\n\
-float64 x\n\
-float64 y\n\
-float64 z\n\
-================================================================================\n\
-MSG: ytthdmap_msgs/S_STATIONLOCATION\n\
-float64 x\n\
-float64 y\n\
-float64 z\n\
+float32 x\n\
+float32 y\n\
+float32 z\n\
+\n\
 ================================================================================\n\
 MSG: ytthdmap_msgs/S_STOPLINE\n\
 int16 offset\n\
@@ -275,15 +268,14 @@ namespace serialization
     {
       stream.next(m.header);
       stream.next(m.time);
-      stream.next(m.isvalidlane);
+      stream.next(m.isValidlane);
+      stream.next(m.positionstate);
       stream.next(m.curlane);
       stream.next(m.laneinfo);
       stream.next(m.speedlim);
-      stream.next(m.stationlocation);
       stream.next(m.stopline);
       stream.next(m.istunnel);
       stream.next(m.nextlaneCH);
-      stream.next(m.traffic);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -307,18 +299,22 @@ struct Printer< ::ytthdmap_msgs::HdmapYtt_<ContainerAllocator> >
     Printer< ::std_msgs::Header_<ContainerAllocator> >::stream(s, indent + "  ", v.header);
     s << indent << "time: ";
     Printer<int16_t>::stream(s, indent + "  ", v.time);
-    s << indent << "isvalidlane: ";
-    Printer<int16_t>::stream(s, indent + "  ", v.isvalidlane);
+    s << indent << "isValidlane: ";
+    Printer<int16_t>::stream(s, indent + "  ", v.isValidlane);
+    s << indent << "positionstate: ";
+    Printer<int16_t>::stream(s, indent + "  ", v.positionstate);
     s << indent << "curlane: ";
     Printer<int16_t>::stream(s, indent + "  ", v.curlane);
-    s << indent << "laneinfo: ";
-    s << std::endl;
-    Printer< ::ytthdmap_msgs::S_LANEINFO_<ContainerAllocator> >::stream(s, indent + "  ", v.laneinfo);
+    s << indent << "laneinfo[]" << std::endl;
+    for (size_t i = 0; i < v.laneinfo.size(); ++i)
+    {
+      s << indent << "  laneinfo[" << i << "]: ";
+      s << std::endl;
+      s << indent;
+      Printer< ::ytthdmap_msgs::S_LANEINFO_<ContainerAllocator> >::stream(s, indent + "    ", v.laneinfo[i]);
+    }
     s << indent << "speedlim: ";
     Printer<float>::stream(s, indent + "  ", v.speedlim);
-    s << indent << "stationlocation: ";
-    s << std::endl;
-    Printer< ::ytthdmap_msgs::S_STATIONLOCATION_<ContainerAllocator> >::stream(s, indent + "  ", v.stationlocation);
     s << indent << "stopline: ";
     s << std::endl;
     Printer< ::ytthdmap_msgs::S_STOPLINE_<ContainerAllocator> >::stream(s, indent + "  ", v.stopline);
@@ -326,8 +322,6 @@ struct Printer< ::ytthdmap_msgs::HdmapYtt_<ContainerAllocator> >
     Printer<uint8_t>::stream(s, indent + "  ", v.istunnel);
     s << indent << "nextlaneCH: ";
     Printer<int16_t>::stream(s, indent + "  ", v.nextlaneCH);
-    s << indent << "traffic: ";
-    Printer<int16_t>::stream(s, indent + "  ", v.traffic);
   }
 };
 

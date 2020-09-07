@@ -96,7 +96,7 @@ class S_LANEINFO {
     // Serialize message field [rightboundry]
     bufferOffset = S_LINE.serialize(obj.rightboundry, buffer, bufferOffset);
     // Serialize message field [width]
-    bufferOffset = _serializer.float64(obj.width, buffer, bufferOffset);
+    bufferOffset = _serializer.float32(obj.width, buffer, bufferOffset);
     // Serialize message field [IsPartofRouting]
     bufferOffset = _serializer.bool(obj.IsPartofRouting, buffer, bufferOffset);
     // Serialize message field [type]
@@ -106,7 +106,7 @@ class S_LANEINFO {
     // Serialize message field [id]
     bufferOffset = _serializer.int16(obj.id, buffer, bufferOffset);
     // Serialize message field [length]
-    bufferOffset = _serializer.float64(obj.length, buffer, bufferOffset);
+    bufferOffset = _serializer.float32(obj.length, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -121,7 +121,7 @@ class S_LANEINFO {
     // Deserialize message field [rightboundry]
     data.rightboundry = S_LINE.deserialize(buffer, bufferOffset);
     // Deserialize message field [width]
-    data.width = _deserializer.float64(buffer, bufferOffset);
+    data.width = _deserializer.float32(buffer, bufferOffset);
     // Deserialize message field [IsPartofRouting]
     data.IsPartofRouting = _deserializer.bool(buffer, bufferOffset);
     // Deserialize message field [type]
@@ -131,12 +131,12 @@ class S_LANEINFO {
     // Deserialize message field [id]
     data.id = _deserializer.int16(buffer, bufferOffset);
     // Deserialize message field [length]
-    data.length = _deserializer.float64(buffer, bufferOffset);
+    data.length = _deserializer.float32(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 113;
+    return 69;
   }
 
   static datatype() {
@@ -146,7 +146,7 @@ class S_LANEINFO {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '229d86e3f7c3e9edaf166d31399cc77c';
+    return '3bc5c9298690fd903b2c404d72e82a3f';
   }
 
   static messageDefinition() {
@@ -155,23 +155,26 @@ class S_LANEINFO {
     S_LINE centerline
     S_LINE leftboundry
     S_LINE rightboundry
-    float64 width
+    float32 width
     bool IsPartofRouting
     int16 type
     int16 direction
     int16 id
-    float64 length
+    float32 length
+    
     ================================================================================
     MSG: ytthdmap_msgs/S_LINE
     int16 type
     int16 linetype
     S_POINT[100] point
     int16 pointnum
+    
     ================================================================================
     MSG: ytthdmap_msgs/S_POINT
-    float64 x
-    float64 y
-    float64 z
+    float32 x
+    float32 y
+    float32 z
+    
     `;
   }
 

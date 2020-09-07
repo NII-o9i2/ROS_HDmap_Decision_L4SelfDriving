@@ -40,47 +40,48 @@
   (:serialization-length
    ()
    (+
-    ;; float64 _x
-    8
-    ;; float64 _y
-    8
-    ;; float64 _z
-    8
+    ;; float32 _x
+    4
+    ;; float32 _y
+    4
+    ;; float32 _z
+    4
     ))
   (:serialize
    (&optional strm)
    (let ((s (if strm strm
               (make-string-output-stream (send self :serialization-length)))))
-     ;; float64 _x
-       (sys::poke _x (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
-     ;; float64 _y
-       (sys::poke _y (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
-     ;; float64 _z
-       (sys::poke _z (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+     ;; float32 _x
+       (sys::poke _x (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
+     ;; float32 _y
+       (sys::poke _y (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
+     ;; float32 _z
+       (sys::poke _z (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
    (buf &optional (ptr- 0))
-   ;; float64 _x
-     (setq _x (sys::peek buf ptr- :double)) (incf ptr- 8)
-   ;; float64 _y
-     (setq _y (sys::peek buf ptr- :double)) (incf ptr- 8)
-   ;; float64 _z
-     (setq _z (sys::peek buf ptr- :double)) (incf ptr- 8)
+   ;; float32 _x
+     (setq _x (sys::peek buf ptr- :float)) (incf ptr- 4)
+   ;; float32 _y
+     (setq _y (sys::peek buf ptr- :float)) (incf ptr- 4)
+   ;; float32 _z
+     (setq _z (sys::peek buf ptr- :float)) (incf ptr- 4)
    ;;
    self)
   )
 
-(setf (get ytthdmap_msgs::S_POINT :md5sum-) "4a842b65f413084dc2b10fb484ea7f17")
+(setf (get ytthdmap_msgs::S_POINT :md5sum-) "cc153912f1453b708d221682bc23d9ac")
 (setf (get ytthdmap_msgs::S_POINT :datatype-) "ytthdmap_msgs/S_POINT")
 (setf (get ytthdmap_msgs::S_POINT :definition-)
-      "float64 x
-float64 y
-float64 z
+      "float32 x
+float32 y
+float32 z
+
 ")
 
 
 
-(provide :ytthdmap_msgs/S_POINT "4a842b65f413084dc2b10fb484ea7f17")
+(provide :ytthdmap_msgs/S_POINT "cc153912f1453b708d221682bc23d9ac")
 
 

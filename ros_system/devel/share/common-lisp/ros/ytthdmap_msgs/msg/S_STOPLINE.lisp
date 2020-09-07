@@ -120,16 +120,16 @@
   "ytthdmap_msgs/S_STOPLINE")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<S_STOPLINE>)))
   "Returns md5sum for a message object of type '<S_STOPLINE>"
-  "1177159ac36be20cf69b091839735d00")
+  "05414b44a3589a776a4ff3be4a793437")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'S_STOPLINE)))
   "Returns md5sum for a message object of type 'S_STOPLINE"
-  "1177159ac36be20cf69b091839735d00")
+  "05414b44a3589a776a4ff3be4a793437")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<S_STOPLINE>)))
   "Returns full string definition for message of type '<S_STOPLINE>"
-  (cl:format cl:nil "int16 offset~%int16 latOffset~%int16 type~%int16 validnum~%S_POINT[100] point~%================================================================================~%MSG: ytthdmap_msgs/S_POINT~%float64 x~%float64 y~%float64 z~%~%"))
+  (cl:format cl:nil "int16 offset~%int16 latOffset~%int16 type~%int16 validnum~%S_POINT[100] point~%~%================================================================================~%MSG: ytthdmap_msgs/S_POINT~%float32 x~%float32 y~%float32 z~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'S_STOPLINE)))
   "Returns full string definition for message of type 'S_STOPLINE"
-  (cl:format cl:nil "int16 offset~%int16 latOffset~%int16 type~%int16 validnum~%S_POINT[100] point~%================================================================================~%MSG: ytthdmap_msgs/S_POINT~%float64 x~%float64 y~%float64 z~%~%"))
+  (cl:format cl:nil "int16 offset~%int16 latOffset~%int16 type~%int16 validnum~%S_POINT[100] point~%~%================================================================================~%MSG: ytthdmap_msgs/S_POINT~%float32 x~%float32 y~%float32 z~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <S_STOPLINE>))
   (cl:+ 0
      2

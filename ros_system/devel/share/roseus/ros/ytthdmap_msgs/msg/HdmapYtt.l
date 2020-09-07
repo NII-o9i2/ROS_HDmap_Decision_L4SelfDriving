@@ -16,35 +16,33 @@
 
 (defclass ytthdmap_msgs::HdmapYtt
   :super ros::object
-  :slots (_header _time _isvalidlane _curlane _laneinfo _speedlim _stationlocation _stopline _istunnel _nextlaneCH _traffic ))
+  :slots (_header _time _isValidlane _positionstate _curlane _laneinfo _speedlim _stopline _istunnel _nextlaneCH ))
 
 (defmethod ytthdmap_msgs::HdmapYtt
   (:init
    (&key
     ((:header __header) (instance std_msgs::Header :init))
     ((:time __time) 0)
-    ((:isvalidlane __isvalidlane) 0)
+    ((:isValidlane __isValidlane) 0)
+    ((:positionstate __positionstate) 0)
     ((:curlane __curlane) 0)
-    ((:laneinfo __laneinfo) (instance ytthdmap_msgs::S_LANEINFO :init))
+    ((:laneinfo __laneinfo) (let (r) (dotimes (i 5) (push (instance ytthdmap_msgs::S_LANEINFO :init) r)) r))
     ((:speedlim __speedlim) 0.0)
-    ((:stationlocation __stationlocation) (instance ytthdmap_msgs::S_STATIONLOCATION :init))
     ((:stopline __stopline) (instance ytthdmap_msgs::S_STOPLINE :init))
     ((:istunnel __istunnel) nil)
     ((:nextlaneCH __nextlaneCH) 0)
-    ((:traffic __traffic) 0)
     )
    (send-super :init)
    (setq _header __header)
    (setq _time (round __time))
-   (setq _isvalidlane (round __isvalidlane))
+   (setq _isValidlane (round __isValidlane))
+   (setq _positionstate (round __positionstate))
    (setq _curlane (round __curlane))
    (setq _laneinfo __laneinfo)
    (setq _speedlim (float __speedlim))
-   (setq _stationlocation __stationlocation)
    (setq _stopline __stopline)
    (setq _istunnel __istunnel)
    (setq _nextlaneCH (round __nextlaneCH))
-   (setq _traffic (round __traffic))
    self)
   (:header
    (&rest __header)
@@ -56,9 +54,12 @@
   (:time
    (&optional __time)
    (if __time (setq _time __time)) _time)
-  (:isvalidlane
-   (&optional __isvalidlane)
-   (if __isvalidlane (setq _isvalidlane __isvalidlane)) _isvalidlane)
+  (:isValidlane
+   (&optional __isValidlane)
+   (if __isValidlane (setq _isValidlane __isValidlane)) _isValidlane)
+  (:positionstate
+   (&optional __positionstate)
+   (if __positionstate (setq _positionstate __positionstate)) _positionstate)
   (:curlane
    (&optional __curlane)
    (if __curlane (setq _curlane __curlane)) _curlane)
@@ -72,13 +73,6 @@
   (:speedlim
    (&optional __speedlim)
    (if __speedlim (setq _speedlim __speedlim)) _speedlim)
-  (:stationlocation
-   (&rest __stationlocation)
-   (if (keywordp (car __stationlocation))
-       (send* _stationlocation __stationlocation)
-     (progn
-       (if __stationlocation (setq _stationlocation (car __stationlocation)))
-       _stationlocation)))
   (:stopline
    (&rest __stopline)
    (if (keywordp (car __stopline))
@@ -92,9 +86,6 @@
   (:nextlaneCH
    (&optional __nextlaneCH)
    (if __nextlaneCH (setq _nextlaneCH __nextlaneCH)) _nextlaneCH)
-  (:traffic
-   (&optional __traffic)
-   (if __traffic (setq _traffic __traffic)) _traffic)
   (:serialization-length
    ()
    (+
@@ -102,23 +93,21 @@
     (send _header :serialization-length)
     ;; int16 _time
     2
-    ;; int16 _isvalidlane
+    ;; int16 _isValidlane
+    2
+    ;; int16 _positionstate
     2
     ;; int16 _curlane
     2
-    ;; ytthdmap_msgs/S_LANEINFO _laneinfo
-    (send _laneinfo :serialization-length)
+    ;; ytthdmap_msgs/S_LANEINFO[5] _laneinfo
+    (apply #'+ (send-all _laneinfo :serialization-length))
     ;; float32 _speedlim
     4
-    ;; ytthdmap_msgs/S_STATIONLOCATION _stationlocation
-    (send _stationlocation :serialization-length)
     ;; ytthdmap_msgs/S_STOPLINE _stopline
     (send _stopline :serialization-length)
     ;; bool _istunnel
     1
     ;; int16 _nextlaneCH
-    2
-    ;; int16 _traffic
     2
     ))
   (:serialize
@@ -129,24 +118,24 @@
        (send _header :serialize s)
      ;; int16 _time
        (write-word _time s)
-     ;; int16 _isvalidlane
-       (write-word _isvalidlane s)
+     ;; int16 _isValidlane
+       (write-word _isValidlane s)
+     ;; int16 _positionstate
+       (write-word _positionstate s)
      ;; int16 _curlane
        (write-word _curlane s)
-     ;; ytthdmap_msgs/S_LANEINFO _laneinfo
-       (send _laneinfo :serialize s)
+     ;; ytthdmap_msgs/S_LANEINFO[5] _laneinfo
+     (dolist (elem _laneinfo)
+       (send elem :serialize s)
+       )
      ;; float32 _speedlim
        (sys::poke _speedlim (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
-     ;; ytthdmap_msgs/S_STATIONLOCATION _stationlocation
-       (send _stationlocation :serialize s)
      ;; ytthdmap_msgs/S_STOPLINE _stopline
        (send _stopline :serialize s)
      ;; bool _istunnel
        (if _istunnel (write-byte -1 s) (write-byte 0 s))
      ;; int16 _nextlaneCH
        (write-word _nextlaneCH s)
-     ;; int16 _traffic
-       (write-word _traffic s)
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
@@ -155,42 +144,42 @@
      (send _header :deserialize buf ptr-) (incf ptr- (send _header :serialization-length))
    ;; int16 _time
      (setq _time (sys::peek buf ptr- :short)) (incf ptr- 2)
-   ;; int16 _isvalidlane
-     (setq _isvalidlane (sys::peek buf ptr- :short)) (incf ptr- 2)
+   ;; int16 _isValidlane
+     (setq _isValidlane (sys::peek buf ptr- :short)) (incf ptr- 2)
+   ;; int16 _positionstate
+     (setq _positionstate (sys::peek buf ptr- :short)) (incf ptr- 2)
    ;; int16 _curlane
      (setq _curlane (sys::peek buf ptr- :short)) (incf ptr- 2)
-   ;; ytthdmap_msgs/S_LANEINFO _laneinfo
-     (send _laneinfo :deserialize buf ptr-) (incf ptr- (send _laneinfo :serialization-length))
+   ;; ytthdmap_msgs/S_LANEINFO[5] _laneinfo
+   (dotimes (i 5)
+     (send (elt _laneinfo i) :deserialize buf ptr-) (incf ptr- (send (elt _laneinfo i) :serialization-length))
+     )
    ;; float32 _speedlim
      (setq _speedlim (sys::peek buf ptr- :float)) (incf ptr- 4)
-   ;; ytthdmap_msgs/S_STATIONLOCATION _stationlocation
-     (send _stationlocation :deserialize buf ptr-) (incf ptr- (send _stationlocation :serialization-length))
    ;; ytthdmap_msgs/S_STOPLINE _stopline
      (send _stopline :deserialize buf ptr-) (incf ptr- (send _stopline :serialization-length))
    ;; bool _istunnel
      (setq _istunnel (not (= 0 (sys::peek buf ptr- :char)))) (incf ptr- 1)
    ;; int16 _nextlaneCH
      (setq _nextlaneCH (sys::peek buf ptr- :short)) (incf ptr- 2)
-   ;; int16 _traffic
-     (setq _traffic (sys::peek buf ptr- :short)) (incf ptr- 2)
    ;;
    self)
   )
 
-(setf (get ytthdmap_msgs::HdmapYtt :md5sum-) "06136882eb0000675a95c6a59756dfc6")
+(setf (get ytthdmap_msgs::HdmapYtt :md5sum-) "965fc75ddac5682aff9e25ac32f36524")
 (setf (get ytthdmap_msgs::HdmapYtt :datatype-) "ytthdmap_msgs/HdmapYtt")
 (setf (get ytthdmap_msgs::HdmapYtt :definition-)
       "std_msgs/Header header
 int16 time
-int16 isvalidlane
+int16 isValidlane
+int16 positionstate
 int16 curlane
-S_LANEINFO laneinfo 
+S_LANEINFO[5] laneinfo 
 float32 speedlim
-S_STATIONLOCATION stationlocation
 S_STOPLINE stopline
 bool istunnel
 int16 nextlaneCH
-int16 traffic
+
 ================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
@@ -214,28 +203,26 @@ MSG: ytthdmap_msgs/S_LANEINFO
 S_LINE centerline
 S_LINE leftboundry
 S_LINE rightboundry
-float64 width
+float32 width
 bool IsPartofRouting
 int16 type
 int16 direction
 int16 id
-float64 length
+float32 length
+
 ================================================================================
 MSG: ytthdmap_msgs/S_LINE
 int16 type
 int16 linetype
 S_POINT[100] point
 int16 pointnum
+
 ================================================================================
 MSG: ytthdmap_msgs/S_POINT
-float64 x
-float64 y
-float64 z
-================================================================================
-MSG: ytthdmap_msgs/S_STATIONLOCATION
-float64 x
-float64 y
-float64 z
+float32 x
+float32 y
+float32 z
+
 ================================================================================
 MSG: ytthdmap_msgs/S_STOPLINE
 int16 offset
@@ -243,10 +230,11 @@ int16 latOffset
 int16 type
 int16 validnum
 S_POINT[100] point
+
 ")
 
 
 
-(provide :ytthdmap_msgs/HdmapYtt "06136882eb0000675a95c6a59756dfc6")
+(provide :ytthdmap_msgs/HdmapYtt "965fc75ddac5682aff9e25ac32f36524")
 
 

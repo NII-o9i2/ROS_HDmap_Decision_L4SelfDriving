@@ -37,13 +37,13 @@ struct S_POINT_
 
 
 
-   typedef double _x_type;
+   typedef float _x_type;
   _x_type x;
 
-   typedef double _y_type;
+   typedef float _y_type;
   _y_type y;
 
-   typedef double _z_type;
+   typedef float _z_type;
   _z_type z;
 
 
@@ -81,7 +81,7 @@ namespace message_traits
 
 
 // BOOLTRAITS {'IsFixedSize': True, 'IsMessage': True, 'HasHeader': False}
-// {'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg'], 'ytthdmap_msgs': ['/home/xiaotongfeng/ros_test/src/ytthdmap/ytthdmap_msgs/./']}
+// {'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg'], 'ytthdmap_msgs': ['/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./']}
 
 // !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
 
@@ -124,12 +124,12 @@ struct MD5Sum< ::ytthdmap_msgs::S_POINT_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "4a842b65f413084dc2b10fb484ea7f17";
+    return "cc153912f1453b708d221682bc23d9ac";
   }
 
   static const char* value(const ::ytthdmap_msgs::S_POINT_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x4a842b65f413084dULL;
-  static const uint64_t static_value2 = 0xc2b10fb484ea7f17ULL;
+  static const uint64_t static_value1 = 0xcc153912f1453b70ULL;
+  static const uint64_t static_value2 = 0x8d221682bc23d9acULL;
 };
 
 template<class ContainerAllocator>
@@ -148,9 +148,9 @@ struct Definition< ::ytthdmap_msgs::S_POINT_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "float64 x\n\
-float64 y\n\
-float64 z\n\
+    return "float32 x\n\
+float32 y\n\
+float32 z\n\
 ";
   }
 
@@ -191,11 +191,11 @@ struct Printer< ::ytthdmap_msgs::S_POINT_<ContainerAllocator> >
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::ytthdmap_msgs::S_POINT_<ContainerAllocator>& v)
   {
     s << indent << "x: ";
-    Printer<double>::stream(s, indent + "  ", v.x);
+    Printer<float>::stream(s, indent + "  ", v.x);
     s << indent << "y: ";
-    Printer<double>::stream(s, indent + "  ", v.y);
+    Printer<float>::stream(s, indent + "  ", v.y);
     s << indent << "z: ";
-    Printer<double>::stream(s, indent + "  ", v.z);
+    Printer<float>::stream(s, indent + "  ", v.z);
   }
 };
 

@@ -8,7 +8,7 @@ import struct
 import ytthdmap_msgs.msg
 
 class S_STOPLINE(genpy.Message):
-  _md5sum = "1177159ac36be20cf69b091839735d00"
+  _md5sum = "05414b44a3589a776a4ff3be4a793437"
   _type = "ytthdmap_msgs/S_STOPLINE"
   _has_header = False #flag to mark the presence of a Header object
   _full_text = """int16 offset
@@ -16,11 +16,13 @@ int16 latOffset
 int16 type
 int16 validnum
 S_POINT[100] point
+
 ================================================================================
 MSG: ytthdmap_msgs/S_POINT
-float64 x
-float64 y
-float64 z"""
+float32 x
+float32 y
+float32 z
+"""
   __slots__ = ['offset','latOffset','type','validnum','point']
   _slot_types = ['int16','int16','int16','int16','ytthdmap_msgs/S_POINT[100]']
 
@@ -74,7 +76,7 @@ float64 z"""
       buff.write(_get_struct_4h().pack(_x.offset, _x.latOffset, _x.type, _x.validnum))
       for val1 in self.point:
         _x = val1
-        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+        buff.write(_get_struct_3f().pack(_x.x, _x.y, _x.z))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -96,8 +98,8 @@ float64 z"""
         val1 = ytthdmap_msgs.msg.S_POINT()
         _x = val1
         start = end
-        end += 24
-        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+        end += 12
+        (_x.x, _x.y, _x.z,) = _get_struct_3f().unpack(str[start:end])
         self.point.append(val1)
       return self
     except struct.error as e:
@@ -115,7 +117,7 @@ float64 z"""
       buff.write(_get_struct_4h().pack(_x.offset, _x.latOffset, _x.type, _x.validnum))
       for val1 in self.point:
         _x = val1
-        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+        buff.write(_get_struct_3f().pack(_x.x, _x.y, _x.z))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -138,8 +140,8 @@ float64 z"""
         val1 = ytthdmap_msgs.msg.S_POINT()
         _x = val1
         start = end
-        end += 24
-        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+        end += 12
+        (_x.x, _x.y, _x.z,) = _get_struct_3f().unpack(str[start:end])
         self.point.append(val1)
       return self
     except struct.error as e:
@@ -149,15 +151,15 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
+_struct_3f = None
+def _get_struct_3f():
+    global _struct_3f
+    if _struct_3f is None:
+        _struct_3f = struct.Struct("<3f")
+    return _struct_3f
 _struct_4h = None
 def _get_struct_4h():
     global _struct_4h
     if _struct_4h is None:
         _struct_4h = struct.Struct("<4h")
     return _struct_4h
-_struct_3d = None
-def _get_struct_3d():
-    global _struct_3d
-    if _struct_3d is None:
-        _struct_3d = struct.Struct("<3d")
-    return _struct_3d

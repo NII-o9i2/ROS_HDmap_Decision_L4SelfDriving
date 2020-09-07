@@ -61,7 +61,7 @@ struct S_LANEINFO_
    typedef  ::ytthdmap_msgs::S_LINE_<ContainerAllocator>  _rightboundry_type;
   _rightboundry_type rightboundry;
 
-   typedef double _width_type;
+   typedef float _width_type;
   _width_type width;
 
    typedef uint8_t _IsPartofRouting_type;
@@ -76,7 +76,7 @@ struct S_LANEINFO_
    typedef int16_t _id_type;
   _id_type id;
 
-   typedef double _length_type;
+   typedef float _length_type;
   _length_type length;
 
 
@@ -114,7 +114,7 @@ namespace message_traits
 
 
 // BOOLTRAITS {'IsFixedSize': True, 'IsMessage': True, 'HasHeader': False}
-// {'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg'], 'ytthdmap_msgs': ['/home/xiaotongfeng/ros_test/src/ytthdmap/ytthdmap_msgs/./']}
+// {'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg'], 'ytthdmap_msgs': ['/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/ytthdmap_msgs/./']}
 
 // !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
 
@@ -157,12 +157,12 @@ struct MD5Sum< ::ytthdmap_msgs::S_LANEINFO_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "229d86e3f7c3e9edaf166d31399cc77c";
+    return "3bc5c9298690fd903b2c404d72e82a3f";
   }
 
   static const char* value(const ::ytthdmap_msgs::S_LANEINFO_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x229d86e3f7c3e9edULL;
-  static const uint64_t static_value2 = 0xaf166d31399cc77cULL;
+  static const uint64_t static_value1 = 0x3bc5c9298690fd90ULL;
+  static const uint64_t static_value2 = 0x3b2c404d72e82a3fULL;
 };
 
 template<class ContainerAllocator>
@@ -184,23 +184,25 @@ struct Definition< ::ytthdmap_msgs::S_LANEINFO_<ContainerAllocator> >
     return "S_LINE centerline\n\
 S_LINE leftboundry\n\
 S_LINE rightboundry\n\
-float64 width\n\
+float32 width\n\
 bool IsPartofRouting\n\
 int16 type\n\
 int16 direction\n\
 int16 id\n\
-float64 length\n\
+float32 length\n\
+\n\
 ================================================================================\n\
 MSG: ytthdmap_msgs/S_LINE\n\
 int16 type\n\
 int16 linetype\n\
 S_POINT[100] point\n\
 int16 pointnum\n\
+\n\
 ================================================================================\n\
 MSG: ytthdmap_msgs/S_POINT\n\
-float64 x\n\
-float64 y\n\
-float64 z\n\
+float32 x\n\
+float32 y\n\
+float32 z\n\
 ";
   }
 
@@ -256,7 +258,7 @@ struct Printer< ::ytthdmap_msgs::S_LANEINFO_<ContainerAllocator> >
     s << std::endl;
     Printer< ::ytthdmap_msgs::S_LINE_<ContainerAllocator> >::stream(s, indent + "  ", v.rightboundry);
     s << indent << "width: ";
-    Printer<double>::stream(s, indent + "  ", v.width);
+    Printer<float>::stream(s, indent + "  ", v.width);
     s << indent << "IsPartofRouting: ";
     Printer<uint8_t>::stream(s, indent + "  ", v.IsPartofRouting);
     s << indent << "type: ";
@@ -266,7 +268,7 @@ struct Printer< ::ytthdmap_msgs::S_LANEINFO_<ContainerAllocator> >
     s << indent << "id: ";
     Printer<int16_t>::stream(s, indent + "  ", v.id);
     s << indent << "length: ";
-    Printer<double>::stream(s, indent + "  ", v.length);
+    Printer<float>::stream(s, indent + "  ", v.length);
   }
 };
 

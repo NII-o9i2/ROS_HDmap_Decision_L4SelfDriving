@@ -91,7 +91,7 @@ class S_LINE {
   }
 
   static getMessageSize(object) {
-    return 30;
+    return 18;
   }
 
   static datatype() {
@@ -101,7 +101,7 @@ class S_LINE {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return 'd3328978b048138c7828f4b617f1ca2a';
+    return '49366bc67b2f179a0d236b700e094625';
   }
 
   static messageDefinition() {
@@ -111,11 +111,13 @@ class S_LINE {
     int16 linetype
     S_POINT[100] point
     int16 pointnum
+    
     ================================================================================
     MSG: ytthdmap_msgs/S_POINT
-    float64 x
-    float64 y
-    float64 z
+    float32 x
+    float32 y
+    float32 z
+    
     `;
   }
 

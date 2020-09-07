@@ -1,8 +1,0 @@
-prefix=/home/xiaotongfeng/ros_test/devel
-
-Name: hdmaptest
-Description: Description of hdmaptest
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

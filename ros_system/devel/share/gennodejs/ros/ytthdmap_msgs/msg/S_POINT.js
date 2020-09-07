@@ -47,11 +47,11 @@ class S_POINT {
   static serialize(obj, buffer, bufferOffset) {
     // Serializes a message object of type S_POINT
     // Serialize message field [x]
-    bufferOffset = _serializer.float64(obj.x, buffer, bufferOffset);
+    bufferOffset = _serializer.float32(obj.x, buffer, bufferOffset);
     // Serialize message field [y]
-    bufferOffset = _serializer.float64(obj.y, buffer, bufferOffset);
+    bufferOffset = _serializer.float32(obj.y, buffer, bufferOffset);
     // Serialize message field [z]
-    bufferOffset = _serializer.float64(obj.z, buffer, bufferOffset);
+    bufferOffset = _serializer.float32(obj.z, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -60,16 +60,16 @@ class S_POINT {
     let len;
     let data = new S_POINT(null);
     // Deserialize message field [x]
-    data.x = _deserializer.float64(buffer, bufferOffset);
+    data.x = _deserializer.float32(buffer, bufferOffset);
     // Deserialize message field [y]
-    data.y = _deserializer.float64(buffer, bufferOffset);
+    data.y = _deserializer.float32(buffer, bufferOffset);
     // Deserialize message field [z]
-    data.z = _deserializer.float64(buffer, bufferOffset);
+    data.z = _deserializer.float32(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 24;
+    return 12;
   }
 
   static datatype() {
@@ -79,15 +79,16 @@ class S_POINT {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '4a842b65f413084dc2b10fb484ea7f17';
+    return 'cc153912f1453b708d221682bc23d9ac';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
-    float64 x
-    float64 y
-    float64 z
+    float32 x
+    float32 y
+    float32 z
+    
     `;
   }
 
