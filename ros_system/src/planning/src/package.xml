@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package>
+  <name>planning</name>
+  <version>1.0.0</version>
+  <description>planning algorithm package </description>
+
+  <maintainer email="xiande.lin@autofreetech.com">xiande.lin</maintainer>
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roscpp</build_depend>
+  <build_depend>planning_msgs</build_depend>
+  <build_depend>ytthdmap_msgs</build_depend>
+  <build_depend>locationsim_msgs</build_depend>
+
+  <run_depend>roscpp</run_depend>
+  <run_depend>planning_msgs</run_depend>
+  <run_depend>ytthdmap_msgs</run_depend>
+  <run_depend>locationsim_msgs</run_depend>
+
+
+</package>

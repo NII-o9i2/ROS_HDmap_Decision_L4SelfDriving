@@ -8,7 +8,7 @@ import struct
 import ytthdmap_msgs.msg
 
 class S_LANEINFO(genpy.Message):
-  _md5sum = "3bc5c9298690fd903b2c404d72e82a3f"
+  _md5sum = "6a14e40ee54202dfeea4f9379da90309"
   _type = "ytthdmap_msgs/S_LANEINFO"
   _has_header = False #flag to mark the presence of a Header object
   _full_text = """S_LINE centerline
@@ -24,7 +24,7 @@ float32 length
 ================================================================================
 MSG: ytthdmap_msgs/S_LINE
 int16 type
-int16 linetype
+int16[100] linetype
 S_POINT[100] point
 int16 pointnum
 
@@ -95,18 +95,20 @@ float32 z
     :param buff: buffer, ``StringIO``
     """
     try:
-      _x = self
-      buff.write(_get_struct_2h().pack(_x.centerline.type, _x.centerline.linetype))
+      buff.write(_get_struct_h().pack(self.centerline.type))
+      buff.write(_get_struct_100h().pack(*self.centerline.linetype))
       for val1 in self.centerline.point:
         _x = val1
         buff.write(_get_struct_3f().pack(_x.x, _x.y, _x.z))
       _x = self
-      buff.write(_get_struct_3h().pack(_x.centerline.pointnum, _x.leftboundry.type, _x.leftboundry.linetype))
+      buff.write(_get_struct_2h().pack(_x.centerline.pointnum, _x.leftboundry.type))
+      buff.write(_get_struct_100h().pack(*self.leftboundry.linetype))
       for val1 in self.leftboundry.point:
         _x = val1
         buff.write(_get_struct_3f().pack(_x.x, _x.y, _x.z))
       _x = self
-      buff.write(_get_struct_3h().pack(_x.leftboundry.pointnum, _x.rightboundry.type, _x.rightboundry.linetype))
+      buff.write(_get_struct_2h().pack(_x.leftboundry.pointnum, _x.rightboundry.type))
+      buff.write(_get_struct_100h().pack(*self.rightboundry.linetype))
       for val1 in self.rightboundry.point:
         _x = val1
         buff.write(_get_struct_3f().pack(_x.x, _x.y, _x.z))
@@ -128,10 +130,12 @@ float32 z
       if self.rightboundry is None:
         self.rightboundry = ytthdmap_msgs.msg.S_LINE()
       end = 0
-      _x = self
       start = end
-      end += 4
-      (_x.centerline.type, _x.centerline.linetype,) = _get_struct_2h().unpack(str[start:end])
+      end += 2
+      (self.centerline.type,) = _get_struct_h().unpack(str[start:end])
+      start = end
+      end += 200
+      self.centerline.linetype = _get_struct_100h().unpack(str[start:end])
       self.centerline.point = []
       for i in range(0, 100):
         val1 = ytthdmap_msgs.msg.S_POINT()
@@ -142,8 +146,11 @@ float32 z
         self.centerline.point.append(val1)
       _x = self
       start = end
-      end += 6
-      (_x.centerline.pointnum, _x.leftboundry.type, _x.leftboundry.linetype,) = _get_struct_3h().unpack(str[start:end])
+      end += 4
+      (_x.centerline.pointnum, _x.leftboundry.type,) = _get_struct_2h().unpack(str[start:end])
+      start = end
+      end += 200
+      self.leftboundry.linetype = _get_struct_100h().unpack(str[start:end])
       self.leftboundry.point = []
       for i in range(0, 100):
         val1 = ytthdmap_msgs.msg.S_POINT()
@@ -154,8 +161,11 @@ float32 z
         self.leftboundry.point.append(val1)
       _x = self
       start = end
-      end += 6
-      (_x.leftboundry.pointnum, _x.rightboundry.type, _x.rightboundry.linetype,) = _get_struct_3h().unpack(str[start:end])
+      end += 4
+      (_x.leftboundry.pointnum, _x.rightboundry.type,) = _get_struct_2h().unpack(str[start:end])
+      start = end
+      end += 200
+      self.rightboundry.linetype = _get_struct_100h().unpack(str[start:end])
       self.rightboundry.point = []
       for i in range(0, 100):
         val1 = ytthdmap_msgs.msg.S_POINT()
@@ -181,18 +191,20 @@ float32 z
     :param numpy: numpy python module
     """
     try:
-      _x = self
-      buff.write(_get_struct_2h().pack(_x.centerline.type, _x.centerline.linetype))
+      buff.write(_get_struct_h().pack(self.centerline.type))
+      buff.write(self.centerline.linetype.tostring())
       for val1 in self.centerline.point:
         _x = val1
         buff.write(_get_struct_3f().pack(_x.x, _x.y, _x.z))
       _x = self
-      buff.write(_get_struct_3h().pack(_x.centerline.pointnum, _x.leftboundry.type, _x.leftboundry.linetype))
+      buff.write(_get_struct_2h().pack(_x.centerline.pointnum, _x.leftboundry.type))
+      buff.write(self.leftboundry.linetype.tostring())
       for val1 in self.leftboundry.point:
         _x = val1
         buff.write(_get_struct_3f().pack(_x.x, _x.y, _x.z))
       _x = self
-      buff.write(_get_struct_3h().pack(_x.leftboundry.pointnum, _x.rightboundry.type, _x.rightboundry.linetype))
+      buff.write(_get_struct_2h().pack(_x.leftboundry.pointnum, _x.rightboundry.type))
+      buff.write(self.rightboundry.linetype.tostring())
       for val1 in self.rightboundry.point:
         _x = val1
         buff.write(_get_struct_3f().pack(_x.x, _x.y, _x.z))
@@ -215,10 +227,12 @@ float32 z
       if self.rightboundry is None:
         self.rightboundry = ytthdmap_msgs.msg.S_LINE()
       end = 0
-      _x = self
       start = end
-      end += 4
-      (_x.centerline.type, _x.centerline.linetype,) = _get_struct_2h().unpack(str[start:end])
+      end += 2
+      (self.centerline.type,) = _get_struct_h().unpack(str[start:end])
+      start = end
+      end += 200
+      self.centerline.linetype = numpy.frombuffer(str[start:end], dtype=numpy.int16, count=100)
       self.centerline.point = []
       for i in range(0, 100):
         val1 = ytthdmap_msgs.msg.S_POINT()
@@ -229,8 +243,11 @@ float32 z
         self.centerline.point.append(val1)
       _x = self
       start = end
-      end += 6
-      (_x.centerline.pointnum, _x.leftboundry.type, _x.leftboundry.linetype,) = _get_struct_3h().unpack(str[start:end])
+      end += 4
+      (_x.centerline.pointnum, _x.leftboundry.type,) = _get_struct_2h().unpack(str[start:end])
+      start = end
+      end += 200
+      self.leftboundry.linetype = numpy.frombuffer(str[start:end], dtype=numpy.int16, count=100)
       self.leftboundry.point = []
       for i in range(0, 100):
         val1 = ytthdmap_msgs.msg.S_POINT()
@@ -241,8 +258,11 @@ float32 z
         self.leftboundry.point.append(val1)
       _x = self
       start = end
-      end += 6
-      (_x.leftboundry.pointnum, _x.rightboundry.type, _x.rightboundry.linetype,) = _get_struct_3h().unpack(str[start:end])
+      end += 4
+      (_x.leftboundry.pointnum, _x.rightboundry.type,) = _get_struct_2h().unpack(str[start:end])
+      start = end
+      end += 200
+      self.rightboundry.linetype = numpy.frombuffer(str[start:end], dtype=numpy.int16, count=100)
       self.rightboundry.point = []
       for i in range(0, 100):
         val1 = ytthdmap_msgs.msg.S_POINT()
@@ -264,12 +284,18 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_3h = None
-def _get_struct_3h():
-    global _struct_3h
-    if _struct_3h is None:
-        _struct_3h = struct.Struct("<3h")
-    return _struct_3h
+_struct_h = None
+def _get_struct_h():
+    global _struct_h
+    if _struct_h is None:
+        _struct_h = struct.Struct("<h")
+    return _struct_h
+_struct_hfB3hf = None
+def _get_struct_hfB3hf():
+    global _struct_hfB3hf
+    if _struct_hfB3hf is None:
+        _struct_hfB3hf = struct.Struct("<hfB3hf")
+    return _struct_hfB3hf
 _struct_2h = None
 def _get_struct_2h():
     global _struct_2h
@@ -282,9 +308,9 @@ def _get_struct_3f():
     if _struct_3f is None:
         _struct_3f = struct.Struct("<3f")
     return _struct_3f
-_struct_hfB3hf = None
-def _get_struct_hfB3hf():
-    global _struct_hfB3hf
-    if _struct_hfB3hf is None:
-        _struct_hfB3hf = struct.Struct("<hfB3hf")
-    return _struct_hfB3hf
+_struct_100h = None
+def _get_struct_100h():
+    global _struct_100h
+    if _struct_100h is None:
+        _struct_100h = struct.Struct("<100h")
+    return _struct_100h

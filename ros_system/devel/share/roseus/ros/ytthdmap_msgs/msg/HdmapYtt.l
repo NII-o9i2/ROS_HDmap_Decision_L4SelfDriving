@@ -166,7 +166,7 @@
    self)
   )
 
-(setf (get ytthdmap_msgs::HdmapYtt :md5sum-) "965fc75ddac5682aff9e25ac32f36524")
+(setf (get ytthdmap_msgs::HdmapYtt :md5sum-) "bae8b9094ef6eb009a2477dc42585c37")
 (setf (get ytthdmap_msgs::HdmapYtt :datatype-) "ytthdmap_msgs/HdmapYtt")
 (setf (get ytthdmap_msgs::HdmapYtt :definition-)
       "std_msgs/Header header
@@ -213,7 +213,7 @@ float32 length
 ================================================================================
 MSG: ytthdmap_msgs/S_LINE
 int16 type
-int16 linetype
+int16[100] linetype
 S_POINT[100] point
 int16 pointnum
 
@@ -235,6 +235,6 @@ S_POINT[100] point
 
 
 
-(provide :ytthdmap_msgs/HdmapYtt "965fc75ddac5682aff9e25ac32f36524")
+(provide :ytthdmap_msgs/HdmapYtt "bae8b9094ef6eb009a2477dc42585c37")
 
 

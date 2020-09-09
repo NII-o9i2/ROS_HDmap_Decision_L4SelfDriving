@@ -1,0 +1,333 @@
+/******************************************************************************
+ * Copyright 2019 The Zibet Authors. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *****************************************************************************/
+
+#include "planning_gflags.h"
+
+// log file
+DEFINE_bool(enable_log_trajectory_file, false,
+             "True to enable log in file");
+DEFINE_bool(enable_predict_log_file, false,
+             "True to enable predicton log in file");
+
+// planning config file
+DEFINE_string(planning_config_file,
+              "modules/planning/conf/planning_config.pb.txt",
+              "planning config file");
+DEFINE_string(planning_adapter_config_filename,
+              "modules/planning/conf/adapter.conf",
+              "The adapter configuration file");
+
+DEFINE_string(planning_params_file, "modules/planning/conf/planner_params.pb.txt",
+              "The planner calibration Parameters");
+
+DEFINE_int32(planning_loop_rate, 10, "Loop rate for planning node"); // modified by Linxd@20190326 10Hz
+
+
+// TODO(all) enable this when perception issue is fixed.
+DEFINE_bool(enable_collision_detection, false,
+            "enable collision detection in planning");
+
+DEFINE_string(local_trajectory_filename, "modules/planning/data/garage.csv",
+              "Loop rate for planning node");
+
+DEFINE_uint64(rtk_trajectory_forward, 800,
+              "The number of points to be included in RTK trajectory "
+              "after the matched point");
+
+DEFINE_double(rtk_trajectory_resolution, 0.01,
+              "The time resolution of output trajectory for rtk planner.");
+
+DEFINE_bool(publish_estop, false, "publish estop decision in planning");
+DEFINE_bool(enable_trajectory_stitcher, true, "enable stitching trajectory");
+
+DEFINE_bool(reckless_change_lane, false,
+            "Always allow the vehicle change lane. The vehicle may continue "
+            "changing lane. This is mainly test purpose");
+DEFINE_double(change_lane_fail_freeze_time, 3.0,
+              "seconds. Not allowed to change lane this amount of time "
+              "if it just finished change lane or failed to change lane");
+DEFINE_double(change_lane_success_freeze_time, 3.0,
+              "seconds. Not allowed to change lane this amount of time "
+              "if it just finished change lane or failed to change lane");
+DEFINE_double(change_lane_min_length, 30.0,
+              "meters. If the change lane target has longer length than this "
+              "threshold, it can shortcut the default lane.");
+DEFINE_bool(enable_change_lane_decider, false,
+            "True to use change lane state machine decider.");
+DEFINE_double(change_lane_speed_relax_percentage, 0.05,
+              "The percentage of change lane speed relaxation.");
+DEFINE_bool(enable_side_vehicle_st_boundary, false,
+            "Add st boundary of side vehicle in st graph.");
+
+DEFINE_int32(max_history_frame_num, 1, "The maximum history frame number");
+
+DEFINE_double(max_collision_distance, 0.1,
+              "considered as collision if distance (meters) is smaller than or "
+              "equal to this (meters)");
+
+DEFINE_bool(ignore_overlapped_obstacle, false,
+            "ingore obstacle that overlapps with ADC. Only enable this flag "
+            "when you found fake obstacle result from poorly lidar");
+
+DEFINE_double(replan_lateral_distance_threshold, 5.0,
+              "The distance threshold of replan");
+DEFINE_double(replan_longitudinal_distance_threshold, 5.0,
+              "The distance threshold of replan");
+DEFINE_bool(estimate_current_vehicle_state, true,
+            "Estimate current vehicle state.");
+
+DEFINE_double(trajectory_time_length, 8.0, "Trajectory time length");
+
+// planning trajectory output time density control
+DEFINE_double(
+    trajectory_time_min_interval, 0.02,
+    "(seconds) Trajectory time interval when publish. The is the min value.");
+DEFINE_double(
+    trajectory_time_max_interval, 0.1,
+    "(seconds) Trajectory time interval when publish. The is the max value.");
+DEFINE_double(
+    trajectory_time_high_density_period, 1.0,
+    "(seconds) Keep high density in the next this amount of seconds. ");
+
+DEFINE_bool(enable_trajectory_check, false,
+            "Enable sanity check for planning trajectory.");
+
+DEFINE_double(speed_lower_bound, -0.1, "The lowest speed allowed.");
+DEFINE_double(speed_upper_bound, 40.0, "The highest speed allowed.");
+
+DEFINE_double(longitudinal_acceleration_lower_bound, -4.5,
+              "The lowest longitudinal acceleration allowed.");
+DEFINE_double(longitudinal_acceleration_upper_bound, 4.0,
+              "The highest longitudinal acceleration allowed.");
+DEFINE_double(lateral_acceleration_bound, 4.0,
+              "Bound of lateral acceleration; symmetric for left and right");
+
+DEFINE_double(longitudinal_jerk_lower_bound, -4.0,
+              "The lower bound of longitudinal jerk.");
+DEFINE_double(longitudinal_jerk_upper_bound, 4.0,
+              "The upper bound of longitudinal jerk.");
+DEFINE_double(lateral_jerk_bound, 4.0,
+              "Bound of lateral jerk; symmetric for left and right");
+
+DEFINE_double(dl_bound, 0.10,
+              "The bound for derivative l in s-l coordinate system.");
+DEFINE_double(kappa_bound, 0.20, "The bound for trajectory curvature");
+DEFINE_double(dkappa_bound, 0.02,
+              "The bound for trajectory curvature change rate");
+
+// ST Boundary
+DEFINE_double(st_max_s, 100, "the maximum s of st boundary");
+DEFINE_double(st_max_t, 8, "the maximum t of st boundary");
+
+// Decision Part
+DEFINE_double(static_obstacle_speed_threshold, 2.0,
+              "obstacles are considered as static obstacle if its speed is "
+              "less than this value (m/s)");
+DEFINE_bool(enable_nudge_decision, true, "enable nudge decision");
+DEFINE_bool(enable_nudge_slowdown, true,
+            "True to slow down when nudge obstacles.");
+
+DEFINE_bool(enable_side_radar, false,
+            "If there is no radar on the side,ignore it");
+DEFINE_double(static_decision_nudge_l_buffer, 0.5, "l buffer for nudge");
+DEFINE_double(lateral_ignore_buffer, 3.0,
+              "If an obstacle's lateral distance is further away than this "
+              "distance, ignore it");
+DEFINE_double(max_stop_distance_obstacle, 10.0,
+              "max stop distance from in-lane obstacle (meters)");
+DEFINE_double(min_stop_distance_obstacle, 6.0,
+              "min stop distance from in-lane obstacle (meters)");
+DEFINE_double(nudge_distance_obstacle, 0.5,
+              "minimum distance to nudge a obstacle (meters)");
+DEFINE_double(follow_min_distance, 3.0,
+              "min follow distance for vehicles/bicycles/moving objects");
+DEFINE_double(yield_distance, 3.0,
+              "min yield distance for vehicles/moving objects "
+              "other than pedestrians/bicycles");
+DEFINE_double(yield_distance_pedestrian_bycicle, 5.0,
+              "min yield distance for pedestrians/bicycles");
+DEFINE_double(
+    follow_time_buffer, 2.5,
+    "follow time buffer (in second) to calculate the following distance.");
+DEFINE_double(
+    follow_min_time_sec, 0.1,
+    "min following time in st region before considering a valid follow");
+DEFINE_double(stop_line_stop_distance, 1.0, "stop distance from stop line");
+DEFINE_double(max_stop_speed, 0.2, "max speed(m/s) to be considered as a stop");
+DEFINE_double(signal_light_min_pass_s_distance, 4.0,
+              "min s_distance for adc to be considered "
+              "have passed signal_light (stop_line_end_s)");
+
+DEFINE_string(destination_obstacle_id, "DEST",
+              "obstacle id for converting destination to an obstacle");
+DEFINE_double(destination_check_distance, 5.0,
+              "if the distance between destination and ADC is less than this,"
+              " it is considered to reach destination");
+
+DEFINE_double(virtual_stop_wall_length, 0.1,
+              "virtual stop wall length (meters)");
+DEFINE_double(virtual_stop_wall_height, 2.0,
+              "virtual stop wall height (meters)");
+
+// Prediction Part
+DEFINE_double(prediction_total_time, 5.0, "Total prediction time");
+DEFINE_bool(align_prediction_time, false,
+            "enable align prediction data based planning time");
+
+// Trajectory
+
+// according to DMV's rule, turn signal should be on within 200 ft from
+// intersection.
+DEFINE_double(
+    turn_signal_distance, 100.00,
+    "In meters. If there is a turn within this distance, use turn signal");
+
+
+DEFINE_bool(enable_record_debug, true,
+            "True to enable record debug into debug protobuf.");
+
+DEFINE_bool(enable_lag_prediction, true,
+            "Enable lagged prediction, which is more tolerant to obstacles "
+            "that appear and disappear quickly");
+DEFINE_int32(lag_prediction_min_appear_num, 5,
+             "The minimum of appearance of the obstacle for lagged prediction");
+DEFINE_double(lag_prediction_max_disappear_num, 3,
+              "In lagged prediction, ignore obstacle disappeared for more "
+              "than this value");
+DEFINE_double(lag_prediction_protection_distance, 30,
+              "Within this distance, we do not use lagged prediction");
+
+DEFINE_double(perception_confidence_threshold, 0.4,
+              "Skip the obstacle if its confidence is lower than "
+              "this threshold.");
+
+// QpSt optimizer
+DEFINE_double(slowdown_profile_deceleration, -1.0,
+              "The deceleration to generate slowdown profile. unit: m/s^2.");
+DEFINE_bool(enable_follow_accel_constraint, true,
+            "Enable follow acceleration constraint.");
+
+/// thread pool
+DEFINE_int32(max_planning_thread_pool_size, 15,
+              "num of thread used in planning thread pool.");
+DEFINE_bool(use_multi_thread_to_add_obstacles, false,
+            "use multiple thread to add obstacles.");
+DEFINE_bool(
+    enable_multi_thread_in_dp_poly_path, false,
+    "Enable multiple thread to calculation curve cost in dp_poly_path.");
+DEFINE_bool(enable_multi_thread_in_dp_st_graph, false,
+            "Enable multiple thread to calculation curve cost in dp_st_graph.");
+
+/// Lattice Planner
+DEFINE_double(lattice_epsilon, 1e-6, "Epsilon in lattice planner.");
+DEFINE_double(default_cruise_speed, 5.0, "default cruise speed");
+DEFINE_bool(enable_auto_tuning, false, "enable auto tuning data emission");
+DEFINE_double(trajectory_time_resolution, 0.1,
+              "Trajectory time resolution in planning");
+DEFINE_double(trajectory_space_resolution, 1.0,
+              "Trajectory space resolution in planning");
+DEFINE_double(decision_horizon, 200.0,
+              "Longitudinal horizon for decision making");
+DEFINE_int32(num_velocity_sample, 6,
+              "The number of velocity samples in end condition sampler.");
+DEFINE_bool(enable_backup_trajectory, true,
+            "If generate backup trajectory when planning fail");
+DEFINE_double(backup_trajectory_cost, 1000.0,
+              "Default cost of backup trajectory");
+DEFINE_double(min_velocity_sample_gap, 1.0,
+              "Minimal sampling gap for velocity");
+DEFINE_double(lon_collision_buffer, 2.0,
+              "The longitudinal buffer to keep distance to other vehicles");
+DEFINE_double(lat_collision_buffer, 0.1,
+              "The lateral buffer to keep distance to other vehicles");
+DEFINE_int32(num_sample_follow_per_timestamp, 3,
+              "The number of sample points for each timestamp to follow");
+
+// Lattice Evaluate Parameters
+DEFINE_double(weight_lon_objective, 10.0, "Weight of longitudinal travel cost");
+DEFINE_double(weight_lon_jerk, 1.0, "Weight of longitudinal jerk cost");
+DEFINE_double(weight_lon_collision, 5.0,
+              "Weight of logitudinal collision cost");
+DEFINE_double(weight_lat_offset, 2.0, "Weight of lateral offset cost");
+DEFINE_double(weight_lat_comfort, 10.0, "Weight of lateral comfort cost");
+DEFINE_double(weight_centripetal_acceleration, 1.5,
+              "Weight of centripetal acceleration");
+DEFINE_double(cost_non_priority_reference_line, 5.0,
+              "The cost of planning on non-priority reference line.");
+DEFINE_double(weight_same_side_offset, 1.0,
+              "Weight of same side lateral offset cost");
+DEFINE_double(weight_opposite_side_offset, 10.0,
+              "Weight of opposite side lateral offset cost");
+DEFINE_double(weight_dist_travelled, 10.0, "Weight of travelled distance cost");
+DEFINE_double(weight_target_speed, 1.0, "Weight of target speed cost");
+DEFINE_double(lat_offset_bound, 3.0, "The bound of lateral offset");
+DEFINE_double(lon_collision_yield_buffer, 1.0,
+              "Longitudinal collision buffer for yield");
+DEFINE_double(lon_collision_overtake_buffer, 5.0,
+              "Longitudinal collision buffer for overtake");
+DEFINE_double(lon_collision_cost_std, 0.5,
+              "The standard deviation of logitudinal collision cost function");
+DEFINE_double(default_lon_buffer, 5.0,
+              "Default longitudinal buffer to sample path-time points.");
+DEFINE_double(time_min_density, 1.0,
+              "Minimal time density to search sample points.");
+DEFINE_double(comfort_acceleration_factor, 0.5,
+              "Factor for comfort acceleration.");
+DEFINE_double(polynomial_minimal_param, 0.01,
+              "Minimal time parameter in polynomials.");
+DEFINE_double(lattice_stop_buffer, 0.02,
+              "The buffer before the stop s to check trajectories.");
+
+DEFINE_bool(lateral_optimization, false,
+            "whether using optimization for lateral trajectory generation");
+DEFINE_double(weight_lateral_offset, 1.0,
+              "weight for lateral offset "
+              "in lateral trajectory optimization");
+DEFINE_double(weight_lateral_derivative, 500.0,
+              "weight for lateral derivative "
+              "in lateral trajectory optimization");
+DEFINE_double(weight_lateral_second_order_derivative, 1000.0,
+              "weight for lateral second order derivative "
+              "in lateral trajectory optimization");
+DEFINE_double(
+    weight_lateral_obstacle_distance, 0.0,
+    "weight for lateral obstacle distance in lateral trajectory optimization");
+DEFINE_double(lateral_third_order_derivative_max, 0.1,
+              "the maximal allowance for lateral third order derivative");
+DEFINE_double(max_s_lateral_optimization, 50.0,
+              "The maximal s for lateral optimization.");
+DEFINE_double(default_delta_s_lateral_optimization, 2.0,
+              "The default delta s for lateral optimization.");
+DEFINE_double(bound_buffer, 0.1, "buffer to boundary for lateral optimization");
+DEFINE_double(nudge_buffer, 0.3, "buffer to nudge for lateral optimization");
+
+DEFINE_bool(use_planning_fallback, true,
+            "Use fallback trajectory for planning.");
+DEFINE_double(fallback_total_time, 3.0, "total fallback trajectory time");
+DEFINE_double(fallback_time_unit, 0.02,
+              "fallback trajectory unit time in seconds");
+DEFINE_double(polynomial_speed_fallback_velocity, 3.5,
+              "velocity to use polynomial speed fallback.");
+
+// navigation mode
+DEFINE_double(navigation_fallback_cruise_time, 8.0,
+              "The time range of fallback cruise under navigation mode.");
+
+DEFINE_bool(enable_stitch_last_trajectory, true,
+            "To control whether to stitch last trajectory or not.");
+
+DEFINE_bool(enable_planning_pad_msg, false,
+            "To control whether to enable planning pad message.");

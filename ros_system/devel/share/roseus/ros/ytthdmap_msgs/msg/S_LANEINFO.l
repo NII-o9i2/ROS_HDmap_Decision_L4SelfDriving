@@ -149,7 +149,7 @@
    self)
   )
 
-(setf (get ytthdmap_msgs::S_LANEINFO :md5sum-) "3bc5c9298690fd903b2c404d72e82a3f")
+(setf (get ytthdmap_msgs::S_LANEINFO :md5sum-) "6a14e40ee54202dfeea4f9379da90309")
 (setf (get ytthdmap_msgs::S_LANEINFO :datatype-) "ytthdmap_msgs/S_LANEINFO")
 (setf (get ytthdmap_msgs::S_LANEINFO :definition-)
       "S_LINE centerline
@@ -165,7 +165,7 @@ float32 length
 ================================================================================
 MSG: ytthdmap_msgs/S_LINE
 int16 type
-int16 linetype
+int16[100] linetype
 S_POINT[100] point
 int16 pointnum
 
@@ -179,6 +179,6 @@ float32 z
 
 
 
-(provide :ytthdmap_msgs/S_LANEINFO "3bc5c9298690fd903b2c404d72e82a3f")
+(provide :ytthdmap_msgs/S_LANEINFO "6a14e40ee54202dfeea4f9379da90309")
 
 

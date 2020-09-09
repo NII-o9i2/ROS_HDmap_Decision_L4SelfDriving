@@ -11,6 +11,7 @@ add_library(${lib_name} STATIC	map_server.cc)
 
 target_include_directories(
 	${lib_name}
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/API
 	PUBLIC ${Qt5Core_INCLUDE_DIRS}

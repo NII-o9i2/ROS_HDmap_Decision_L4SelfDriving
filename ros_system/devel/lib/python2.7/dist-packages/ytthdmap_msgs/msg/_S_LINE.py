@@ -8,11 +8,11 @@ import struct
 import ytthdmap_msgs.msg
 
 class S_LINE(genpy.Message):
-  _md5sum = "49366bc67b2f179a0d236b700e094625"
+  _md5sum = "33dad250dabe5dc1f0d3a753aa379102"
   _type = "ytthdmap_msgs/S_LINE"
   _has_header = False #flag to mark the presence of a Header object
   _full_text = """int16 type
-int16 linetype
+int16[100] linetype
 S_POINT[100] point
 int16 pointnum
 
@@ -23,7 +23,7 @@ float32 y
 float32 z
 """
   __slots__ = ['type','linetype','point','pointnum']
-  _slot_types = ['int16','int16','ytthdmap_msgs/S_POINT[100]','int16']
+  _slot_types = ['int16','int16[100]','ytthdmap_msgs/S_POINT[100]','int16']
 
   def __init__(self, *args, **kwds):
     """
@@ -45,14 +45,14 @@ float32 z
       if self.type is None:
         self.type = 0
       if self.linetype is None:
-        self.linetype = 0
+        self.linetype = [0] * 100
       if self.point is None:
         self.point = [ytthdmap_msgs.msg.S_POINT() for _ in range(100)]
       if self.pointnum is None:
         self.pointnum = 0
     else:
       self.type = 0
-      self.linetype = 0
+      self.linetype = [0] * 100
       self.point = [ytthdmap_msgs.msg.S_POINT() for _ in range(100)]
       self.pointnum = 0
 
@@ -68,8 +68,8 @@ float32 z
     :param buff: buffer, ``StringIO``
     """
     try:
-      _x = self
-      buff.write(_get_struct_2h().pack(_x.type, _x.linetype))
+      buff.write(_get_struct_h().pack(self.type))
+      buff.write(_get_struct_100h().pack(*self.linetype))
       for val1 in self.point:
         _x = val1
         buff.write(_get_struct_3f().pack(_x.x, _x.y, _x.z))
@@ -86,10 +86,12 @@ float32 z
       if self.point is None:
         self.point = None
       end = 0
-      _x = self
       start = end
-      end += 4
-      (_x.type, _x.linetype,) = _get_struct_2h().unpack(str[start:end])
+      end += 2
+      (self.type,) = _get_struct_h().unpack(str[start:end])
+      start = end
+      end += 200
+      self.linetype = _get_struct_100h().unpack(str[start:end])
       self.point = []
       for i in range(0, 100):
         val1 = ytthdmap_msgs.msg.S_POINT()
@@ -113,8 +115,8 @@ float32 z
     :param numpy: numpy python module
     """
     try:
-      _x = self
-      buff.write(_get_struct_2h().pack(_x.type, _x.linetype))
+      buff.write(_get_struct_h().pack(self.type))
+      buff.write(self.linetype.tostring())
       for val1 in self.point:
         _x = val1
         buff.write(_get_struct_3f().pack(_x.x, _x.y, _x.z))
@@ -132,10 +134,12 @@ float32 z
       if self.point is None:
         self.point = None
       end = 0
-      _x = self
       start = end
-      end += 4
-      (_x.type, _x.linetype,) = _get_struct_2h().unpack(str[start:end])
+      end += 2
+      (self.type,) = _get_struct_h().unpack(str[start:end])
+      start = end
+      end += 200
+      self.linetype = numpy.frombuffer(str[start:end], dtype=numpy.int16, count=100)
       self.point = []
       for i in range(0, 100):
         val1 = ytthdmap_msgs.msg.S_POINT()
@@ -161,15 +165,15 @@ def _get_struct_h():
     if _struct_h is None:
         _struct_h = struct.Struct("<h")
     return _struct_h
-_struct_2h = None
-def _get_struct_2h():
-    global _struct_2h
-    if _struct_2h is None:
-        _struct_2h = struct.Struct("<2h")
-    return _struct_2h
 _struct_3f = None
 def _get_struct_3f():
     global _struct_3f
     if _struct_3f is None:
         _struct_3f = struct.Struct("<3f")
     return _struct_3f
+_struct_100h = None
+def _get_struct_100h():
+    global _struct_100h
+    if _struct_100h is None:
+        _struct_100h = struct.Struct("<100h")
+    return _struct_100h

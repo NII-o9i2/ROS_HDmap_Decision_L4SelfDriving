@@ -163,12 +163,12 @@ struct MD5Sum< ::ytthdmap_msgs::HdmapYtt_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "965fc75ddac5682aff9e25ac32f36524";
+    return "bae8b9094ef6eb009a2477dc42585c37";
   }
 
   static const char* value(const ::ytthdmap_msgs::HdmapYtt_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x965fc75ddac5682aULL;
-  static const uint64_t static_value2 = 0xff9e25ac32f36524ULL;
+  static const uint64_t static_value1 = 0xbae8b9094ef6eb00ULL;
+  static const uint64_t static_value2 = 0x9a2477dc42585c37ULL;
 };
 
 template<class ContainerAllocator>
@@ -231,7 +231,7 @@ float32 length\n\
 ================================================================================\n\
 MSG: ytthdmap_msgs/S_LINE\n\
 int16 type\n\
-int16 linetype\n\
+int16[100] linetype\n\
 S_POINT[100] point\n\
 int16 pointnum\n\
 \n\

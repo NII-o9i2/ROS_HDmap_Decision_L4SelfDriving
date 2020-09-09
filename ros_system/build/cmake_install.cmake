@@ -126,8 +126,11 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/build/gtest/cmake_install.cmake")
+  include("/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/build/planning/leadgen_msgs/cmake_install.cmake")
+  include("/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/build/planning/planning_msgs/cmake_install.cmake")
   include("/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/build/ytthdmap/locationsim_msgs/cmake_install.cmake")
   include("/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/build/ytthdmap/ytthdmap_msgs/cmake_install.cmake")
+  include("/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/build/planning/src/cmake_install.cmake")
   include("/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/build/ytthdmap/src/cmake_install.cmake")
 
 endif()

@@ -15,8 +15,8 @@
    (linetype
     :reader linetype
     :initarg :linetype
-    :type cl:fixnum
-    :initform 0)
+    :type (cl:vector cl:fixnum)
+   :initform (cl:make-array 100 :element-type 'cl:fixnum :initial-element 0))
    (point
     :reader point
     :initarg :point
@@ -62,10 +62,11 @@
     (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
     )
-  (cl:let* ((signed (cl:slot-value msg 'linetype)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 65536) signed)))
+  (cl:map cl:nil #'(cl:lambda (ele) (cl:let* ((signed ele) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 65536) signed)))
     (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
-    )
+    ))
+   (cl:slot-value msg 'linetype))
   (cl:map cl:nil #'(cl:lambda (ele) (roslisp-msg-protocol:serialize ele ostream))
    (cl:slot-value msg 'point))
   (cl:let* ((signed (cl:slot-value msg 'pointnum)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 65536) signed)))
@@ -79,10 +80,13 @@
       (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
       (cl:setf (cl:slot-value msg 'type) (cl:if (cl:< unsigned 32768) unsigned (cl:- unsigned 65536))))
+  (cl:setf (cl:slot-value msg 'linetype) (cl:make-array 100))
+  (cl:let ((vals (cl:slot-value msg 'linetype)))
+    (cl:dotimes (i 100)
     (cl:let ((unsigned 0))
       (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:slot-value msg 'linetype) (cl:if (cl:< unsigned 32768) unsigned (cl:- unsigned 65536))))
+      (cl:setf (cl:aref vals i) (cl:if (cl:< unsigned 32768) unsigned (cl:- unsigned 65536))))))
   (cl:setf (cl:slot-value msg 'point) (cl:make-array 100))
   (cl:let ((vals (cl:slot-value msg 'point)))
     (cl:dotimes (i 100)
@@ -102,20 +106,20 @@
   "ytthdmap_msgs/S_LINE")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<S_LINE>)))
   "Returns md5sum for a message object of type '<S_LINE>"
-  "49366bc67b2f179a0d236b700e094625")
+  "33dad250dabe5dc1f0d3a753aa379102")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'S_LINE)))
   "Returns md5sum for a message object of type 'S_LINE"
-  "49366bc67b2f179a0d236b700e094625")
+  "33dad250dabe5dc1f0d3a753aa379102")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<S_LINE>)))
   "Returns full string definition for message of type '<S_LINE>"
-  (cl:format cl:nil "int16 type~%int16 linetype~%S_POINT[100] point~%int16 pointnum~%~%================================================================================~%MSG: ytthdmap_msgs/S_POINT~%float32 x~%float32 y~%float32 z~%~%~%"))
+  (cl:format cl:nil "int16 type~%int16[100] linetype~%S_POINT[100] point~%int16 pointnum~%~%================================================================================~%MSG: ytthdmap_msgs/S_POINT~%float32 x~%float32 y~%float32 z~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'S_LINE)))
   "Returns full string definition for message of type 'S_LINE"
-  (cl:format cl:nil "int16 type~%int16 linetype~%S_POINT[100] point~%int16 pointnum~%~%================================================================================~%MSG: ytthdmap_msgs/S_POINT~%float32 x~%float32 y~%float32 z~%~%~%"))
+  (cl:format cl:nil "int16 type~%int16[100] linetype~%S_POINT[100] point~%int16 pointnum~%~%================================================================================~%MSG: ytthdmap_msgs/S_POINT~%float32 x~%float32 y~%float32 z~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <S_LINE>))
   (cl:+ 0
      2
-     2
+     0 (cl:reduce #'cl:+ (cl:slot-value msg 'linetype) :key #'(cl:lambda (ele) (cl:declare (cl:ignorable ele)) (cl:+ 2)))
      0 (cl:reduce #'cl:+ (cl:slot-value msg 'point) :key #'(cl:lambda (ele) (cl:declare (cl:ignorable ele)) (cl:+ (roslisp-msg-protocol:serialization-length ele))))
      2
 ))

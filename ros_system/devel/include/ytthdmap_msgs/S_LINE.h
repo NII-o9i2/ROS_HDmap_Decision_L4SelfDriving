@@ -26,16 +26,19 @@ struct S_LINE_
 
   S_LINE_()
     : type(0)
-    , linetype(0)
+    , linetype()
     , point()
     , pointnum(0)  {
-    }
+      linetype.assign(0);
+  }
   S_LINE_(const ContainerAllocator& _alloc)
     : type(0)
-    , linetype(0)
+    , linetype()
     , point()
     , pointnum(0)  {
   (void)_alloc;
+      linetype.assign(0);
+
       point.assign( ::ytthdmap_msgs::S_POINT_<ContainerAllocator> (_alloc));
   }
 
@@ -44,7 +47,7 @@ struct S_LINE_
    typedef int16_t _type_type;
   _type_type type;
 
-   typedef int16_t _linetype_type;
+   typedef boost::array<int16_t, 100>  _linetype_type;
   _linetype_type linetype;
 
    typedef boost::array< ::ytthdmap_msgs::S_POINT_<ContainerAllocator> , 100>  _point_type;
@@ -131,12 +134,12 @@ struct MD5Sum< ::ytthdmap_msgs::S_LINE_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "49366bc67b2f179a0d236b700e094625";
+    return "33dad250dabe5dc1f0d3a753aa379102";
   }
 
   static const char* value(const ::ytthdmap_msgs::S_LINE_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x49366bc67b2f179aULL;
-  static const uint64_t static_value2 = 0x0d236b700e094625ULL;
+  static const uint64_t static_value1 = 0x33dad250dabe5dc1ULL;
+  static const uint64_t static_value2 = 0xf0d3a753aa379102ULL;
 };
 
 template<class ContainerAllocator>
@@ -156,7 +159,7 @@ struct Definition< ::ytthdmap_msgs::S_LINE_<ContainerAllocator> >
   static const char* value()
   {
     return "int16 type\n\
-int16 linetype\n\
+int16[100] linetype\n\
 S_POINT[100] point\n\
 int16 pointnum\n\
 \n\
@@ -207,8 +210,12 @@ struct Printer< ::ytthdmap_msgs::S_LINE_<ContainerAllocator> >
   {
     s << indent << "type: ";
     Printer<int16_t>::stream(s, indent + "  ", v.type);
-    s << indent << "linetype: ";
-    Printer<int16_t>::stream(s, indent + "  ", v.linetype);
+    s << indent << "linetype[]" << std::endl;
+    for (size_t i = 0; i < v.linetype.size(); ++i)
+    {
+      s << indent << "  linetype[" << i << "]: ";
+      Printer<int16_t>::stream(s, indent + "  ", v.linetype[i]);
+    }
     s << indent << "point[]" << std::endl;
     for (size_t i = 0; i < v.point.size(); ++i)
     {

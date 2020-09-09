@@ -161,7 +161,7 @@ class HdmapYtt {
   static getMessageSize(object) {
     let length = 0;
     length += std_msgs.msg.Header.getMessageSize(object.header);
-    return length + 380;
+    return length + 3350;
   }
 
   static datatype() {
@@ -171,7 +171,7 @@ class HdmapYtt {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '965fc75ddac5682aff9e25ac32f36524';
+    return 'bae8b9094ef6eb009a2477dc42585c37';
   }
 
   static messageDefinition() {
@@ -221,7 +221,7 @@ class HdmapYtt {
     ================================================================================
     MSG: ytthdmap_msgs/S_LINE
     int16 type
-    int16 linetype
+    int16[100] linetype
     S_POINT[100] point
     int16 pointnum
     

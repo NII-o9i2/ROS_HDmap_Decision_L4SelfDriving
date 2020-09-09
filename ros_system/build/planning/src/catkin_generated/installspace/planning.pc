@@ -1,0 +1,8 @@
+prefix=/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/install
+
+Name: planning
+Description: Description of planning
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: roscpp planning_msgs ytthdmap_msgs locationsim_msgs

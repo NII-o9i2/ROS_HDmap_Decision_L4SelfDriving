@@ -35,7 +35,7 @@ class S_LINE {
         this.linetype = initObj.linetype
       }
       else {
-        this.linetype = 0;
+        this.linetype = new Array(100).fill(0);
       }
       if (initObj.hasOwnProperty('point')) {
         this.point = initObj.point
@@ -56,8 +56,12 @@ class S_LINE {
     // Serializes a message object of type S_LINE
     // Serialize message field [type]
     bufferOffset = _serializer.int16(obj.type, buffer, bufferOffset);
+    // Check that the constant length array field [linetype] has the right length
+    if (obj.linetype.length !== 100) {
+      throw new Error('Unable to serialize array field linetype - length must be 100')
+    }
     // Serialize message field [linetype]
-    bufferOffset = _serializer.int16(obj.linetype, buffer, bufferOffset);
+    bufferOffset = _arraySerializer.int16(obj.linetype, buffer, bufferOffset, 100);
     // Check that the constant length array field [point] has the right length
     if (obj.point.length !== 100) {
       throw new Error('Unable to serialize array field point - length must be 100')
@@ -78,7 +82,7 @@ class S_LINE {
     // Deserialize message field [type]
     data.type = _deserializer.int16(buffer, bufferOffset);
     // Deserialize message field [linetype]
-    data.linetype = _deserializer.int16(buffer, bufferOffset);
+    data.linetype = _arrayDeserializer.int16(buffer, bufferOffset, 100)
     // Deserialize message field [point]
     len = 100;
     data.point = new Array(len);
@@ -91,7 +95,7 @@ class S_LINE {
   }
 
   static getMessageSize(object) {
-    return 18;
+    return 216;
   }
 
   static datatype() {
@@ -101,14 +105,14 @@ class S_LINE {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '49366bc67b2f179a0d236b700e094625';
+    return '33dad250dabe5dc1f0d3a753aa379102';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
     int16 type
-    int16 linetype
+    int16[100] linetype
     S_POINT[100] point
     int16 pointnum
     
@@ -138,7 +142,7 @@ class S_LINE {
       resolved.linetype = msg.linetype;
     }
     else {
-      resolved.linetype = 0
+      resolved.linetype = new Array(100).fill(0)
     }
 
     if (msg.point !== undefined) {

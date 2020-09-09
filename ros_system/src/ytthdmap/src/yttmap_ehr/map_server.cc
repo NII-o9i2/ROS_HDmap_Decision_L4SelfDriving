@@ -435,6 +435,7 @@ bool ehr_api::GetLaneInfo(){
     //centerline point
     temp_lane.centerline.type = iter->second.m_stCenterline.m_pLineObj.m_eType;
     temp_lane.centerline.point.clear();
+    temp_lane.centerline.lineType.clear();
     for (i = 0; i < iter->second.m_stCenterline.m_pLineGeometry.m_vPoints.size(); i++)
     {
       fileDebug <<"debug  !! "<< temp_point.x <<endl;
@@ -443,6 +444,7 @@ bool ehr_api::GetLaneInfo(){
       temp_point.z = iter->second.m_stCenterline.m_pLineGeometry.m_vPoints[i].m_iAltitude;
       if (temp_lane.centerline.point.size()< 100){
         temp_lane.centerline.point.emplace_back(temp_point);
+        temp_lane.centerline.lineType.emplace_back(iter->second.m_stCenterline.m_pLineObj.m_eType);
       }else {
         break;
       }
@@ -450,6 +452,7 @@ bool ehr_api::GetLaneInfo(){
     //leftboundry
     temp_lane.leftboundry.type = iter->second.m_stLeftBoundary.m_pLineObj.m_eType;
     temp_lane.leftboundry.point.clear();
+    temp_lane.leftboundry.lineType.clear();
     for (i = 0; i < iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints.size(); i++)
     {
       temp_left_point.x = iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints[i].m_iLatitude;
@@ -457,6 +460,7 @@ bool ehr_api::GetLaneInfo(){
       temp_left_point.z = iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints[i].m_iAltitude;
       if (temp_lane.centerline.point.size()< 100){
         temp_lane.leftboundry.point.emplace_back(temp_point);
+        temp_lane.leftboundry.lineType.emplace_back(iter->second.m_stLeftBoundary.m_pLineObj.m_eType);
       }else {
         break;
       }
@@ -464,6 +468,7 @@ bool ehr_api::GetLaneInfo(){
     //rightboundry
     temp_lane.rightboundry.type = iter->second.m_stRightBoundary.m_pLineObj.m_eType;
     temp_lane.rightboundry.point.clear();
+    temp_lane.rightboundry.lineType.clear();
     for (i = 0; i < iter->second.m_stRightBoundary.m_pLineGeometry.m_vPoints.size(); i++)
     {
       temp_right_point.x = iter->second.m_stRightBoundary.m_pLineGeometry.m_vPoints[i].m_iLatitude;
@@ -471,6 +476,7 @@ bool ehr_api::GetLaneInfo(){
       temp_right_point.z = iter->second.m_stRightBoundary.m_pLineGeometry.m_vPoints[i].m_iAltitude;
       if (temp_lane.centerline.point.size()< 100){
         temp_lane.rightboundry.point.emplace_back(temp_point);
+        temp_lane.rightboundry.lineType.emplace_back(iter->second.m_stRightBoundary.m_pLineObj.m_eType);
       }else {
         break;
       }
@@ -498,6 +504,7 @@ bool ehr_api::GetLaneInfo(){
         temp_point.z = iter->second.m_stCenterline.m_pLineGeometry.m_vPoints[i].m_iAltitude;
         if (HDmapinfo_.laneinfo[loc].centerline.point.size()< 100){
           HDmapinfo_.laneinfo[loc].centerline.point.emplace_back(temp_point);
+          HDmapinfo_.laneinfo[loc].centerline.lineType.emplace_back(iter->second.m_stCenterline.m_pLineObj.m_eType);
         }else{
            break;
         }
@@ -512,6 +519,7 @@ bool ehr_api::GetLaneInfo(){
         temp_left_point.z = iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints[i].m_iAltitude;
         if (HDmapinfo_.laneinfo[loc].leftboundry.point.size()< 100){
           HDmapinfo_.laneinfo[loc].leftboundry.point.emplace_back(temp_left_point);
+          HDmapinfo_.laneinfo[loc].leftboundry.lineType.emplace_back(iter->second.m_stLeftBoundary.m_pLineObj.m_eType);
         }else{
            break;
         }
@@ -524,6 +532,7 @@ bool ehr_api::GetLaneInfo(){
         temp_right_point.z = iter->second.m_stRightBoundary.m_pLineGeometry.m_vPoints[i].m_iAltitude;
         if (HDmapinfo_.laneinfo[loc].rightboundry.point.size()< 100){
           HDmapinfo_.laneinfo[loc].rightboundry.point.emplace_back(temp_right_point);
+          HDmapinfo_.laneinfo[loc].rightboundry.lineType.emplace_back(iter->second.m_stRightBoundary.m_pLineObj.m_eType);
         }else{
           break;
         }

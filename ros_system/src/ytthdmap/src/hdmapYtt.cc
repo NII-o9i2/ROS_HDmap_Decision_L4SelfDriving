@@ -63,37 +63,37 @@ void mapinfo2msg(const HDmapInfo* HDmapinfo_,ytthdmap_msgs::HdmapYtt * mapinfo){
 		mapinfo->laneinfo[loc].length = iter->length;
 		//centerline
 		mapinfo->laneinfo[loc].centerline.type = iter->centerline.type;
-		mapinfo->laneinfo[loc].centerline.linetype = iter->centerline.lineType;
 		mapinfo->laneinfo[loc].centerline.pointnum = iter->centerline.pointnum;
 		loc1 = 0;
 		for(auto iter1 = iter->centerline.point.begin();iter1 !=iter->centerline.point.end();iter1++){
 			mapinfo->laneinfo[loc].centerline.point[loc1].x = iter1->x;
 			mapinfo->laneinfo[loc].centerline.point[loc1].y = iter1->y;
 			mapinfo->laneinfo[loc].centerline.point[loc1].z = iter1->z;
+			mapinfo->laneinfo[loc].centerline.linetype[loc1] = iter->centerline.lineType[loc1];
 			loc1++;
 			if (loc1>=100) break;
 		}
 		//leftboundry
 		mapinfo->laneinfo[loc].leftboundry.type = iter->leftboundry.type;
-		mapinfo->laneinfo[loc].leftboundry.linetype = iter->leftboundry.lineType;
 		mapinfo->laneinfo[loc].leftboundry.pointnum = iter->leftboundry.pointnum;
 		loc1 = 0;
 		for(auto iter1 = iter->leftboundry.point.begin();iter1 !=iter->leftboundry.point.end();iter1++){
 			mapinfo->laneinfo[loc].leftboundry.point[loc1].x = iter1->x;
 			mapinfo->laneinfo[loc].leftboundry.point[loc1].y = iter1->y;
 			mapinfo->laneinfo[loc].leftboundry.point[loc1].z = iter1->z;
+			mapinfo->laneinfo[loc].leftboundry.linetype[loc1] = iter->leftboundry.lineType[loc1];
 			loc1++;
 			if (loc1>=100) break;
 		}
 		//rightboundry
 		mapinfo->laneinfo[loc].rightboundry.type = iter->rightboundry.type;
-		mapinfo->laneinfo[loc].rightboundry.linetype = iter->rightboundry.lineType;
 		mapinfo->laneinfo[loc].rightboundry.pointnum = iter->rightboundry.pointnum;
 		loc1 = 0;
 		for(auto iter1 = iter->rightboundry.point.begin();iter1 !=iter->rightboundry.point.end();iter1++){
 			mapinfo->laneinfo[loc].rightboundry.point[loc1].x = iter1->x;
 			mapinfo->laneinfo[loc].rightboundry.point[loc1].y = iter1->y;
 			mapinfo->laneinfo[loc].rightboundry.point[loc1].z = iter1->z;
+			mapinfo->laneinfo[loc].rightboundry.linetype[loc1] = iter->rightboundry.lineType[loc1];
 			loc1++;
 			if (loc1>=100) break;
 		}

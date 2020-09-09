@@ -223,6 +223,30 @@ LSB_RELEASE_EXECUTABLE:FILEPATH=/usr/bin/lsb_release
 //Path to a program.
 NOSETESTS:FILEPATH=/usr/bin/nosetests-2.7
 
+//Path to a file.
+PROTOBUF_INCLUDE_DIR:PATH=/usr/include
+
+//Path to a library.
+PROTOBUF_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libprotobuf.so
+
+//Path to a library.
+PROTOBUF_LIBRARY_DEBUG:FILEPATH=/usr/lib/x86_64-linux-gnu/libprotobuf.so
+
+//Path to a library.
+PROTOBUF_LITE_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libprotobuf-lite.so
+
+//Path to a library.
+PROTOBUF_LITE_LIBRARY_DEBUG:FILEPATH=/usr/lib/x86_64-linux-gnu/libprotobuf-lite.so
+
+//The Google Protocol Buffers Compiler
+PROTOBUF_PROTOC_EXECUTABLE:FILEPATH=PROTOBUF_PROTOC_EXECUTABLE-NOTFOUND
+
+//Path to a library.
+PROTOBUF_PROTOC_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libprotoc.so
+
+//Path to a library.
+PROTOBUF_PROTOC_LIBRARY_DEBUG:FILEPATH=/usr/lib/x86_64-linux-gnu/libprotoc.so
+
 //Path to a program.
 PYTHON_EXECUTABLE:FILEPATH=/usr/bin/python2
 
@@ -292,6 +316,9 @@ gennodejs_DIR:PATH=/opt/ros/kinetic/share/gennodejs/cmake
 //The directory containing a CMake configuration file for genpy.
 genpy_DIR:PATH=/opt/ros/kinetic/share/genpy/cmake
 
+//The directory containing a CMake configuration file for geometry_msgs.
+geometry_msgs_DIR:PATH=/opt/ros/kinetic/share/geometry_msgs/cmake
+
 //Value Computed by CMake
 gmock_BINARY_DIR:STATIC=/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/build/gtest
 
@@ -332,6 +359,15 @@ gtest_force_shared_crt:BOOL=OFF
 //Dependencies for the target
 gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
 
+//The directory containing a CMake configuration file for hmi_msgs.
+hmi_msgs_DIR:PATH=hmi_msgs_DIR-NOTFOUND
+
+//Value Computed by CMake
+leadgen_msgs_BINARY_DIR:STATIC=/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/build/planning/leadgen_msgs
+
+//Value Computed by CMake
+leadgen_msgs_SOURCE_DIR:STATIC=/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/planning/leadgen_msgs
+
 //Path to a library.
 lib:FILEPATH=/opt/ros/kinetic/lib/libxmlrpcpp.so
 
@@ -352,6 +388,24 @@ message_generation_DIR:PATH=/opt/ros/kinetic/share/message_generation/cmake
 
 //The directory containing a CMake configuration file for message_runtime.
 message_runtime_DIR:PATH=/opt/ros/kinetic/share/message_runtime/cmake
+
+//Dependencies for the target
+planner_std_lib_LIB_DEPENDS:STATIC=general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;
+
+//Value Computed by CMake
+planning_BINARY_DIR:STATIC=/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/build/planning/src
+
+//Value Computed by CMake
+planning_SOURCE_DIR:STATIC=/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/planning/src
+
+//Value Computed by CMake
+planning_msgs_BINARY_DIR:STATIC=/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/build/planning/planning_msgs
+
+//The directory containing a CMake configuration file for planning_msgs.
+planning_msgs_DIR:PATH=/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/devel/share/planning_msgs/cmake
+
+//Value Computed by CMake
+planning_msgs_SOURCE_DIR:STATIC=/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/planning/planning_msgs
 
 //The directory containing a CMake configuration file for rosconsole.
 rosconsole_DIR:PATH=/opt/ros/kinetic/share/rosconsole/cmake
@@ -494,7 +548,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=7
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=11
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -533,6 +587,8 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding Protobuf
+FIND_PACKAGE_MESSAGE_DETAILS_Protobuf:INTERNAL=[/usr/lib/x86_64-linux-gnu/libprotobuf.so][/usr/include][v()]
 //Details about finding PythonInterp
 FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python2][v2.7.12()]
 //Details about finding Threads
@@ -557,6 +613,22 @@ GTEST_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 GTEST_MAIN_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GTEST_MAIN_LIBRARY_DEBUG
 GTEST_MAIN_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PROTOBUF_INCLUDE_DIR
+PROTOBUF_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PROTOBUF_LIBRARY
+PROTOBUF_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PROTOBUF_LIBRARY_DEBUG
+PROTOBUF_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PROTOBUF_LITE_LIBRARY
+PROTOBUF_LITE_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PROTOBUF_LITE_LIBRARY_DEBUG
+PROTOBUF_LITE_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PROTOBUF_PROTOC_EXECUTABLE
+PROTOBUF_PROTOC_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PROTOBUF_PROTOC_LIBRARY
+PROTOBUF_PROTOC_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PROTOBUF_PROTOC_LIBRARY_DEBUG
+PROTOBUF_PROTOC_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PYTHON_EXECUTABLE
 PYTHON_EXECUTABLE-ADVANCED:INTERNAL=1
 //This needs to be in PYTHONPATH when 'setup.py install' is called.

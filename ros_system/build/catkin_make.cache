@@ -1,2 +1,2 @@
-ytthdmap/locationsim_msgs:ytthdmap/src:ytthdmap/ytthdmap_msgs
+planning/leadgen_msgs:planning/planning_msgs:planning/src:ytthdmap/locationsim_msgs:ytthdmap/src:ytthdmap/ytthdmap_msgs
 -DCATKIN_DEVEL_PREFIX=/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/devel -DCMAKE_INSTALL_PREFIX=/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/install -G Unix Makefiles

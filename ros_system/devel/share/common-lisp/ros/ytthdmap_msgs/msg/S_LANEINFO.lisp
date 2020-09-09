@@ -175,16 +175,16 @@
   "ytthdmap_msgs/S_LANEINFO")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<S_LANEINFO>)))
   "Returns md5sum for a message object of type '<S_LANEINFO>"
-  "3bc5c9298690fd903b2c404d72e82a3f")
+  "6a14e40ee54202dfeea4f9379da90309")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'S_LANEINFO)))
   "Returns md5sum for a message object of type 'S_LANEINFO"
-  "3bc5c9298690fd903b2c404d72e82a3f")
+  "6a14e40ee54202dfeea4f9379da90309")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<S_LANEINFO>)))
   "Returns full string definition for message of type '<S_LANEINFO>"
-  (cl:format cl:nil "S_LINE centerline~%S_LINE leftboundry~%S_LINE rightboundry~%float32 width~%bool IsPartofRouting~%int16 type~%int16 direction~%int16 id~%float32 length~%~%================================================================================~%MSG: ytthdmap_msgs/S_LINE~%int16 type~%int16 linetype~%S_POINT[100] point~%int16 pointnum~%~%================================================================================~%MSG: ytthdmap_msgs/S_POINT~%float32 x~%float32 y~%float32 z~%~%~%"))
+  (cl:format cl:nil "S_LINE centerline~%S_LINE leftboundry~%S_LINE rightboundry~%float32 width~%bool IsPartofRouting~%int16 type~%int16 direction~%int16 id~%float32 length~%~%================================================================================~%MSG: ytthdmap_msgs/S_LINE~%int16 type~%int16[100] linetype~%S_POINT[100] point~%int16 pointnum~%~%================================================================================~%MSG: ytthdmap_msgs/S_POINT~%float32 x~%float32 y~%float32 z~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'S_LANEINFO)))
   "Returns full string definition for message of type 'S_LANEINFO"
-  (cl:format cl:nil "S_LINE centerline~%S_LINE leftboundry~%S_LINE rightboundry~%float32 width~%bool IsPartofRouting~%int16 type~%int16 direction~%int16 id~%float32 length~%~%================================================================================~%MSG: ytthdmap_msgs/S_LINE~%int16 type~%int16 linetype~%S_POINT[100] point~%int16 pointnum~%~%================================================================================~%MSG: ytthdmap_msgs/S_POINT~%float32 x~%float32 y~%float32 z~%~%~%"))
+  (cl:format cl:nil "S_LINE centerline~%S_LINE leftboundry~%S_LINE rightboundry~%float32 width~%bool IsPartofRouting~%int16 type~%int16 direction~%int16 id~%float32 length~%~%================================================================================~%MSG: ytthdmap_msgs/S_LINE~%int16 type~%int16[100] linetype~%S_POINT[100] point~%int16 pointnum~%~%================================================================================~%MSG: ytthdmap_msgs/S_POINT~%float32 x~%float32 y~%float32 z~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <S_LANEINFO>))
   (cl:+ 0
      (roslisp-msg-protocol:serialization-length (cl:slot-value msg 'centerline))

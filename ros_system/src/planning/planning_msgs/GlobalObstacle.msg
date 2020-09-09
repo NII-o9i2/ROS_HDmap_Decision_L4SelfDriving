@@ -1,0 +1,12 @@
+float32 enu_x
+float32 enu_y
+float32 enu_theta
+float32 enu_vx
+float32 enu_vy
+float32 enu_ax
+float32 enu_ay
+float32 confidence
+int8 type
+float32 velocity
+float32 length
+float32 width

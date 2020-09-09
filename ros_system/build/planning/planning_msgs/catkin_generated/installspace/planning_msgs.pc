@@ -1,0 +1,8 @@
+prefix=/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/install
+
+Name: planning_msgs
+Description: Description of planning_msgs
+Version: 1.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: message_runtime std_msgs geometry_msgs

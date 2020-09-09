@@ -136,7 +136,7 @@ class S_LANEINFO {
   }
 
   static getMessageSize(object) {
-    return 69;
+    return 663;
   }
 
   static datatype() {
@@ -146,7 +146,7 @@ class S_LANEINFO {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '3bc5c9298690fd903b2c404d72e82a3f';
+    return '6a14e40ee54202dfeea4f9379da90309';
   }
 
   static messageDefinition() {
@@ -165,7 +165,7 @@ class S_LANEINFO {
     ================================================================================
     MSG: ytthdmap_msgs/S_LINE
     int16 type
-    int16 linetype
+    int16[100] linetype
     S_POINT[100] point
     int16 pointnum
     

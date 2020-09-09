@@ -1,0 +1,12 @@
+int8 id
+float32 s
+float32 l
+float32 vs
+float32 as
+float32 vl
+float32 al
+int8 lane_no
+float32 time_cost
+float32 des_cost
+float32 decision_cost
+int8 decision_tag
