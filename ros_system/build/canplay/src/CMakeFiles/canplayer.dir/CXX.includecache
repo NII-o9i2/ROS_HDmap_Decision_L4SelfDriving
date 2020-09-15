@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/canplay/src/main.cc
+iostream
+-
+fstream
+-
+sstream
+-
+string
+-
+vector
+-
+atomic
+-
+csignal
+-
+sys/time.h
+-
+pb_files/error_code.pb.h
+/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/canplay/src/pb_files/error_code.pb.h
+pb_files/can_card_parameter.pb.h
+/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/canplay/src/pb_files/can_card_parameter.pb.h
+drivers/canbus/clients/kvaser/kvaser_can_client.h
+/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/canplay/src/drivers/canbus/clients/kvaser/kvaser_can_client.h
+drivers/canbus/clients/can_client.h
+/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/canplay/src/drivers/canbus/clients/can_client.h
+third_party/kvaser_can/include/canlib.h
+/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/canplay/src/third_party/kvaser_can/include/canlib.h
+

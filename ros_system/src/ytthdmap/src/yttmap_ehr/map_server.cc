@@ -13,9 +13,9 @@
 #include <iostream>
 
 #define OFFSETMAX 10000000
-#define out_flag 1
-#define debug_out_flag  1
-#define out_flag_listLane 1
+#define out_flag 0
+#define debug_out_flag  0
+#define out_flag_listLane 0
 #define not_out_flag_dots 1
 #define listCurvatureOffset 20000 //单位：cm
 #define xiaotongfengDebug 1
@@ -190,7 +190,7 @@ void ehr_api::Process(struct timeval tv){
         
         //cout << listLanes[0].m_iTotalNumberOfLanes << endl;//测试
         #endif
-        
+      
         if(0)
         {
           std::vector<Av3hr_LaneModel>::iterator ite_LaneModel;
@@ -263,7 +263,7 @@ void ehr_api::Process(struct timeval tv){
   if (Av3HR_GetCurrentLane(&pLane_) == Av3HR_OK)
   {
     HDmapinfo_.isValidlane = 0;
-    #if out_flag
+
     Av3hr_laneidx_t iLaneNumber, iLaneNumberLast;
     Av3hr_laneidx_t leftNeighbourLane, rightNeighbourLane;
     iLaneNumberLast = 0;
@@ -273,13 +273,14 @@ void ehr_api::Process(struct timeval tv){
     {
       //车道编号从右向左,1开始增加
       std::vector<Av3hr_WGS84Point>::iterator its_WGS84Point_temp;
-
+      #if out_flag
       file << " second = " << tv.tv_sec << " microsecond = " <<  tv.tv_usec  <<endl;
       file << "current lane: number=" << (int)iLaneNumber << ", type=" << pLane_.m_eType << endl;
 
       // std::vector<Av3hr_Linear>::iterator its_l;
       file << "left boundary: type=" << pLane_.m_stLeftBoundary.m_pLineObj.m_eType << endl;//中心线,车道线,马路牙子,栅栏等等
       std::vector<Av3hr_Linear>::iterator its_l;
+
       for( its_l = pLane_.m_stLeftBoundary.m_pLineObj.m_vLinears.begin(); its_l != pLane_.m_stLeftBoundary.m_pLineObj.m_vLinears.end(); ++its_l)
       {
         Av3hr_Linear& linear = (*its_l);
@@ -317,7 +318,7 @@ void ehr_api::Process(struct timeval tv){
       }
       file << endl;
       #endif
-
+      #endif
       // leftNeighbourLane = iLaneNumber +1;
       // rightNeighbourLane = iLaneNumber-1;/* code */neInfos.m_stLeftBoundary.m_pLineGeometry.m_vPoints.end(); ++its_WGS84Point_temp)
       // {
@@ -338,7 +339,7 @@ void ehr_api::Process(struct timeval tv){
 
       iLaneNumberLast = iLaneNumber;
     }
-    #endif
+ 
   }else if (Av3HR_GetCurrentLane(&pLane_) == Av3HR_FAIL)
   {
     HDmapinfo_.isValidlane = 1;
@@ -395,9 +396,9 @@ bool ehr_api::GetLaneInfo(){
   if (HDmapinfo_.curlane != -1){
     IdMoveNum = pLane_.m_mapLaneOUT.begin()->second.m_iLaneNumber -  HDmapinfo_.curlane;
   }else return false;
-  std::cout<< "current id is "<< HDmapinfo_.curlane<<endl;
-  std::cout<< "next size is " <<pLane_.m_mapLaneOUT.size()<<endl;
-  std::cout<< "next id is "<< int(pLane_.m_mapLaneOUT.begin()->second.m_iLaneNumber)<<endl;
+  //std::cout<< "current id is "<< HDmapinfo_.curlane<<endl;
+  //std::cout<< "next size is " <<pLane_.m_mapLaneOUT.size()<<endl;
+  //std::cout<< "next id is "<< int(pLane_.m_mapLaneOUT.begin()->second.m_iLaneNumber)<<endl;
   // 清除laneinfo 原有point点
   /*
   for(auto iter = HDmapinfo_.laneinfo.begin();iter != HDmapinfo_.laneinfo.end();iter++){
@@ -436,6 +437,7 @@ bool ehr_api::GetLaneInfo(){
     temp_lane.centerline.type = iter->second.m_stCenterline.m_pLineObj.m_eType;
     temp_lane.centerline.point.clear();
     temp_lane.centerline.lineType.clear();
+    temp_lane.rightboundry.pointnum = 0;
     for (i = 0; i < iter->second.m_stCenterline.m_pLineGeometry.m_vPoints.size(); i++)
     {
       fileDebug <<"debug  !! "<< temp_point.x <<endl;
@@ -453,6 +455,7 @@ bool ehr_api::GetLaneInfo(){
     temp_lane.leftboundry.type = iter->second.m_stLeftBoundary.m_pLineObj.m_eType;
     temp_lane.leftboundry.point.clear();
     temp_lane.leftboundry.lineType.clear();
+    temp_lane.rightboundry.pointnum = 0;
     for (i = 0; i < iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints.size(); i++)
     {
       temp_left_point.x = iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints[i].m_iLatitude;
@@ -469,6 +472,7 @@ bool ehr_api::GetLaneInfo(){
     temp_lane.rightboundry.type = iter->second.m_stRightBoundary.m_pLineObj.m_eType;
     temp_lane.rightboundry.point.clear();
     temp_lane.rightboundry.lineType.clear();
+    temp_lane.rightboundry.pointnum = 0;
     for (i = 0; i < iter->second.m_stRightBoundary.m_pLineGeometry.m_vPoints.size(); i++)
     {
       temp_right_point.x = iter->second.m_stRightBoundary.m_pLineGeometry.m_vPoints[i].m_iLatitude;
@@ -491,10 +495,10 @@ bool ehr_api::GetLaneInfo(){
   {
     list_data ++;
     loc = 0;
-    std::cout<<"before "<<loc<< " centerline size is "<< HDmapinfo_.laneinfo[loc].centerline.point.size()<<endl;
-    std::cout<<"before "<<loc<< " leftboundry size is "<< HDmapinfo_.laneinfo[loc].leftboundry.point.size()<<endl;
-    std::cout<<"before "<<loc<< " rightboundry size is "<< HDmapinfo_.laneinfo[loc].rightboundry.point.size()<<endl;
-    std::cout<<"lanelist size is "<< list_data->m_mapLaneInfos.size()<<endl;
+    //std::cout<<"before "<<loc<< " centerline size is "<< HDmapinfo_.laneinfo[loc].centerline.point.size()<<endl;
+    //std::cout<<"before "<<loc<< " leftboundry size is "<< HDmapinfo_.laneinfo[loc].leftboundry.point.size()<<endl;
+    //std::cout<<"before "<<loc<< " rightboundry size is "<< HDmapinfo_.laneinfo[loc].rightboundry.point.size()<<endl;
+    //std::cout<<"lanelist size is "<< list_data->m_mapLaneInfos.size()<<endl;
     for(auto iter = list_data->m_mapLaneInfos.begin(); iter != list_data ->m_mapLaneInfos.end(); iter++)
     {
       for (i = 0; i < iter->second.m_stCenterline.m_pLineGeometry.m_vPoints.size(); i++)
@@ -509,9 +513,9 @@ bool ehr_api::GetLaneInfo(){
            break;
         }
         
-
       }
-      std::cout<<loc<< " centerline size is "<< HDmapinfo_.laneinfo[loc].centerline.point.size()<<endl;
+      HDmapinfo_.laneinfo[loc].centerline.pointnum = HDmapinfo_.laneinfo[loc].centerline.point.size();
+      //std::cout<<loc<< " centerline size is "<< HDmapinfo_.laneinfo[loc].centerline.point.size()<<endl;
       for (i = 0; i < iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints.size(); i++)
       {
         temp_left_point.x = iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints[i].m_iLatitude;
@@ -524,7 +528,8 @@ bool ehr_api::GetLaneInfo(){
            break;
         }
       }
-      std::cout<<loc<< " leftboundry size is "<< HDmapinfo_.laneinfo[loc].leftboundry.point.size()<<endl;
+       HDmapinfo_.laneinfo[loc].leftboundry.pointnum = HDmapinfo_.laneinfo[loc].leftboundry.point.size();
+      //std::cout<<loc<< " leftboundry size is "<< HDmapinfo_.laneinfo[loc].leftboundry.point.size()<<endl;
       for (i = 0; i < iter->second.m_stRightBoundary.m_pLineGeometry.m_vPoints.size(); i++)
       {
         temp_right_point.x = iter->second.m_stRightBoundary.m_pLineGeometry.m_vPoints[i].m_iLatitude;
@@ -537,7 +542,8 @@ bool ehr_api::GetLaneInfo(){
           break;
         }
       }
-      std::cout<<loc<< " rightboundry size is "<< HDmapinfo_.laneinfo[loc].rightboundry.point.size()<<endl;
+      HDmapinfo_.laneinfo[loc].rightboundry.pointnum = HDmapinfo_.laneinfo[loc].rightboundry.point.size();
+      //std::cout<<loc<< " rightboundry size is "<< HDmapinfo_.laneinfo[loc].rightboundry.point.size()<<endl;
       loc++;
       if (loc>=5) break;
     }

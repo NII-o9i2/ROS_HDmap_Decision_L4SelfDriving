@@ -292,6 +292,12 @@ _gtest_INCLUDES:FILEPATH=/usr/include/gtest/gtest.h
 //Path to a file.
 _gtest_SOURCES:FILEPATH=/usr/src/gtest/src/gtest.cc
 
+//Value Computed by CMake
+canplayer_BINARY_DIR:STATIC=/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/build/canplay/src
+
+//Value Computed by CMake
+canplayer_SOURCE_DIR:STATIC=/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/canplay/src
+
 //The directory containing a CMake configuration file for catkin.
 catkin_DIR:PATH=/opt/ros/kinetic/share/catkin/cmake
 
@@ -361,6 +367,9 @@ gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
 
 //The directory containing a CMake configuration file for hmi_msgs.
 hmi_msgs_DIR:PATH=hmi_msgs_DIR-NOTFOUND
+
+//Dependencies for the target
+kvaser_can_client_LIB_DEPENDS:STATIC=general;/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/lib/libcanlib.so;general;common_config_lib;general;canbus_driver_config_pb;
 
 //Value Computed by CMake
 leadgen_msgs_BINARY_DIR:STATIC=/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/build/planning/leadgen_msgs

@@ -1,4 +1,5 @@
 #include "hdmapYtt.h"
+#include <fstream>
 
 int main(int argc, char **argv) {
 	ros::init(argc, argv, "ytthdmap"); 
@@ -6,7 +7,12 @@ int main(int argc, char **argv) {
 	ros::Publisher pub = n.advertise<ytthdmap_msgs::HdmapYtt>("ytthdmap", 1000);
     ros::Publisher pub1 = n.advertise<locationsim_msgs::LOCATIONSIM>("locationsim",1000);
 	ros::Rate loop_rate(10);
+	ofstream file125;
+	string filepath;
+	filepath = "LOG/5fps_results.txt";
+	file125.open(filepath);
 	ehr_api api_;
+	int fpsset = 0;
 	struct timeval tv;
   	struct timezone tz;
   	gettimeofday(&tv,&tz);
@@ -20,6 +26,16 @@ int main(int argc, char **argv) {
 		
 		if (api_.GetLaneInfo()){
 			cout<<"GetlaneInfo succeed !"<<endl;
+			if ((fpsset <11)&&(fpsset!=0))
+			{
+				file125<<"fps "<<fpsset<<endl;
+				info2file(&mapinfo,&file125);
+				fpsset++;
+			}
+			if (fpsset == 0)
+			{
+				fpsset ++;
+			}
 		}else{
 			cout<<"GetlaneInfo failed !"<<endl;
 		};
@@ -33,9 +49,87 @@ int main(int argc, char **argv) {
 		ros::spinOnce();
 		loop_rate.sleep();
 	}
+	file125.close();
 	return 0; 
 	 
 }
+
+void info2file(const ytthdmap_msgs::HdmapYtt * HDmapinfo_,ofstream * file){
+	*file<<"time: "<<HDmapinfo_->time<<endl;
+	*file<<"isvalidlane: "<<HDmapinfo_->isValidlane<<endl;
+	*file<<"positionstate: "<<HDmapinfo_->positionstate<<endl;
+	*file<<"curlane: "<<HDmapinfo_->curlane<<endl;
+	*file<<"istunnel: "<<int(HDmapinfo_->istunnel)<<endl;
+	*file<<"nextlaneCH: "<<HDmapinfo_->nextlaneCH<<endl;
+	
+	for (int iter = 0;iter<5;iter++){
+		*file<<" the "<< iter << "laneinfo : "<<endl;
+		*file<<"	id: "<<HDmapinfo_->laneinfo[iter].id<<endl;
+		*file<<"	direction: "<<HDmapinfo_->laneinfo[iter].direction<<endl;
+		*file<<"	type: "<<HDmapinfo_->laneinfo[iter].type<<endl;
+		*file<<"	IsPartofRouting: "<<int(HDmapinfo_->laneinfo[iter].IsPartofRouting)<<endl;
+		*file<<"	width: "<<HDmapinfo_->laneinfo[iter].width<<endl;
+		*file<<"	centerline: ";
+		*file<<"		type: "<<HDmapinfo_->laneinfo[iter].centerline.type<<endl;
+		*file<<"		pointnum: "<<HDmapinfo_->laneinfo[iter].centerline.pointnum<<endl;
+		*file<<"		linetype: "<<endl;
+		
+		for (int loc = 0;loc<100;loc++){
+			*file<< HDmapinfo_->laneinfo[iter].centerline.linetype[loc]<<" ";
+		}
+		*file<<endl;
+		*file<<"		point x : "<<endl;
+		for (int loc = 0;loc<100;loc++){
+			*file<<setiosflags(ios::fixed) << setprecision(7)<<HDmapinfo_->laneinfo[iter].centerline.point[loc].x<<" ";
+		}
+		*file<<"		point y : "<<endl;
+		for (int loc = 0;loc<100;loc++){
+			*file<<setiosflags(ios::fixed) << setprecision(7)<<HDmapinfo_->laneinfo[iter].centerline.point[loc].y<<" ";
+		}
+		*file<<endl;
+		
+		*file<<"	leftboundry: ";
+		*file<<"		type: "<<HDmapinfo_->laneinfo[iter].leftboundry.type<<endl;
+		*file<<"		pointnum: "<<HDmapinfo_->laneinfo[iter].leftboundry.pointnum<<endl;
+		*file<<"		linetype: "<<endl;
+		
+		for (int loc = 0;loc<100;loc++){
+			*file<< HDmapinfo_->laneinfo[iter].leftboundry.linetype[loc]<<" ";
+		}
+		*file<<endl;
+		*file<<"		point x : "<<endl;
+		for (int loc = 0;loc<100;loc++){
+			*file<<setiosflags(ios::fixed) << setprecision(7)<<HDmapinfo_->laneinfo[iter].leftboundry.point[loc].x<<" ";
+		}
+		*file<<"		point y : "<<endl;
+		for (int loc = 0;loc<100;loc++){
+			*file<<setiosflags(ios::fixed) << setprecision(7)<<HDmapinfo_->laneinfo[iter].leftboundry.point[loc].y<<" ";
+		}
+		*file<<endl;
+		
+		*file<<"	rightboundry: ";
+		*file<<"		type: "<<HDmapinfo_->laneinfo[iter].rightboundry.type<<endl;
+		*file<<"		pointnum: "<<HDmapinfo_->laneinfo[iter].rightboundry.pointnum<<endl;
+		*file<<"		linetype: "<<endl;
+		
+		for (int loc = 0;loc<100;loc++){
+			*file<< HDmapinfo_->laneinfo[iter].rightboundry.linetype[loc]<<" ";
+		}
+		*file<<endl;
+		*file<<"		point x : "<<endl;
+		for (int loc = 0;loc<100;loc++){
+			*file<<setiosflags(ios::fixed) << setprecision(7)<<HDmapinfo_->laneinfo[iter].rightboundry.point[loc].x<<" ";
+		}
+		*file<<"		point y : "<<endl;
+		for (int loc = 0;loc<100;loc++){
+			*file<<setiosflags(ios::fixed) << setprecision(7)<<HDmapinfo_->laneinfo[iter].rightboundry.point[loc].y<<" ";
+		}
+		*file<<endl;
+		
+	}
+
+}
+
 void location2msg(const ehr_api* api,locationsim_msgs::LOCATIONSIM * location){
 	location->position_x = api->position_.m_stCrd.m_iLatitude;
 	location->position_y = api->position_.m_stCrd.m_iLongitude;
