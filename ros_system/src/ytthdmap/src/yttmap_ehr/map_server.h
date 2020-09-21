@@ -8,6 +8,7 @@
 #include <dirent.h>
 #include <sys/time.h>
 #include <thread>
+#include <Python.h>
 //QTextStream cout(stdout, QIODevice::WriteOnly);
 //QTextStream cin(stdin, QIODevice::ReadOnly);
 
@@ -83,6 +84,8 @@ class ehr_api
     void Process(struct timeval tv);
     //bool Getlocation(void);
     bool GetLaneInfo(void);
+    bool FirisGetlocation_ =  false;
+    S_POINT wgs2xy(const me_double *fLongitude,const me_double *fLatitude);
     Av3hr_e eRet_;
     Av3hr_pathid_t iPathId_ = 0;
     Av3hr_offset_t iLoadOffsetS_ = 0;
@@ -90,7 +93,8 @@ class ehr_api
     Av3hr_offset_t iEndOffset_ = 0;
     Av3hr_eMapStatus eStatus_;
     Av3hr_Position position_;
-
+    S_POINT position_xy_;
+    S_POINT firstPoint_;
     Av3hr_LaneInfo pLane_;          //当前车道
     me_bool bIsStart_ = false;
     struct UDPStruct HDmapDatas_;   //用于UDP通信
@@ -113,6 +117,12 @@ class ehr_api
     string fileNameListLane = "HDmapResultLaneList.txt";
     time_t nSeconds;
     struct tm * pTM;
-
+    PyObject *pModule;
+    PyObject *pDict;
+    PyObject *pClass_xy_transform;
+    PyObject *pInstance_xy_transform;
+    PyObject *pResult;
+    PyObject *pArg;
+    PyObject *pFunc;
 };
 

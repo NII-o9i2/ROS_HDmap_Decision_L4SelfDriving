@@ -42,11 +42,12 @@ def main():
     while not rospy.is_shutdown():
         plt.pause(0.1)
         plt.cla()
+
         for id in range(5):
             strid = 'lane' + str(id)
             plt.scatter(laneinfo_[id][0],laneinfo_[id][1],label= strid)
         plt.scatter(selfposition_x,selfposition_y,label = 'self',color='r')
-        plt.axis([selfposition_x-10000,selfposition_x+10000,selfposition_y-10000,selfposition_y+10000],'equal')
+        plt.axis([selfposition_x-300,selfposition_x+300,selfposition_y-300,selfposition_y+300],'equal')
         plt.legend()
     rospy.spin()
     plt.cla()

@@ -1,2 +1,0 @@
-/usr/bin/ar qc libmap_ytt_ehr_lib.a  CMakeFiles/map_ytt_ehr_lib.dir/map_server.cc.o
-/usr/bin/ranlib libmap_ytt_ehr_lib.a

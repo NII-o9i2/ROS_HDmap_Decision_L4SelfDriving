@@ -11,17 +11,62 @@
 #include <sys/time.h>
 #include <thread>
 #include <iostream>
+#include "math.h"
 
 #define OFFSETMAX 10000000
-#define out_flag 0
-#define debug_out_flag  0
-#define out_flag_listLane 0
-#define not_out_flag_dots 1
+#define out_flag 1
+#define debug_out_flag  1
+#define out_flag_listLane 1
+#define not_out_flag_dots 0
 #define listCurvatureOffset 20000 //单位：cm
 #define xiaotongfengDebug 1
-
+#undef USE_PYTHON
 
 ehr_api::ehr_api(){
+#ifdef USE_PYTHON
+   //初始化python
+    Py_Initialize();
+
+    //直接运行python代码
+    PyRun_SimpleString("print('----------Python Start')");
+    //引入当前路径,否则下面模块不能正常导入
+    PyRun_SimpleString("import sys"); 
+    PyRun_SimpleString("from pyproj import  Proj,transform"); 
+    PyRun_SimpleString("sys.path.append('/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/src/yttmap_ehr/lib')");  
+
+    PyRun_SimpleString("print('----------PyImport_ImportModule')");
+    pModule = PyImport_ImportModule("wgs2xy");
+    if (pModule==NULL)
+    {
+      std::cout<<"Can not find python file! "<<std::endl;
+    }
+    else
+    {
+      pDict = PyModule_GetDict(pModule);  
+    if (pDict==NULL)
+    {
+      std::cout<<"Can not find python Dict! "<<std::endl;
+    }
+
+    pClass_xy_transform = PyDict_GetItemString(pDict, "xy_transform");
+    if (pClass_xy_transform==NULL)
+    {
+      std::cout<<"Can not find python Class! "<<std::endl;
+    }
+    else {
+      std::cout<<"Get Python Class Succeed! "<<std::endl;
+      pInstance_xy_transform = PyInstanceMethod_New(pClass_xy_transform);
+      if (pInstance_xy_transform==NULL)
+      {
+        std::cout<<"Can not Instance class! "<<std::endl;
+      }
+      else {
+        std::cout<<"Instance Python Class Succeed! "<<std::endl;
+        }
+        }
+    }
+#endif
+
   eRet_ = Av3HR_API_Initialize();
   time( &nSeconds );
   pTM = localtime(&nSeconds);
@@ -35,6 +80,7 @@ ehr_api::ehr_api(){
     std::cout << "make directory !" << endl;
   }
 
+  //Py_Initialize();
   fileName = filePath + tm_mon +"_" + day_tem +"_" +hour_tem +"_" + minute_tem + "_"+fileName;//将路劲和文件名结合
   fileName_Debug = filePath + tm_mon +"_" + day_tem +"_" +hour_tem +"_" + minute_tem + "_"+fileName_Debug;
   fileNameListLane = filePath +tm_mon +"_" + day_tem +"_" +hour_tem +"_" + minute_tem + "_"+ fileNameListLane;
@@ -44,17 +90,65 @@ ehr_api::ehr_api(){
   fileDebug.open(fileName_Debug);
 };
 
+
 ehr_api::~ehr_api(){
   Av3HR_API_Destroy();
-
+  //释放python
+ #ifdef USE_PYTHON 
+  Py_Finalize();
+#endif
   file.close();
   fileListLane.close();
   fileDebug.close();
 };
 
 void ehr_api::Destory(void){
-    Av3HR_API_Destroy();
+  Av3HR_API_Destroy();
+  //释放python
+#ifdef USE_PYTHON 
+  Py_Finalize();
+#endif
+  file.close();
+  fileListLane.close();
+  fileDebug.close();
 };
+
+
+S_POINT  ehr_api::wgs2xy(const me_double *fLongitude,const me_double *fLatitude){
+   clock_t start,finish;
+   double  duration;
+   start = clock();    
+  double x,y;
+  S_POINT result;
+#ifdef USE_PYTHON
+  pArg = Py_BuildValue("(Odd)",pInstance_xy_transform,*fLongitude,*fLatitude);
+  pFunc = PyObject_GetAttrString(pInstance_xy_transform, "process");
+  pResult = PyEval_CallObject(pFunc,pArg);
+  //输出返回值
+
+  if (!pResult)
+  {
+    std::cout<<"No python result"<<std::endl;
+    }else{
+      std::cout<<"python result succeed"<<std::endl;
+      PyArg_ParseTuple(pResult, "d|d",&result.x,&result.y);     
+    }
+  finish = clock(); 
+  duration = (double)(finish - start) / CLOCKS_PER_SEC;
+  std::cout<<"use time is"<<duration<<endl;
+  //S_POINT result;
+  //result.x = *fLongitude;
+  //result.y = *fLatitude;
+#else
+  x = 67371004 * cos(*fLatitude*0.017453292)*sin(*fLongitude*0.017453292);
+  y = 67371004 * sin(*fLatitude*0.017453292);
+  //std::cout<<"cal x y is "<< x <<" "<<y<<std::endl;
+  //std::cout<<"python x y is "<< result.x <<" "<<result.y<<std::endl;
+  result.x = x;
+  result.y = y;
+  #endif
+  return result;
+}
 
 void ehr_api::Process(struct timeval tv){
   if (Av3HR_IsChanged(eStatus_))
@@ -86,6 +180,15 @@ void ehr_api::Process(struct timeval tv){
   {
     HDmapDatas_.PositionOffset = position_.m_iOffset;
     HDmapinfo_.positionstate = 1;
+    position_xy_ = wgs2xy(&position_.m_stCrd.m_stPoint.fLongitude,&position_.m_stCrd.m_stPoint.fLatitude);
+    if (!FirisGetlocation_){
+      firstPoint_ =position_xy_;
+      FirisGetlocation_ =true;
+    }else {
+      position_xy_.x = position_xy_.x - firstPoint_.x;
+      position_xy_.y = position_xy_.y - firstPoint_.y;      
+    }
+
     //cout << position_.m_iOffset<< endl;
     #if debug_out_flag
       //cout << "position: pathid=" << position_.m_iPathId << " lane=" << (int)position_.m_iCurrentLane
@@ -291,7 +394,7 @@ void ehr_api::Process(struct timeval tv){
       file << "left lane size = " << pLane_.m_stLeftBoundary.m_pLineGeometry.m_vPoints.size() << endl;
       #else
       file << "left boundary: crood=" << endl;//输出经纬度点
-      for( its_WGS84Point_temp=pLane.m_stLeftBoundary.m_pLineGeometry.m_vPoints.begin(); its_WGS84Point_temp!=pLane.m_stLeftBoundary.m_pLineGeometry.m_vPoints.end(); ++its_WGS84Point_temp)
+      for( its_WGS84Point_temp=pLane_.m_stLeftBoundary.m_pLineGeometry.m_vPoints.begin(); its_WGS84Point_temp!=pLane_.m_stLeftBoundary.m_pLineGeometry.m_vPoints.end(); ++its_WGS84Point_temp)
       {
         file << setiosflags(ios::fixed) << setprecision(7) <<its_WGS84Point_temp->m_stPoint.fLongitude << "," 
           <<setiosflags(ios::fixed) << setprecision(7) << its_WGS84Point_temp->m_stPoint.fLatitude << ";";
@@ -311,7 +414,7 @@ void ehr_api::Process(struct timeval tv){
       file << "right lane size = " << pLane_.m_stRightBoundary.m_pLineGeometry.m_vPoints.size() << endl;
       #else
       file << "right boundary: crood=" << endl;//输出经纬度点
-      for( its_WGS84Point_temp = pLane.m_stRightBoundary.m_pLineGeometry.m_vPoints.begin(); its_WGS84Point_temp != pLane.m_stRightBoundary.m_pLineGeometry.m_vPoints.end(); ++its_WGS84Point_temp)
+      for( its_WGS84Point_temp = pLane_.m_stRightBoundary.m_pLineGeometry.m_vPoints.begin(); its_WGS84Point_temp != pLane_.m_stRightBoundary.m_pLineGeometry.m_vPoints.end(); ++its_WGS84Point_temp)
       {
         file << setiosflags(ios::fixed) << setprecision(7) <<its_WGS84Point_temp->m_stPoint.fLongitude << "," 
           <<setiosflags(ios::fixed) << setprecision(7) << its_WGS84Point_temp->m_stPoint.fLatitude << ";";
@@ -385,6 +488,7 @@ bool ehr_api::GetLaneInfo(){
   S_LANEINFO temp_lane;
   //对于每一条车道的信息添加到laneinfo中
   S_POINT temp_point;
+  S_POINT temppoint;
   S_POINT temp_left_point;
   S_POINT temp_right_point;
   size_t i;
@@ -438,12 +542,24 @@ bool ehr_api::GetLaneInfo(){
     temp_lane.centerline.point.clear();
     temp_lane.centerline.lineType.clear();
     temp_lane.rightboundry.pointnum = 0;
+
     for (i = 0; i < iter->second.m_stCenterline.m_pLineGeometry.m_vPoints.size(); i++)
     {
       fileDebug <<"debug  !! "<< temp_point.x <<endl;
-      temp_point.x = iter->second.m_stCenterline.m_pLineGeometry.m_vPoints[i].m_iLatitude;
-      temp_point.y = iter->second.m_stCenterline.m_pLineGeometry.m_vPoints[i].m_iLongitude;
-      temp_point.z = iter->second.m_stCenterline.m_pLineGeometry.m_vPoints[i].m_iAltitude;
+      //temp_point.x = iter->second.m_stCenterline.m_pLineGeometry.m_vPoints[i].m_stPoint.fLongitude;
+      //temp_point.y = iter->second.m_stCenterline.m_pLineGeometry.m_vPoints[i].m_stPoint.fLatitude;
+      temppoint = wgs2xy(&iter->second.m_stCenterline.m_pLineGeometry.m_vPoints[i].m_stPoint.fLongitude,&iter->second.m_stCenterline.m_pLineGeometry.m_vPoints[i].m_stPoint.fLatitude);
+      if (FirisGetlocation_){
+        temppoint.x = temppoint.x - firstPoint_.x;
+        temppoint.y = temppoint.y - firstPoint_.y;      
+      }else
+      {
+        temppoint.x = -1.0;
+        temppoint.y = -1.0;
+      }
+      temp_point.x = temppoint.x;
+      temp_point.y = temppoint.y;
+      temp_point.z = iter->second.m_stCenterline.m_pLineGeometry.m_vPoints[i].m_stPoint.fAltitude;
       if (temp_lane.centerline.point.size()< 100){
         temp_lane.centerline.point.emplace_back(temp_point);
         temp_lane.centerline.lineType.emplace_back(iter->second.m_stCenterline.m_pLineObj.m_eType);
@@ -458,9 +574,20 @@ bool ehr_api::GetLaneInfo(){
     temp_lane.rightboundry.pointnum = 0;
     for (i = 0; i < iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints.size(); i++)
     {
-      temp_left_point.x = iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints[i].m_iLatitude;
-      temp_left_point.y = iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints[i].m_iLongitude;
-      temp_left_point.z = iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints[i].m_iAltitude;
+      //temp_left_point.x = iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints[i].m_stPoint.fLongitude;
+      //temp_left_point.y = iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints[i].m_stPoint.fLatitude;
+      temppoint = wgs2xy(&iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints[i].m_stPoint.fLongitude,&iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints[i].m_stPoint.fLatitude);
+      if (FirisGetlocation_){
+        temppoint.x = temppoint.x - firstPoint_.x;
+        temppoint.y = temppoint.y - firstPoint_.y;      
+      }else
+      {
+        temppoint.x = -1.0;
+        temppoint.y = -1.0;
+      }
+      temp_left_point.x = temppoint.x;
+      temp_left_point.y = temppoint.y;
+      temp_left_point.z = iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints[i].m_stPoint.fAltitude;
       if (temp_lane.centerline.point.size()< 100){
         temp_lane.leftboundry.point.emplace_back(temp_point);
         temp_lane.leftboundry.lineType.emplace_back(iter->second.m_stLeftBoundary.m_pLineObj.m_eType);
@@ -475,9 +602,21 @@ bool ehr_api::GetLaneInfo(){
     temp_lane.rightboundry.pointnum = 0;
     for (i = 0; i < iter->second.m_stRightBoundary.m_pLineGeometry.m_vPoints.size(); i++)
     {
-      temp_right_point.x = iter->second.m_stRightBoundary.m_pLineGeometry.m_vPoints[i].m_iLatitude;
-      temp_right_point.y = iter->second.m_stRightBoundary.m_pLineGeometry.m_vPoints[i].m_iLongitude;
-      temp_right_point.z = iter->second.m_stRightBoundary.m_pLineGeometry.m_vPoints[i].m_iAltitude;
+      //temp_right_point.x = iter->second.m_stRightBoundary.m_pLineGeometry.m_vPoints[i].m_stPoint.fLongitude;
+      //temp_right_point.y = iter->second.m_stRightBoundary.m_pLineGeometry.m_vPoints[i].m_stPoint.fLatitude;
+      
+      temppoint = wgs2xy(&iter->second.m_stRightBoundary.m_pLineGeometry.m_vPoints[i].m_stPoint.fLongitude,&iter->second.m_stRightBoundary.m_pLineGeometry.m_vPoints[i].m_stPoint.fLatitude);
+      if (FirisGetlocation_){
+        temppoint.x = temppoint.x - firstPoint_.x;
+        temppoint.y = temppoint.y - firstPoint_.y;      
+      }else
+      {
+        temppoint.x = -1.0;
+        temppoint.y = -1.0;
+      }
+      temp_right_point.x = temppoint.x;
+      temp_right_point.y = temppoint.y;
+      temp_right_point.z = iter->second.m_stRightBoundary.m_pLineGeometry.m_vPoints[i].m_stPoint.fAltitude;
       if (temp_lane.centerline.point.size()< 100){
         temp_lane.rightboundry.point.emplace_back(temp_point);
         temp_lane.rightboundry.lineType.emplace_back(iter->second.m_stRightBoundary.m_pLineObj.m_eType);
@@ -503,9 +642,21 @@ bool ehr_api::GetLaneInfo(){
     {
       for (i = 0; i < iter->second.m_stCenterline.m_pLineGeometry.m_vPoints.size(); i++)
       {
-        temp_point.x = iter->second.m_stCenterline.m_pLineGeometry.m_vPoints[i].m_iLatitude;
-        temp_point.y = iter->second.m_stCenterline.m_pLineGeometry.m_vPoints[i].m_iLongitude;
-        temp_point.z = iter->second.m_stCenterline.m_pLineGeometry.m_vPoints[i].m_iAltitude;
+        //temp_point.x = iter->second.m_stCenterline.m_pLineGeometry.m_vPoints[i].m_stPoint.fLongitude;
+        //temp_point.y = iter->second.m_stCenterline.m_pLineGeometry.m_vPoints[i].m_stPoint.fLatitude;
+        
+        temppoint = wgs2xy(&iter->second.m_stCenterline.m_pLineGeometry.m_vPoints[i].m_stPoint.fLongitude,&iter->second.m_stCenterline.m_pLineGeometry.m_vPoints[i].m_stPoint.fLatitude);
+        if (FirisGetlocation_){
+          temppoint.x = temppoint.x - firstPoint_.x;
+          temppoint.y = temppoint.y - firstPoint_.y;      
+        }else
+        {
+          temppoint.x = -1.0;
+          temppoint.y = -1.0;
+        }
+        temp_point.x = temppoint.x;
+        temp_point.y = temppoint.y;
+        temp_point.z = iter->second.m_stCenterline.m_pLineGeometry.m_vPoints[i].m_stPoint.fAltitude;
         if (HDmapinfo_.laneinfo[loc].centerline.point.size()< 100){
           HDmapinfo_.laneinfo[loc].centerline.point.emplace_back(temp_point);
           HDmapinfo_.laneinfo[loc].centerline.lineType.emplace_back(iter->second.m_stCenterline.m_pLineObj.m_eType);
@@ -518,9 +669,21 @@ bool ehr_api::GetLaneInfo(){
       //std::cout<<loc<< " centerline size is "<< HDmapinfo_.laneinfo[loc].centerline.point.size()<<endl;
       for (i = 0; i < iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints.size(); i++)
       {
-        temp_left_point.x = iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints[i].m_iLatitude;
-        temp_left_point.y = iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints[i].m_iLongitude;
-        temp_left_point.z = iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints[i].m_iAltitude;
+        //temp_left_point.x = iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints[i].m_stPoint.fLongitude;
+        //temp_left_point.y = iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints[i].m_stPoint.fLatitude;
+        
+        temppoint = wgs2xy(&iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints[i].m_stPoint.fLongitude,&iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints[i].m_stPoint.fLatitude);
+        if (FirisGetlocation_){
+          temppoint.x = temppoint.x - firstPoint_.x;
+          temppoint.y = temppoint.y - firstPoint_.y;      
+        }else
+        {
+          temppoint.x = -1.0;
+          temppoint.y = -1.0;
+        }
+        temp_left_point.x = temppoint.x;
+        temp_left_point.y = temppoint.y;
+        temp_left_point.z = iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints[i].m_stPoint.fAltitude;
         if (HDmapinfo_.laneinfo[loc].leftboundry.point.size()< 100){
           HDmapinfo_.laneinfo[loc].leftboundry.point.emplace_back(temp_left_point);
           HDmapinfo_.laneinfo[loc].leftboundry.lineType.emplace_back(iter->second.m_stLeftBoundary.m_pLineObj.m_eType);
@@ -532,9 +695,21 @@ bool ehr_api::GetLaneInfo(){
       //std::cout<<loc<< " leftboundry size is "<< HDmapinfo_.laneinfo[loc].leftboundry.point.size()<<endl;
       for (i = 0; i < iter->second.m_stRightBoundary.m_pLineGeometry.m_vPoints.size(); i++)
       {
-        temp_right_point.x = iter->second.m_stRightBoundary.m_pLineGeometry.m_vPoints[i].m_iLatitude;
-        temp_right_point.y = iter->second.m_stRightBoundary.m_pLineGeometry.m_vPoints[i].m_iLongitude;
-        temp_right_point.z = iter->second.m_stRightBoundary.m_pLineGeometry.m_vPoints[i].m_iAltitude;
+        //temp_right_point.x = iter->second.m_stRightBoundary.m_pLineGeometry.m_vPoints[i].m_stPoint.fLongitude;
+        //temp_right_point.y = iter->second.m_stRightBoundary.m_pLineGeometry.m_vPoints[i].m_stPoint.fLatitude;
+        
+        temppoint = wgs2xy(&iter->second.m_stRightBoundary.m_pLineGeometry.m_vPoints[i].m_stPoint.fLongitude,&iter->second.m_stRightBoundary.m_pLineGeometry.m_vPoints[i].m_stPoint.fLatitude);
+        if (FirisGetlocation_){
+          temppoint.x = temppoint.x - firstPoint_.x;
+          temppoint.y = temppoint.y - firstPoint_.y;      
+        }else
+        {
+          temppoint.x = -1.0;
+          temppoint.y = -1.0;
+        }
+        temp_left_point.x = temppoint.x;
+        temp_left_point.y = temppoint.y;
+        temp_right_point.z = iter->second.m_stRightBoundary.m_pLineGeometry.m_vPoints[i].m_stPoint.fAltitude;
         if (HDmapinfo_.laneinfo[loc].rightboundry.point.size()< 100){
           HDmapinfo_.laneinfo[loc].rightboundry.point.emplace_back(temp_right_point);
           HDmapinfo_.laneinfo[loc].rightboundry.lineType.emplace_back(iter->second.m_stRightBoundary.m_pLineObj.m_eType);

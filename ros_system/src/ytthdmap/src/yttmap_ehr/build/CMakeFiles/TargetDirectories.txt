@@ -1,3 +1,0 @@
-/home/xiaotongfeng/ros_test/src/ytthdmap/src/test_ehr/build/CMakeFiles/edit_cache.dir
-/home/xiaotongfeng/ros_test/src/ytthdmap/src/test_ehr/build/CMakeFiles/rebuild_cache.dir
-/home/xiaotongfeng/ros_test/src/ytthdmap/src/test_ehr/build/CMakeFiles/map_ytt_ehr_lib.dir

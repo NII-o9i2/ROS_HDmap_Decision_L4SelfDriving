@@ -28,6 +28,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/include/x86_64-linux-gnu/qt5"
   "/usr/include/x86_64-linux-gnu/qt5/QtCore"
   "/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64"
+  "/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/src/yttmap_ehr/include/python3.8"
   )
 
 # Targets to which this target links.

@@ -1,6 +1,6 @@
 cmake_minimum_required (VERSION 2.8)
 set(lib_name "map_ytt_ehr_lib")
-add_compile_options(-fPIC -std=c++11)
+add_compile_options(-fPIC -lpthread -lutil -ldl -std=c++11)
 aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}	src_files)
 set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
 
@@ -15,6 +15,8 @@ target_include_directories(
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/API
 	PUBLIC ${Qt5Core_INCLUDE_DIRS}
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/python3.8
+	/usr/include
 )
 
 
@@ -27,6 +29,11 @@ target_link_libraries(
 	${CMAKE_CURRENT_SOURCE_DIR}/lib/libprotobuf.a
 	${QT5Core_LIBRARIES}
 	${catkin_LIBRARIES}
+	${CMAKE_CURRENT_SOURCE_DIR}/lib/libpython3.8.a
+	${CMAKE_CURRENT_SOURCE_DIR}/lib/libdl.so	
+	${CMAKE_CURRENT_SOURCE_DIR}/lib/libutil.a	
+	${CMAKE_CURRENT_SOURCE_DIR}/lib/libpthread.a
+	
 )
 
 

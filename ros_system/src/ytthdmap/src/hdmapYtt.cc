@@ -1,6 +1,6 @@
 #include "hdmapYtt.h"
 #include <fstream>
-
+#undef DEBUG_MODE 
 int main(int argc, char **argv) {
 	ros::init(argc, argv, "ytthdmap"); 
 	ros::NodeHandle n;
@@ -15,18 +15,28 @@ int main(int argc, char **argv) {
 	int fpsset = 0;
 	struct timeval tv;
   	struct timezone tz;
+	clock_t t1,t2;
+	double tt;
   	gettimeofday(&tv,&tz);
 	ytthdmap_msgs::HdmapYtt mapinfo;
 	locationsim_msgs::LOCATIONSIM location_;
+	cout<<setiosflags(ios::fixed);
    	while (ros::ok()) {
-
-    	//ytthdmap_msgs::S_POINT p1, p2;
-		cout<<"processing "<<endl;
+#ifdef DEBUG_MODE
+		t1 =clock();
+    	cout<<"processing "<<endl;
+#endif
 		api_.Process(tv);
-		
+#ifdef DEBUG_MODE
+		t2 = clock();
+		tt =  (double)(t2 - t1) / CLOCKS_PER_SEC;
+		std::cout << "main time is"<< tt<<std::endl;
+#endif
 		if (api_.GetLaneInfo()){
+#ifdef DEBUG_MODE
 			cout<<"GetlaneInfo succeed !"<<endl;
-			if ((fpsset <11)&&(fpsset!=0))
+#endif
+			if ((fpsset <1)&&(fpsset!=0))
 			{
 				file125<<"fps "<<fpsset<<endl;
 				info2file(&mapinfo,&file125);
@@ -39,11 +49,18 @@ int main(int argc, char **argv) {
 		}else{
 			cout<<"GetlaneInfo failed !"<<endl;
 		};
+
+
+
 		if (api_.HDmapinfo_.isValidlane == 0){
 			location2msg(&api_,&location_);
+			#ifdef DEBUG_MODE
+			 cout<<setprecision(8)<<location_.position_x<<" "<< setprecision(8)<<location_.position_y<<endl;
+			#endif
 		}
 
 		mapinfo2msg(&api_.HDmapinfo_,&mapinfo);
+
 		pub.publish(mapinfo);
 		pub1.publish(location_);
 		ros::spinOnce();
@@ -131,8 +148,8 @@ void info2file(const ytthdmap_msgs::HdmapYtt * HDmapinfo_,ofstream * file){
 }
 
 void location2msg(const ehr_api* api,locationsim_msgs::LOCATIONSIM * location){
-	location->position_x = api->position_.m_stCrd.m_iLatitude;
-	location->position_y = api->position_.m_stCrd.m_iLongitude;
+	location->position_x = api->position_xy_.x;  
+	location->position_y = api->position_xy_.y;
 	location->positon_yaw = api->position_.m_fRelativeHeading;
 	location->velocity = api->position_.m_fSpeed;
 }

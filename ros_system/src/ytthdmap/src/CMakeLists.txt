@@ -3,7 +3,7 @@ project(ytthdmap)
 
 set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
 ## Compile as C++11
-add_compile_options(-std=c++11)
+add_compile_options(-std=c++11 -ldl -lpthread -lutil)
 
 ## packages and libraries dependenced on
 set(${PROJECT_NAME}_PKG_DEPS
