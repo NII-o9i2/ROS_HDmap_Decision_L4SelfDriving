@@ -6,7 +6,7 @@ int main(int argc, char **argv) {
 	ros::NodeHandle n;
 	ros::Publisher pub = n.advertise<ytthdmap_msgs::HdmapYtt>("ytthdmap", 1000);
     ros::Publisher pub1 = n.advertise<locationsim_msgs::LOCATIONSIM>("locationsim",1000);
-	ros::Rate loop_rate(10);
+	ros::Rate loop_rate(1);
 	ofstream file125;
 	string filepath;
 	filepath = "LOG/5fps_results.txt";
@@ -32,6 +32,7 @@ int main(int argc, char **argv) {
 		tt =  (double)(t2 - t1) / CLOCKS_PER_SEC;
 		std::cout << "main time is"<< tt<<std::endl;
 #endif
+
 		if (api_.GetLaneInfo()){
 #ifdef DEBUG_MODE
 			cout<<"GetlaneInfo succeed !"<<endl;
@@ -48,7 +49,7 @@ int main(int argc, char **argv) {
 			}
 		}else{
 			cout<<"GetlaneInfo failed !"<<endl;
-		};
+		};  
 
 
 

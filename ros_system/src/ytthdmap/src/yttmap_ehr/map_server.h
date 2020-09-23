@@ -106,6 +106,7 @@ class ehr_api
     me_bool bTunnel_;
     Av3hr_offset_t iStopOffset_;
     Av3hr_LocationObject pStopline_;
+    bool flag_refresh_lanelist_ = false;
     //QTextStream cout(stdout, QIODevice::WriteOnly);
     //QTextStream cin(stdin, QIODevice::ReadOnly);
   private:

@@ -1,0 +1,2 @@
+.
+-DCATKIN_DEVEL_PREFIX=/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/devel -DCMAKE_INSTALL_PREFIX=/home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/src/ytthdmap/install -G Unix Makefiles

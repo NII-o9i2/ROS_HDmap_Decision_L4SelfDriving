@@ -140,8 +140,11 @@ S_POINT  ehr_api::wgs2xy(const me_double *fLongitude,const me_double *fLatitude)
   //result.x = *fLongitude;
   //result.y = *fLatitude;
 #else
-  x = 67371004 * cos(*fLatitude*0.017453292)*sin(*fLongitude*0.017453292);
-  y = 67371004 * sin(*fLatitude*0.017453292);
+  //x = 67371004 * cos(*fLatitude*0.017453292)*sin(*fLongitude*0.017453292);
+  //y = 67371004 * sin(*fLatitude*0.017453292);
+  
+  x = *fLongitude*20037508.34/180.0;
+  y = log(tan((90+*fLatitude)*3.1415926/360))/(3.1415926/180.0);
   //std::cout<<"cal x y is "<< x <<" "<<y<<std::endl;
   //std::cout<<"python x y is "<< result.x <<" "<<result.y<<std::endl;
   result.x = x;
@@ -209,7 +212,8 @@ void ehr_api::Process(struct timeval tv){
   
   //当加载的数据小于 500m 时, 重新加载 1km 的数据
   //全局变量,在获取车道线的时候使用
-  if(bIsStart_ && (iEndOffset_ < position_.m_iOffset||(iEndOffset_ - position_.m_iOffset) < 20000)) 
+  flag_refresh_lanelist_ = false;
+  if(bIsStart_ && (iEndOffset_ < position_.m_iOffset||(iEndOffset_ - position_.m_iOffset) < 10000)) 
   //if (1)
   {
     if(iEndOffset_ > 0)
@@ -221,19 +225,21 @@ void ehr_api::Process(struct timeval tv){
     }
     // iLoadOffsetS : 需要加载数据的起始 offset 位置
     // iLoadOffsetE : 需要加载数据的结束 offset 位置
-    iLoadOffsetS_ = position_.m_iOffset - 50;
-    if (iLoadOffsetS_ < 0){
-      iLoadOffsetS_ = 0;
-    }
-    iLoadOffsetE_ = iLoadOffsetS_ + 30000; // 1km
+    iLoadOffsetS_ = position_.m_iOffset;
+    //if (iLoadOffsetS_ < 0){
+    //  iLoadOffsetS_ = 0;
+    //}
+    iLoadOffsetE_ = iLoadOffsetS_ + 20000; // 2km
     iEndOffset_ = iLoadOffsetE_;
     if (Av3HR_PathOffset(iPathId_, iLoadOffsetS_, iLoadOffsetE_) == Av3HR_OK)
     {
       // 获取车道信息
       // LIST_LANEMODELS listLanes;
-      listLanes_.clear();
+      //listLanes_.clear();
       if (Av3HR_GetLane(&listLanes_) == Av3HR_OK)
       {
+        std::cout<<"get listlanes ok "<<iLoadOffsetS_<<"   "<<iLoadOffsetE_<<std::endl;
+        flag_refresh_lanelist_ = true;
         #if out_flag
         //cout << "numOfLanes: " << listLanes_.size() << endl;//车道是链表(list) vector<Av3hr_LaneMode>
         //temp_listlanes_->assign(listLanes_.begin(),listLanes_.end());
@@ -485,10 +491,15 @@ void ehr_api::Process(struct timeval tv){
 // end ehr_api process
 
 bool ehr_api::GetLaneInfo(){
+  std::cout<<"GetLaneInfo begin!"<<std::endl;
+  if (flag_refresh_lanelist_) {
+
   S_LANEINFO temp_lane;
   //对于每一条车道的信息添加到laneinfo中
   S_POINT temp_point;
+  double distance;
   S_POINT temppoint;
+  S_POINT lasttemppoint;
   S_POINT temp_left_point;
   S_POINT temp_right_point;
   size_t i;
@@ -511,14 +522,19 @@ bool ehr_api::GetLaneInfo(){
     iter->rightboundry.point.clear();
   }
   */
-  
+ 
  
   //输出两段laneinfo 
   auto list_data = listLanes_.begin();
   //输出第一段 
+  std::cout<<"listLane size is "<<listLanes_.size()<<std::endl;
   HDmapinfo_.laneinfo.clear();
-  
-  
+  for(auto iter = HDmapinfo_.laneinfo.begin();iter!=HDmapinfo_.laneinfo.end();iter++){
+    iter->centerline.point.clear();
+    iter->leftboundry.point.clear();
+    iter->rightboundry.point.clear();
+  }
+  HDmapinfo_.laneinfo.clear();
   S_LANEINFO voidlane;
   if(IdMoveNum > 0){
       for(int ii = 0;ii<IdMoveNum;ii++)
@@ -542,7 +558,7 @@ bool ehr_api::GetLaneInfo(){
     temp_lane.centerline.point.clear();
     temp_lane.centerline.lineType.clear();
     temp_lane.rightboundry.pointnum = 0;
-
+    std::cout<< "first size is "<<iter->second.m_stCenterline.m_pLineGeometry.m_vPoints.size()<<std::endl;
     for (i = 0; i < iter->second.m_stCenterline.m_pLineGeometry.m_vPoints.size(); i++)
     {
       fileDebug <<"debug  !! "<< temp_point.x <<endl;
@@ -560,6 +576,9 @@ bool ehr_api::GetLaneInfo(){
       temp_point.x = temppoint.x;
       temp_point.y = temppoint.y;
       temp_point.z = iter->second.m_stCenterline.m_pLineGeometry.m_vPoints[i].m_stPoint.fAltitude;
+      //distance = sqrt((temp_point.x - lasttemppoint.x)*(temp_point.x - lasttemppoint.x)+(temp_point.y - lasttemppoint.y)*(temp_point.y - lasttemppoint.y));
+      //std::cout<<"2 point gap is "<< distance<<std::endl;
+      //lasttemppoint = temp_point;
       if (temp_lane.centerline.point.size()< 100){
         temp_lane.centerline.point.emplace_back(temp_point);
         temp_lane.centerline.lineType.emplace_back(iter->second.m_stCenterline.m_pLineObj.m_eType);
@@ -630,8 +649,9 @@ bool ehr_api::GetLaneInfo(){
   }
   //std::cout<<"1 HDmapinfo_ lane num is "<<HDmapinfo_.laneinfo.size()<<endl;
   //加载下一段
-  if (list_data != listLanes_.end())
+  if ((list_data != listLanes_.end()) && (listLanes_.size()>1))
   {
+    std::cout<< "begin second size "<<std::endl;
     list_data ++;
     loc = 0;
     //std::cout<<"before "<<loc<< " centerline size is "<< HDmapinfo_.laneinfo[loc].centerline.point.size()<<endl;
@@ -640,6 +660,7 @@ bool ehr_api::GetLaneInfo(){
     //std::cout<<"lanelist size is "<< list_data->m_mapLaneInfos.size()<<endl;
     for(auto iter = list_data->m_mapLaneInfos.begin(); iter != list_data ->m_mapLaneInfos.end(); iter++)
     {
+      std::cout<< "begin second size 2 "<<iter->second.m_stCenterline.m_pLineGeometry.m_vPoints.size()<<std::endl;
       for (i = 0; i < iter->second.m_stCenterline.m_pLineGeometry.m_vPoints.size(); i++)
       {
         //temp_point.x = iter->second.m_stCenterline.m_pLineGeometry.m_vPoints[i].m_stPoint.fLongitude;
@@ -658,6 +679,7 @@ bool ehr_api::GetLaneInfo(){
         temp_point.y = temppoint.y;
         temp_point.z = iter->second.m_stCenterline.m_pLineGeometry.m_vPoints[i].m_stPoint.fAltitude;
         if (HDmapinfo_.laneinfo[loc].centerline.point.size()< 100){
+          std::cout<<"add 1"<<std::endl;
           HDmapinfo_.laneinfo[loc].centerline.point.emplace_back(temp_point);
           HDmapinfo_.laneinfo[loc].centerline.lineType.emplace_back(iter->second.m_stCenterline.m_pLineObj.m_eType);
         }else{
@@ -666,7 +688,7 @@ bool ehr_api::GetLaneInfo(){
         
       }
       HDmapinfo_.laneinfo[loc].centerline.pointnum = HDmapinfo_.laneinfo[loc].centerline.point.size();
-      //std::cout<<loc<< " centerline size is "<< HDmapinfo_.laneinfo[loc].centerline.point.size()<<endl;
+      std::cout<<loc<< " centerline size is "<< HDmapinfo_.laneinfo[loc].centerline.point.size()<<endl;
       for (i = 0; i < iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints.size(); i++)
       {
         //temp_left_point.x = iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints[i].m_stPoint.fLongitude;
@@ -726,6 +748,7 @@ bool ehr_api::GetLaneInfo(){
     
   }
   
+  }
   //std::cout<<"2 HDmapinfo_ lane num is "<<HDmapinfo_.laneinfo.size()<<endl;
   //std::cout<<"the first point is "<< HDmapinfo_.laneinfo.begin()->centerline.point[0].x<<endl;
   //fileListLane<<" get lane info success"<<endl;

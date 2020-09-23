@@ -1,1 +1,0 @@
-/usr/bin/c++      CMakeFiles/canplayer.dir/main.cc.o  -o /home/xiaotongfeng/Desktop/ROS_HDmap_Decision_L4/ros_system/devel/lib/canplayer/canplayer -rdynamic -lkvaser_can_client -lglog 
