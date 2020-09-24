@@ -19,7 +19,7 @@
 #define out_flag_listLane 1
 #define not_out_flag_dots 0
 #define listCurvatureOffset 20000 //单位：cm
-#define xiaotongfengDebug 1
+#undef xiaotongfengDebug 
 #undef USE_PYTHON
 
 ehr_api::ehr_api(){
@@ -491,7 +491,7 @@ void ehr_api::Process(struct timeval tv){
 // end ehr_api process
 
 bool ehr_api::GetLaneInfo(){
-  std::cout<<"GetLaneInfo begin!"<<std::endl;
+  //std::cout<<"GetLaneInfo begin!"<<std::endl;
   if (flag_refresh_lanelist_) {
 
   S_LANEINFO temp_lane;
@@ -527,7 +527,6 @@ bool ehr_api::GetLaneInfo(){
   //输出两段laneinfo 
   auto list_data = listLanes_.begin();
   //输出第一段 
-  std::cout<<"listLane size is "<<listLanes_.size()<<std::endl;
   HDmapinfo_.laneinfo.clear();
   for(auto iter = HDmapinfo_.laneinfo.begin();iter!=HDmapinfo_.laneinfo.end();iter++){
     iter->centerline.point.clear();
@@ -542,7 +541,7 @@ bool ehr_api::GetLaneInfo(){
   }
   
   int16_t loc = 0; 
-  
+  bool getfirstpoint=false;
   for (auto iter = list_data ->m_mapLaneInfos.begin(); iter != list_data ->m_mapLaneInfos.end(); iter++){
     //车道id 
     temp_lane.id = iter->first;
@@ -558,9 +557,13 @@ bool ehr_api::GetLaneInfo(){
     temp_lane.centerline.point.clear();
     temp_lane.centerline.lineType.clear();
     temp_lane.rightboundry.pointnum = 0;
+#ifdef xiaotongfengDebug
     std::cout<< "first size is "<<iter->second.m_stCenterline.m_pLineGeometry.m_vPoints.size()<<std::endl;
+#endif
+    getfirstpoint = false;
     for (i = 0; i < iter->second.m_stCenterline.m_pLineGeometry.m_vPoints.size(); i++)
-    {
+    { 
+
       fileDebug <<"debug  !! "<< temp_point.x <<endl;
       //temp_point.x = iter->second.m_stCenterline.m_pLineGeometry.m_vPoints[i].m_stPoint.fLongitude;
       //temp_point.y = iter->second.m_stCenterline.m_pLineGeometry.m_vPoints[i].m_stPoint.fLatitude;
@@ -573,6 +576,10 @@ bool ehr_api::GetLaneInfo(){
         temppoint.x = -1.0;
         temppoint.y = -1.0;
       }
+      if ((!getfirstpoint) &&(sqrt((position_xy_.x - temppoint.x)*(position_xy_.x - temppoint.x)+(position_xy_.y - temppoint.y)*(position_xy_.y - temppoint.y))<50)){
+        getfirstpoint = true;
+      }
+      if (getfirstpoint){
       temp_point.x = temppoint.x;
       temp_point.y = temppoint.y;
       temp_point.z = iter->second.m_stCenterline.m_pLineGeometry.m_vPoints[i].m_stPoint.fAltitude;
@@ -584,6 +591,7 @@ bool ehr_api::GetLaneInfo(){
         temp_lane.centerline.lineType.emplace_back(iter->second.m_stCenterline.m_pLineObj.m_eType);
       }else {
         break;
+      }            
       }
     }
     //leftboundry
@@ -591,6 +599,7 @@ bool ehr_api::GetLaneInfo(){
     temp_lane.leftboundry.point.clear();
     temp_lane.leftboundry.lineType.clear();
     temp_lane.rightboundry.pointnum = 0;
+    getfirstpoint = false;
     for (i = 0; i < iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints.size(); i++)
     {
       //temp_left_point.x = iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints[i].m_stPoint.fLongitude;
@@ -604,6 +613,10 @@ bool ehr_api::GetLaneInfo(){
         temppoint.x = -1.0;
         temppoint.y = -1.0;
       }
+      if ((!getfirstpoint) &&(sqrt((position_xy_.x - temppoint.x)*(position_xy_.x - temppoint.x)+(position_xy_.y - temppoint.y)*(position_xy_.y - temppoint.y))<50)){
+        getfirstpoint = true;
+      }
+      if (getfirstpoint){
       temp_left_point.x = temppoint.x;
       temp_left_point.y = temppoint.y;
       temp_left_point.z = iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints[i].m_stPoint.fAltitude;
@@ -613,12 +626,14 @@ bool ehr_api::GetLaneInfo(){
       }else {
         break;
       }
+      }
     }
     //rightboundry
     temp_lane.rightboundry.type = iter->second.m_stRightBoundary.m_pLineObj.m_eType;
     temp_lane.rightboundry.point.clear();
     temp_lane.rightboundry.lineType.clear();
     temp_lane.rightboundry.pointnum = 0;
+    getfirstpoint = false;
     for (i = 0; i < iter->second.m_stRightBoundary.m_pLineGeometry.m_vPoints.size(); i++)
     {
       //temp_right_point.x = iter->second.m_stRightBoundary.m_pLineGeometry.m_vPoints[i].m_stPoint.fLongitude;
@@ -633,6 +648,10 @@ bool ehr_api::GetLaneInfo(){
         temppoint.x = -1.0;
         temppoint.y = -1.0;
       }
+      if ((!getfirstpoint) &&(sqrt((position_xy_.x - temppoint.x)*(position_xy_.x - temppoint.x)+(position_xy_.y - temppoint.y)*(position_xy_.y - temppoint.y))<50)){
+        getfirstpoint = true;
+      }
+      if (getfirstpoint){
       temp_right_point.x = temppoint.x;
       temp_right_point.y = temppoint.y;
       temp_right_point.z = iter->second.m_stRightBoundary.m_pLineGeometry.m_vPoints[i].m_stPoint.fAltitude;
@@ -641,7 +660,7 @@ bool ehr_api::GetLaneInfo(){
         temp_lane.rightboundry.lineType.emplace_back(iter->second.m_stRightBoundary.m_pLineObj.m_eType);
       }else {
         break;
-      }
+      }}
     }
     HDmapinfo_.laneinfo.emplace_back(temp_lane);
     loc++;
@@ -651,7 +670,6 @@ bool ehr_api::GetLaneInfo(){
   //加载下一段
   if ((list_data != listLanes_.end()) && (listLanes_.size()>1))
   {
-    std::cout<< "begin second size "<<std::endl;
     list_data ++;
     loc = 0;
     //std::cout<<"before "<<loc<< " centerline size is "<< HDmapinfo_.laneinfo[loc].centerline.point.size()<<endl;
@@ -660,7 +678,9 @@ bool ehr_api::GetLaneInfo(){
     //std::cout<<"lanelist size is "<< list_data->m_mapLaneInfos.size()<<endl;
     for(auto iter = list_data->m_mapLaneInfos.begin(); iter != list_data ->m_mapLaneInfos.end(); iter++)
     {
+#ifdef xiaotongfengDebug
       std::cout<< "begin second size 2 "<<iter->second.m_stCenterline.m_pLineGeometry.m_vPoints.size()<<std::endl;
+#endif
       for (i = 0; i < iter->second.m_stCenterline.m_pLineGeometry.m_vPoints.size(); i++)
       {
         //temp_point.x = iter->second.m_stCenterline.m_pLineGeometry.m_vPoints[i].m_stPoint.fLongitude;
@@ -688,7 +708,9 @@ bool ehr_api::GetLaneInfo(){
         
       }
       HDmapinfo_.laneinfo[loc].centerline.pointnum = HDmapinfo_.laneinfo[loc].centerline.point.size();
+#ifdef xiaotongfengDebug
       std::cout<<loc<< " centerline size is "<< HDmapinfo_.laneinfo[loc].centerline.point.size()<<endl;
+#endif
       for (i = 0; i < iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints.size(); i++)
       {
         //temp_left_point.x = iter->second.m_stLeftBoundary.m_pLineGeometry.m_vPoints[i].m_stPoint.fLongitude;
